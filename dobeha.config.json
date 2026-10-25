@@ -1,0 +1,13 @@
+{
+  "channelToken": "petgord",
+  "storeName": "PETGO-RD",
+  "storeSlug": "petgord",
+  "apiEndpoint": "https://dobeha-core-778104196562.us-east1.run.app/shop-api",
+  "theme": {
+    "primaryColor": "#0ea5e9",
+    "fontFamily": "Inter",
+    "darkModeDefault": false
+  },
+  "version": "1.0.0",
+  "publishedAt": "2026-10-25T16:34:10.529Z"
+}
