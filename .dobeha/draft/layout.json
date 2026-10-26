@@ -5,9 +5,9 @@
       "props": {
         "id": "announcement-petgord",
         "message": "🐾 Envíos garantizados a todo el país | DOBEHA Commerce Engine Live",
-        "badge": "EN VIVO",
-        "actionText": "Explorar Catálogo",
-        "actionLink": "#catalogo",
+        "badge": "",
+        "actionText": "",
+        "actionLink": "",
         "bgColor": "#4f46e5",
         "textColor": "#ffffff"
       }
@@ -35,7 +35,7 @@
         "id": "featured-petgord",
         "sectionTitle": "Catálogo de Productos",
         "subtitle": "Sincronizado en tiempo real con DOBEHA Multi-tenant Core",
-        "badgeTag": "VENDURE CORE ONLINE",
+        "badgeTag": "Vendure Core Online",
         "columns": "4",
         "cardStyle": "modern"
       }
