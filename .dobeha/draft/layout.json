@@ -1,0 +1,49 @@
+{
+  "content": [
+    {
+      "type": "AnnouncementBar",
+      "props": {
+        "id": "announcement-petgord",
+        "message": "🐾 Envíos garantizados a todo el país | DOBEHA Commerce Engine Live",
+        "badge": "EN VIVO",
+        "actionText": "Explorar Catálogo",
+        "actionLink": "#catalogo",
+        "bgColor": "#4f46e5",
+        "textColor": "#ffffff"
+      }
+    },
+    {
+      "type": "HeroBanner",
+      "props": {
+        "id": "hero-petgord",
+        "badge": "Colección 2026 Activa",
+        "title": "Todo lo que tu mascota ama en un solo lugar",
+        "subtitle": "Productos premium certificados para el bienestar, salud y entretenimiento de perros y gatos.",
+        "ctaText": "Explorar Productos",
+        "ctaLink": "#catalogo",
+        "secondaryCtaText": "",
+        "secondaryCtaLink": "",
+        "bgImage": "",
+        "bgColor": "",
+        "align": "center",
+        "height": "medium"
+      }
+    },
+    {
+      "type": "FeaturedProducts",
+      "props": {
+        "id": "featured-petgord",
+        "sectionTitle": "Catálogo de Productos",
+        "subtitle": "Sincronizado en tiempo real con DOBEHA Multi-tenant Core",
+        "badgeTag": "VENDURE CORE ONLINE",
+        "columns": "4",
+        "cardStyle": "modern"
+      }
+    }
+  ],
+  "root": {
+    "props": {
+      "title": "PETGO-RD | Tienda Oficial DOBEHA"
+    }
+  }
+}
