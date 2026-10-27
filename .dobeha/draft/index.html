@@ -1,195 +1,358 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" class="scroll-smooth">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PETGO-RD | Tienda Oficial DOBEHA</title>
+  <title>PETVET - PetGord | Tienda Oficial de Mascotas & Accesorios Premium</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              50: '#fff7ed',
+              100: '#ffedd5',
+              500: '#f97316',
+              600: '#ea580c',
+              700: '#c2410c',
+              dark: '#1c1917'
+            },
+            tealbrand: {
+              50: '#f0fdf4',
+              500: '#10b981',
+              600: '#059669',
+              700: '#047857'
+            }
+          }
+        }
+      }
+    }
+  </script>
 </head>
-<body class="bg-slate-50 text-slate-800 antialiased font-sans">
-  <!-- Top Bar -->
-  <div class="bg-indigo-600 text-white text-xs font-semibold py-2 px-4 text-center">
-    🐾 Envíos garantizados a todo el país | DOBEHA Commerce Engine Live
+<body class="bg-stone-50 text-stone-800 antialiased font-sans flex flex-col min-h-screen selection:bg-orange-500 selection:text-white">
+
+  <!-- Top Banner / Announcement Bar -->
+  <div class="bg-gradient-to-r from-stone-900 via-orange-950 to-stone-900 text-amber-100 text-xs py-2.5 px-4">
+    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2 text-center sm:text-left">
+      <div class="flex items-center gap-2 font-medium">
+        <span class="bg-orange-500 text-white font-bold px-2 py-0.5 rounded-full text-[10px] uppercase tracking-wider">Envío Gratis</span>
+        <span>En compras mayores a $50 USD • Entrega Express 24-48h</span>
+      </div>
+      <div class="flex items-center gap-4 text-[11px] font-semibold">
+        <a href="#contacto" class="hover:text-orange-400 transition flex items-center gap-1"><i class="fa-solid fa-headset text-orange-400"></i> Soporte Vet 24/7</a>
+        <span class="text-stone-600">|</span>
+        <span class="text-emerald-400 flex items-center gap-1"><i class="fa-solid fa-circle text-[8px] animate-pulse"></i> DOBEHA Engine Online</span>
+      </div>
+    </div>
   </div>
 
-  <!-- Navbar -->
-  <header class="bg-white border-b border-slate-200 sticky top-0 z-50 shadow-sm">
-    <div class="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
-      <div class="flex items-center space-x-3">
-        <div class="w-10 h-10 rounded-xl bg-indigo-600 text-white flex items-center justify-center font-bold text-xl shadow-md">
-          P
+  <!-- Header Section -->
+  <header class="bg-white/90 backdrop-blur-md sticky top-0 z-40 border-b border-stone-200/80 shadow-sm transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 h-20 flex items-center justify-between gap-4">
+      
+      <!-- Brand Logo -->
+      <a href="#" class="flex items-center gap-3 group">
+        <div class="w-11 h-11 rounded-2xl bg-gradient-to-tr from-orange-600 to-amber-500 text-white flex items-center justify-center text-xl shadow-lg shadow-orange-500/25 group-hover:scale-105 transition-transform">
+          <i class="fa-solid fa-paw"></i>
         </div>
-        <div>
-          <h1 class="font-black text-xl tracking-tight text-slate-900 leading-none">PETGO-RD</h1>
-          <p class="text-[10px] text-slate-400 font-medium tracking-wide uppercase mt-0.5">Tienda Oficial</p>
+        <div class="flex flex-col">
+          <span class="font-extrabold text-2xl tracking-tight text-stone-900 leading-none">PETVET <span class="text-orange-600 font-black">PetGord</span></span>
+          <span class="text-[10px] font-bold text-stone-400 uppercase tracking-widest mt-0.5">Mascotas & Nutrición</span>
+        </div>
+      </a>
+
+      <!-- Search Bar -->
+      <div class="hidden md:flex flex-1 max-w-md mx-6">
+        <div class="relative w-full">
+          <input type="text" id="searchInput" onkeyup="filterProducts()" placeholder="Buscar alimento, juguetes, arneses..." class="w-full bg-stone-100/80 border border-stone-200 text-stone-800 text-sm rounded-full pl-11 pr-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:bg-white transition-all shadow-inner">
+          <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-stone-400"></i>
         </div>
       </div>
-      <div class="flex items-center space-x-4">
-        <button id="cartBtn" class="relative p-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 transition">
-          <i class="fa-solid fa-cart-shopping text-lg"></i>
-          <span id="cartBadge" class="absolute -top-1 -right-1 bg-rose-500 text-white text-[11px] font-bold w-5 h-5 rounded-full flex items-center justify-center shadow">0</span>
+
+      <!-- Actions -->
+      <div class="flex items-center gap-3">
+        <button class="hidden sm:flex items-center gap-2 px-3.5 py-2 rounded-xl text-stone-600 hover:text-stone-900 hover:bg-stone-100 text-sm font-semibold transition">
+          <i class="fa-solid fa-heart text-stone-400"></i>
+          <span>Favoritos</span>
+        </button>
+
+        <!-- Cart Button -->
+        <button onclick="toggleCartDrawer()" id="cartBtn" class="relative bg-stone-900 hover:bg-orange-600 text-white px-4 py-2.5 rounded-2xl transition flex items-center gap-3 shadow-md hover:shadow-orange-500/20 active:scale-95 duration-200">
+          <div class="relative">
+            <i class="fa-solid fa-bag-shopping text-lg"></i>
+            <span id="cartBadge" class="absolute -top-2 -right-2 bg-orange-500 text-white text-[10px] font-black w-5 h-5 rounded-full flex items-center justify-center border-2 border-stone-900 shadow">0</span>
+          </div>
+          <div class="hidden sm:flex flex-col text-left leading-none">
+            <span class="text-[10px] text-stone-300 font-medium">Mi Carrito</span>
+            <span id="cartTotalHeader" class="text-xs font-bold text-white">$0.00</span>
+          </div>
         </button>
       </div>
     </div>
   </header>
 
   <!-- Hero Banner -->
-  <section class="relative overflow-hidden bg-gradient-to-br from-indigo-950 via-indigo-900 to-purple-900 text-white py-16 px-4">
-    <div class="max-w-5xl mx-auto text-center relative z-10">
-      <span class="inline-block bg-indigo-500/30 border border-indigo-400/30 rounded-full px-4 py-1 text-xs font-semibold uppercase tracking-wider mb-4 text-indigo-200">
-        Colección 2026 Activa
-      </span>
-      <h2 class="text-4xl md:text-5xl font-extrabold tracking-tight mb-4">
-        Todo lo que tu mascota ama en un solo lugar
-      </h2>
-      <p class="text-indigo-200 text-base md:text-lg max-w-2xl mx-auto mb-8">
-        Productos premium certificados para el bienestar, salud y entretenimiento de perros y gatos.
-      </p>
-      <a href="#catalogo" class="inline-flex items-center px-6 py-3 rounded-xl bg-white text-indigo-900 font-bold shadow-lg hover:bg-indigo-50 transition transform hover:-translate-y-0.5">
-        Explorar Productos <i class="fa-solid fa-arrow-down ml-2"></i>
-      </a>
-    </div>
-  </section>
+  <section class="relative overflow-hidden bg-gradient-to-br from-stone-900 via-stone-800 to-amber-950 text-white pt-12 pb-16 lg:py-20 px-4">
+    <div class="absolute -top-24 -right-24 w-96 h-96 rounded-full bg-orange-500/20 blur-3xl pointer-events-none"></div>
+    <div class="absolute bottom-0 left-10 w-80 h-80 rounded-full bg-emerald-500/10 blur-3xl pointer-events-none"></div>
 
-  <!-- Products Section -->
-  <main id="catalogo" class="max-w-7xl mx-auto px-4 py-12">
-    <div class="flex items-center justify-between mb-8">
-      <div>
-        <h3 class="text-2xl font-black text-slate-900">Catálogo de Productos</h3>
-        <p class="text-sm text-slate-500 mt-1">Sincronizado en tiempo real con DOBEHA Multi-tenant Core</p>
-      </div>
-      <span class="px-3 py-1 bg-emerald-50 text-emerald-700 text-xs font-semibold rounded-full border border-emerald-200 flex items-center gap-1.5">
-        <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span> Vendure Core Online
-      </span>
-    </div>
+    <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10">
+      
+      <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 border border-white/10 text-orange-300 text-xs font-bold uppercase tracking-wider backdrop-blur-md">
+          <i class="fa-solid fa-shield-cat text-orange-400"></i> Calidad Veterinaria Garantizada
+        </div>
 
-    <!-- Products Grid -->
-    <div id="productsGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-    </div>
-  </main>
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black text-white tracking-tight leading-tight">
+          El cuidado supremo que tu <span class="bg-gradient-to-r from-orange-400 via-amber-300 to-orange-500 bg-clip-text text-transparent">mascota merece.</span>
+        </h1>
 
-  <!-- Footer -->
-  <footer class="border-t border-slate-200 bg-white py-8 mt-12 text-center text-sm text-slate-400">
-    <p>© 2026 PETGO-RD. Desarrollado con <strong>DOBEHA Commerce OS</strong>.</p>
-  </footer>
+        <p class="text-stone-300 text-base sm:text-lg max-w-2xl font-normal leading-relaxed">
+          Descubre suplementos nutricionales, accesorios ergonómicos y juguetes interactivos seleccionados minuciosamente por veterinarios expertos.
+        </p>
 
-  <script>
-    const VENDURE_SHOP_API = 'https://dobeha-core-778104196562.us-east1.run.app/shop-api';
-    const CHANNEL_TOKEN = 'petgord';
-    let cart = [];
+        <div class="flex flex-wrap items-center justify-center lg:justify-start gap-4 pt-2">
+          <a href="#catalogo" class="px-8 py-4 rounded-2xl bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 text-white font-extrabold text-base shadow-xl shadow-orange-500/25 transition transform hover:-translate-y-0.5 active:translate-y-0 flex items-center gap-3">
+            <span>Ver Catálogo Exclusivo</span>
+            <i class="fa-solid fa-arrow-right"></i>
+          </a>
+          <a href="#categorias" class="px-7 py-4 rounded-2xl bg-white/10 hover:bg-white/20 text-white font-bold text-base border border-white/10 transition backdrop-blur-md flex items-center gap-2">
+            <i class="fa-solid fa-shapes text-orange-400"></i> Categorías
+          </a>
+        </div>
 
-    const query = `
-      query {
-        products(options: { take: 20 }) {
-          items {
-            id
-            name
-            slug
-            description
-            featuredAsset {
-              preview
-            }
-            variants {
-              id
-              name
-              priceWithTax
-              currencyCode
-            }
-          }
-        }
-      }
-    `;
-
-    async function loadProducts() {
-      const grid = document.getElementById('productsGrid');
-      grid.innerHTML = '<div class="col-span-full text-center py-12 text-slate-400 font-medium"><i class="fa-solid fa-spinner fa-spin text-2xl mb-2"></i><p>Cargando productos de la tienda...</p></div>';
-
-      try {
-        const res = await fetch(VENDURE_SHOP_API, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'vendure-token': CHANNEL_TOKEN
-          },
-          body: JSON.stringify({ query })
-        });
-        const json = await res.json();
-        const items = json?.data?.products?.items || [];
-
-        if (items.length === 0) {
-          renderFallbackProducts();
-          return;
-        }
-
-        grid.innerHTML = items.map(p => {
-          const img = p.featuredAsset?.preview || 'https://images.unsplash.com/photo-1543466835-00a7907e9de1?w=500&q=80';
-          const price = p.variants?.[0]?.priceWithTax ? (p.variants[0].priceWithTax / 100).toFixed(2) : '15.00';
-          const currency = p.variants?.[0]?.currencyCode || 'USD';
-
-          return `
-            <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden hover:shadow-md transition flex flex-col">
-              <div class="relative aspect-square bg-slate-100 overflow-hidden">
-                <img src="${img}" alt="${p.name}" class="w-full h-full object-cover hover:scale-105 transition duration-300">
-              </div>
-              <div class="p-5 flex-1 flex flex-col justify-between">
-                <div>
-                  <h4 class="font-bold text-slate-900 line-clamp-1 mb-1 text-base">${p.name}</h4>
-                  <p class="text-xs text-slate-500 line-clamp-2 mb-3">${p.description || 'Producto premium garantizado'}</p>
-                </div>
-                <div class="flex items-center justify-between pt-3 border-t border-slate-100">
-                  <span class="font-black text-lg text-indigo-600">${currency} $${price}</span>
-                  <button onclick="addToCart('${p.name}')" class="px-3.5 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl text-xs font-bold transition flex items-center gap-1.5 shadow-sm">
-                    <i class="fa-solid fa-cart-plus"></i> Añadir
-                  </button>
-                </div>
-              </div>
-            </div>
-          `;
-        }).join('');
-      } catch (e) {
-        console.warn('Usando catálogo fallback:', e);
-        renderFallbackProducts();
-      }
-    }
-
-    function renderFallbackProducts() {
-      const grid = document.getElementById('productsGrid');
-      const demo = [
-        { name: 'Alimento Premium Adulto 15kg', price: '45.00', img: 'https://images.unsplash.com/photo-1568640347023-a616a30bc3bd?w=500&q=80', desc: 'Fórmula completa rica en proteínas y vitaminas para perros activos.' },
-        { name: 'Arnés Táctico Ergonómico Ajustable', price: '24.99', img: 'https://images.unsplash.com/photo-1543466835-00a7907e9de1?w=500&q=80', desc: 'Arnés antitirones acolchado transpirable para paseos seguros.' },
-        { name: 'Cama Ortopédica Antiestrés', price: '38.50', img: 'https://images.unsplash.com/photo-1541599540903-216a46ca1dc0?w=500&q=80', desc: 'Espuma viscoelástica para soporte articular y descanso profundo.' },
-        { name: 'Juguete Mordedor Interactivo', price: '12.00', img: 'https://images.unsplash.com/photo-1576201836106-db1758fd1c97?w=500&q=80', desc: 'Caucho natural resistente ideal para limpieza dental y diversión.' }
-      ];
-
-      grid.innerHTML = demo.map(p => `
-        <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden hover:shadow-md transition flex flex-col">
-          <div class="relative aspect-square bg-slate-100 overflow-hidden">
-            <img src="${p.img}" alt="${p.name}" class="w-full h-full object-cover hover:scale-105 transition duration-300">
+        <!-- Trust Badges -->
+        <div class="pt-6 border-t border-white/10 grid grid-cols-3 gap-4 text-center lg:text-left max-w-lg">
+          <div>
+            <p class="text-xl font-black text-white">+15,000</p>
+            <p class="text-xs text-stone-400">Mascotas Felices</p>
           </div>
-          <div class="p-5 flex-1 flex flex-col justify-between">
-            <div>
-              <h4 class="font-bold text-slate-900 line-clamp-1 mb-1 text-base">${p.name}</h4>
-              <p class="text-xs text-slate-500 line-clamp-2 mb-3">${p.desc}</p>
+          <div>
+            <p class="text-xl font-black text-white">100%</p>
+            <p class="text-xs text-stone-400">Productos Certificados</p>
+          </div>
+          <div>
+            <p class="text-xl font-black text-white">24/7</p>
+            <p class="text-xs text-stone-400">Asesoría Médica</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Hero Visual -->
+      <div class="lg:col-span-5 relative">
+        <div class="relative mx-auto max-w-md lg:max-w-none">
+          <div class="aspect-square rounded-3xl overflow-hidden shadow-2xl border-4 border-white/20 relative group">
+            <img src="https://images.unsplash.com/photo-1543466835-00a7907e9de1?w=800&q=80" alt="PetVet Mascotas" class="w-full h-full object-cover group-hover:scale-105 transition duration-700">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+          </div>
+
+          <!-- Floating Card Promo -->
+          <div class="absolute -bottom-6 -left-6 bg-white text-stone-900 p-4 rounded-2xl shadow-xl border border-stone-100 flex items-center gap-4 max-w-xs animate-bounce-slow">
+            <div class="w-12 h-12 rounded-xl bg-orange-100 text-orange-600 flex items-center justify-center text-xl font-bold">
+              <i class="fa-solid fa-award"></i>
             </div>
-            <div class="flex items-center justify-between pt-3 border-t border-slate-100">
-              <span class="font-black text-lg text-indigo-600">USD $${p.price}</span>
-              <button onclick="addToCart('${p.name}')" class="px-3.5 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl text-xs font-bold transition flex items-center gap-1.5 shadow-sm">
-                <i class="fa-solid fa-cart-plus"></i> Añadir
-              </button>
+            <div>
+              <p class="text-xs font-bold text-stone-500 uppercase tracking-wide">Recomendado</p>
+              <p class="text-sm font-extrabold text-stone-900">Alimento Súper Premium</p>
             </div>
           </div>
         </div>
-      `).join('');
-    }
+      </div>
 
-    function addToCart(name) {
-      cart.push(name);
-      document.getElementById('cartBadge').innerText = cart.length;
-      alert('¡' + name + ' añadido al carrito con éxito!');
-    }
+    </div>
+  </section>
 
-    loadProducts();
-  </script>
-</body>
-</html>
+  <!-- Categories Grid Section -->
+  <section id="categorias" class="py-12 bg-white border-b border-stone-200">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="flex items-center justify-between mb-8">
+        <div>
+          <h2 class="text-2xl font-extrabold text-stone-900 tracking-tight">Categorías Principales</h2>
+          <p class="text-sm text-stone-500">Encuentra exactamente lo que tu compañero de vida necesita</p>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
+        <!-- Cat 1 -->
+        <button onclick="filterCategory('all')" class="flex flex-col items-center justify-center p-5 rounded-2xl bg-stone-50 border border-stone-200/80 hover:border-orange-500 hover:bg-orange-50/50 hover:shadow-md transition group text-center">
+          <div class="w-14 h-14 rounded-full bg-orange-500 text-white flex items-center justify-center text-2xl shadow-md group-hover:scale-110 transition">
+            <i class="fa-solid fa-border-all"></i>
+          </div>
+          <span class="mt-3 font-bold text-sm text-stone-800">Todo</span>
+          <span class="text-[11px] text-stone-400 font-medium">Catálogo Real</span>
+        </button>
+
+        <!-- Cat 2 -->
+        <button onclick="filterCategory('dog')" class="flex flex-col items-center justify-center p-5 rounded-2xl bg-stone-50 border border-stone-200/80 hover:border-orange-500 hover:bg-orange-50/50 hover:shadow-md transition group text-center">
+          <div class="w-14 h-14 rounded-full bg-amber-500 text-white flex items-center justify-center text-2xl shadow-md group-hover:scale-110 transition">
+            <i class="fa-solid fa-dog"></i>
+          </div>
+          <span class="mt-3 font-bold text-sm text-stone-800">Perros</span>
+          <span class="text-[11px] text-stone-400 font-medium">Nutrición & Arneses</span>
+        </button>
+
+        <!-- Cat 3 -->
+        <button onclick="filterCategory('cat')" class="flex flex-col items-center justify-center p-5 rounded-2xl bg-stone-50 border border-stone-200/80 hover:border-orange-500 hover:bg-orange-50/50 hover:shadow-md transition group text-center">
+          <div class="w-14 h-14 rounded-full bg-emerald-500 text-white flex items-center justify-center text-2xl shadow-md group-hover:scale-110 transition">
+            <i class="fa-solid fa-cat"></i>
+          </div>
+          <span class="mt-3 font-bold text-sm text-stone-800">Gatos</span>
+          <span class="text-[11px] text-stone-400 font-medium">Snacks & Rascadores</span>
+        </button>
+
+        <!-- Cat 4 -->
+        <button onclick="filterCategory('health')" class="flex flex-col items-center justify-center p-5 rounded-2xl bg-stone-50 border border-stone-200/80 hover:border-orange-500 hover:bg-orange-50/50 hover:shadow-md transition group text-center">
+          <div class="w-14 h-14 rounded-full bg-rose-500 text-white flex items-center justify-center text-2xl shadow-md group-hover:scale-110 transition">
+            <i class="fa-solid fa-pills"></i>
+          </div>
+          <span class="mt-3 font-bold text-sm text-stone-800">Salud Vet</span>
+          <span class="text-[11px] text-stone-400 font-medium">Vitaminas & Cuidado</span>
+        </button>
+
+        <!-- Cat 5 -->
+        <button onclick="filterCategory('toys')" class="flex flex-col items-center justify-center p-5 rounded-2xl bg-stone-50 border border-stone-200/80 hover:border-orange-500 hover:bg-orange-50/50 hover:shadow-md transition group text-center">
+          <div class="w-14 h-14 rounded-full bg-purple-500 text-white flex items-center justify-center text-2xl shadow-md group-hover:scale-110 transition">
+            <i class="fa-solid fa-bone"></i>
+          </div>
+          <span class="mt-3 font-bold text-sm text-stone-800">Juguetes</span>
+          <span class="text-[11px] text-stone-400 font-medium">Interactivos</span>
+        </button>
+
+        <!-- Cat 6 -->
+        <button onclick="filterCategory('beds')" class="flex flex-col items-center justify-center p-5 rounded-2xl bg-stone-50 border border-stone-200/80 hover:border-orange-500 hover:bg-orange-50/50 hover:shadow-md transition group text-center">
+          <div class="w-14 h-14 rounded-full bg-blue-500 text-white flex items-center justify-center text-2xl shadow-md group-hover:scale-110 transition">
+            <i class="fa-solid fa-bed"></i>
+          </div>
+          <span class="mt-3 font-bold text-sm text-stone-800">Camas & Confort</span>
+          <span class="text-[11px] text-stone-400 font-medium">Ortopédicas</span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Special Offer Highlight Banner -->
+  <section class="max-w-7xl mx-auto px-4 py-8">
+    <div class="bg-gradient-to-r from-orange-600 to-amber-500 rounded-3xl p-6 md:p-10 text-white shadow-xl relative overflow-hidden flex flex-col md:flex-row items-center justify-between gap-6">
+      <div class="space-y-2 z-10 text-center md:text-left">
+        <span class="bg-black/20 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Oferta de la semana</span>
+        <h3 class="text-2xl md:text-3xl font-black">20% OFF en Plan de Nutrición Holística</h3>
+        <p class="text-orange-100 text-sm max-w-xl">Usa el código <strong class="bg-white text-orange-600 px-2 py-0.5 rounded font-mono">PETVET20</strong> en tu compra superior a $40 USD.</p>
+      </div>
+      <a href="#catalogo" class="z-10 bg-stone-900 hover:bg-stone-800 text-white px-6 py-3.5 rounded-xl font-bold text-sm shadow-lg transition whitespace-nowrap">
+        Aprovechar Descuento <i class="fa-solid fa-tag ml-2"></i>
+      </a>
+      <div class="absolute -right-10 -bottom-10 opacity-20 text-9xl text-white pointer-events-none">
+        <i class="fa-solid fa-paw"></i>
+      </div>
+    </div>
+  </section>
+
+  <!-- Products Main Section -->
+  <main id="catalogo" class="max-w-7xl mx-auto px-4 py-10 flex-1">
+    
+    <!-- Section Title & Status -->
+    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8 pb-4 border-b border-stone-200">
+      <div>
+        <div class="flex items-center gap-2">
+          <h2 class="text-2xl sm:text-3xl font-black text-stone-900 tracking-tight">Catálogo Destacado</h2>
+          <span id="activeFilterBadge" class="bg-orange-100 text-orange-700 text-xs font-bold px-2.5 py-0.5 rounded-full hidden">Todos</span>
+        </div>
+        <p class="text-sm text-stone-500 mt-0.5">Sincronizado dinámicamente con DOBEHA Storefront Cloud</p>
+      </div>
+
+      <div class="flex items-center gap-3">
+        <span class="px-3.5 py-1.5 bg-emerald-50 text-emerald-700 text-xs font-bold rounded-full border border-emerald-200/80 flex items-center gap-2 shadow-sm">
+          <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-ping"></span>
+          Vendure Live Sync
+        </span>
+      </div>
+    </div>
+
+    <!-- Products Grid Container (DOBEHA Required ID) -->
+    <div id="productsGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <!-- Loading Skeleton / JS Rendered Content -->
+    </div>
+  </main>
+
+  <!-- Value Features Bar -->
+  <section class="bg-stone-100 border-y border-stone-200/80 py-12 my-12">
+    <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+      <div class="flex items-center gap-4">
+        <div class="w-12 h-12 rounded-2xl bg-orange-500 text-white flex items-center justify-center text-xl shrink-0 shadow-md">
+          <i class="fa-solid fa-truck-fast"></i>
+        </div>
+        <div>
+          <h4 class="font-bold text-stone-900 text-sm">Envío Express Garantizado</h4>
+          <p class="text-xs text-stone-500">Despacho en menos de 24 horas</p>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-4">
+        <div class="w-12 h-12 rounded-2xl bg-emerald-500 text-white flex items-center justify-center text-xl shrink-0 shadow-md">
+          <i class="fa-solid fa-stethoscope"></i>
+        </div>
+        <div>
+          <h4 class="font-bold text-stone-900 text-sm">Respaldo Veterinario</h4>
+          <p class="text-xs text-stone-500">Productos aprobados por expertos</p>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-4">
+        <div class="w-12 h-12 rounded-2xl bg-amber-500 text-white flex items-center justify-center text-xl shrink-0 shadow-md">
+          <i class="fa-solid fa-arrows-rotate"></i>
+        </div>
+        <div>
+          <h4 class="font-bold text-stone-900 text-sm">Devoluciones Fáciles</h4>
+          <p class="text-xs text-stone-500">30 días de garantía sin costo</p>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-4">
+        <div class="w-12 h-12 rounded-2xl bg-stone-900 text-white flex items-center justify-center text-xl shrink-0 shadow-md">
+          <i class="fa-solid fa-lock"></i>
+        </div>
+        <div>
+          <h4 class="font-bold text-stone-900 text-sm">Pago Seguro DOBEHA</h4>
+          <p class="text-xs text-stone-500">Encriptado de alta seguridad</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pet Care Tips / Blog Teaser -->
+  <section class="max-w-7xl mx-auto px-4 py-8 mb-12">
+    <div class="text-center max-w-2xl mx-auto mb-10">
+      <span class="text-orange-600 font-extrabold text-xs uppercase tracking-widest">Consejos de Salud</span>
+      <h2 class="text-3xl font-black text-stone-900 mt-1">Blog PETVET & Consejos Profesionales</h2>
+      <p class="text-sm text-stone-500 mt-2">Aprende a mantener a tu mascota sana, fuerte y alegre todos los días.</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <article class="bg-white rounded-2xl overflow-hidden border border-stone-200/80 shadow-sm hover:shadow-md transition">
+        <img src="https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?w=500&q=80" alt="Nutrición canina" class="w-full h-48 object-cover">
+        <div class="p-5">
+          <span class="text-[10px] font-bold uppercase text-orange-600 bg-orange-50 px-2.5 py-1 rounded-full">Nutrición</span>
+          <h3 class="font-bold text-stone-900 text-base mt-2 mb-1">¿Cómo elegir la mejor proteína para tu perro?</h3>
+          <p class="text-xs text-stone-500 line-clamp-2">Descubre la importancia de los ingredientes naturales y cómo identificar un alimento de calidad premium.</p>
+        </div>
+      </article>
+
+      <article class="bg-white rounded-2xl overflow-hidden border border-stone-200/80 shadow-sm hover:shadow-md transition">
+        <img src="https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?w=500&q=80" alt="Cuidado felino" class="w-full h-48 object-cover">
+        <div class="p-5">
+          <span class="text-[10px] font-bold uppercase text-emerald-600 bg-emerald-50 px-2.5 py-1 rounded-full">Bienestar Felino</span>
+          <h3 class="font-bold text-stone-900 text-base mt-2 mb-1">Evita el estrés en gatos de interiores</h3>
+          <p class="text-xs text-stone-500 line-clamp-2">Estrategias sencillas para estimular su instinto cazador y mantenerlos activos dentro de casa.</p>
+        </div>
+      </article>
+
+      <article class="bg-white rounded-2xl overflow-hidden border border-stone-200/80 shadow-sm hover:shadow-md transition">
+        <img src="https://images.unsplash.com/photo-1541599540903-216a46ca1dc0?w=500&q=80" alt="Higiene dental" class="w-full h-4
