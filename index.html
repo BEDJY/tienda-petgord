@@ -1,449 +1,353 @@
 <!DOCTYPE html>
 <html lang="es" class="scroll-smooth">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PETGO-RD | Bienestar & Diseño Escandinavo para Mascotas</title>
-
-  <!-- Tailwind CSS CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            forest: {
-              50: '#f2f7f2',
-              100: '#e1ede1',
-              200: '#c5dcc5',
-              300: '#9dc29d',
-              400: '#72a272',
-              500: '#528552',
-              600: '#3e6a3e',
-              700: '#335533',
-              800: '#2a442a',
-              900: '#233923',
-              950: '#111f11',
-            },
-            sage: {
-              50: '#f6f8f6',
-              100: '#e9eee8',
-              200: '#d5ded4',
-              300: '#b7c7b5',
-              400: '#93a990',
-              500: '#758d72',
-              600: '#5c7159',
-              700: '#4a5b48',
-              800: '#3d4b3c',
-              900: '#343f33',
-            }
-          },
-          fontFamily: {
-            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
-          },
-          boxShadow: {
-            'nordic': '0 10px 30px -10px rgba(35, 57, 35, 0.08)',
-            'card-hover': '0 20px 40px -15px rgba(35, 57, 35, 0.15)',
-          }
-        }
-      }
-    }
-  </script>
-
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-  <!-- Google Fonts: Plus Jakarta Sans -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-
-  <style>
-    body {
-      background-color: #fafbf9;
-    }
-    ::-webkit-scrollbar {
-      width: 7px;
-      height: 7px;
-    }
-    ::-webkit-scrollbar-track {
-      background: #f4f7f4;
-    }
-    ::-webkit-scrollbar-thumb {
-      background: #c6d6c6;
-      border-radius: 999px;
-    }
-    ::-webkit-scrollbar-thumb:hover {
-      background: #587a58;
-    }
-    .nordic-glass {
-      background: rgba(255, 255, 255, 0.88);
-      backdrop-filter: blur(12px);
-    }
-    .no-scrollbar::-webkit-scrollbar {
-      display: none;
-    }
-    .no-scrollbar {
-      -ms-overflow-style: none;
-      scrollbar-width: none;
-    }
-    summary::-webkit-details-marker {
-      display: none;
-    }
-  </style>
-</head>
-<body class="text-slate-800 antialiased font-sans min-h-screen flex flex-col selection:bg-sage-200 selection:text-forest-900">
-
-  <!-- Toast Notification Container -->
-  <div id="toastContainer" class="fixed bottom-6 right-6 z-50 flex flex-col gap-3 pointer-events-none"></div>
-
-  <!-- TOP PROMOTION BANNER -->
-  <div class="bg-forest-900 text-emerald-50 text-xs py-2.5 px-4 font-medium border-b border-forest-800">
-    <div class="max-w-7xl mx-auto flex flex-wrap justify-between items-center gap-2">
-      <div class="flex items-center gap-2 mx-auto sm:mx-0">
-        <span class="bg-forest-800 text-emerald-200 px-2.5 py-0.5 rounded-full text-[11px] font-semibold tracking-wide border border-forest-700">
-          🌿 Estilo Escandinavo
-        </span>
-        <span class="text-emerald-100 text-[11px] sm:text-xs">
-          Envío gratis en compras mayores a RD$ 2,500 en Santo Domingo & Santiago
-        </span>
-      </div>
-      <div class="hidden md:flex items-center gap-5 text-[11px] text-emerald-200 font-medium">
-        <span><i class="fa-solid fa-leaf mr-1.5 text-sage-300"></i> Materiales Orgánicos</span>
-        <span><i class="fa-solid fa-truck-fast mr-1.5 text-sage-300"></i> Entrega en 24-48h</span>
-        <span><i class="fa-solid fa-shield-cat mr-1.5 text-sage-300"></i> Garantía Vet Approved</span>
-      </div>
-    </div>
-  </div>
-
-  <!-- HEADER / NAVIGATION -->
-  <header class="nordic-glass sticky top-0 z-40 border-b border-sage-100 shadow-sm">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex items-center justify-between h-20 gap-4">
-
-        <!-- Logo -->
-        <a href="#" class="flex items-center gap-3 group">
-          <div class="w-11 h-11 rounded-2xl bg-sage-100 text-forest-800 border border-sage-200 flex items-center justify-center text-xl font-bold shadow-sm group-hover:bg-forest-800 group-hover:text-white transition-all duration-300">
-            <i class="fa-solid fa-paw"></i>
-          </div>
-          <div class="flex flex-col">
-            <span class="font-extrabold text-xl tracking-tight text-forest-950 flex items-center gap-1">
-              PETGO<span class="text-sage-600 font-semibold">-RD</span>
-            </span>
-            <span class="text-[10px] font-semibold text-slate-400 uppercase tracking-widest -mt-1">
-              Nordic Pet Wellness
-            </span>
-          </div>
-        </a>
-
-        <!-- Search Bar -->
-        <div class="hidden md:flex flex-1 max-w-md mx-6">
-          <div class="relative w-full">
-            <input type="text" id="searchInput" placeholder="Buscar productos..." class="w-full bg-sage-50/80 border border-sage-200 text-slate-700 text-xs rounded-full pl-11 pr-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-forest-600 focus:bg-white transition-all duration-200">
-            <div class="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 text-xs">
-              <i class="fa-solid fa-magnifying-glass"></i>
-            </div>
-          </div>
-        </div>
-
-        <!-- Action Icons & Cart -->
-        <div class="flex items-center gap-3">
-
-          <div class="hidden lg:flex items-center gap-2 bg-sage-50 text-forest-800 border border-sage-200 px-3 py-1.5 rounded-full text-xs font-semibold">
-            <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-            100% Eco & Orgánico
-          </div>
-
-          <!-- Cart Button -->
-          <button id="cartBtn" class="bg-forest-800 hover:bg-forest-900 text-white px-4 py-2.5 rounded-2xl transition-all duration-200 flex items-center gap-3 shadow-nordic hover:shadow-card-hover active:scale-95 cursor-pointer">
-            <div class="relative flex items-center justify-center">
-              <i class="fa-solid fa-bag-shopping text-base"></i>
-              <span id="cartBadge" class="absolute -top-2.5 -right-2.5 bg-emerald-400 text-forest-950 text-[10px] font-extrabold w-4 h-4 rounded-full flex items-center justify-center border border-white shadow-sm">0</span>
-            </div>
-            <div class="flex flex-col text-left leading-none">
-              <span class="text-[9px] uppercase font-bold text-emerald-200 tracking-wider">Mi Carrito</span>
-              <span id="cartTotalHeader" class="text-xs font-extrabold text-white">RD$ 0.00</span>
-            </div>
-          </button>
-
-        </div>
-      </div>
-
-      <!-- Mobile Search Input -->
-      <div class="pb-3 md:hidden">
-        <div class="relative w-full">
-          <input type="text" id="searchInputMobile" placeholder="Buscar productos..." class="w-full bg-sage-50 border border-sage-200 text-slate-700 text-xs rounded-full pl-10 pr-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-forest-600">
-          <div class="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-xs">
-            <i class="fa-solid fa-magnifying-glass"></i>
-          </div>
-        </div>
-      </div>
-    </div>
-  </header>
-
-  <!-- HERO BANNER -->
-  <section class="bg-gradient-to-b from-sage-100/60 via-sage-50/40 to-transparent py-12 sm:py-20 relative overflow-hidden">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
-        
-        <!-- Hero Text -->
-        <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
-          <div class="inline-flex items-center gap-2 bg-white/80 border border-sage-200 text-forest-800 px-4 py-1.5 rounded-full text-xs font-semibold shadow-sm">
-            <i class="fa-solid fa-sparkles text-emerald-600"></i> Colección Nórdica 2025
-          </div>
-          
-          <h1 class="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-forest-950 tracking-tight leading-tight">
-            Diseño minimalista & nutrición pura para tu mascota.
-          </h1>
-
-          <p class="text-slate-600 text-sm sm:text-base font-normal max-w-2xl mx-auto lg:mx-0 leading-relaxed">
-            Descubre accesorios escandinavos en tonos salvia y verde bosque, elaborados con fibras naturales, maderas sustentables y alimentos 100% orgánicos para el máximo confort de tus perros y gatos en República Dominicana.
-          </p>
-
-          <div class="flex flex-wrap items-center justify-center lg:justify-start gap-4 pt-2">
-            <a href="#catalogo" class="bg-forest-800 hover:bg-forest-900 text-white text-xs sm:text-sm font-bold px-7 py-4 rounded-2xl transition-all shadow-nordic hover:shadow-card-hover flex items-center gap-3">
-              <span>Ver Colección Completa</span>
-              <i class="fa-solid fa-arrow-right text-xs"></i>
-            </a>
-            
-            <div class="flex items-center gap-3 text-xs text-slate-700 font-semibold bg-white border border-sage-200 px-4 py-3.5 rounded-2xl shadow-sm">
-              <div class="flex text-amber-400 gap-0.5">
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-              </div>
-              <span><strong>4.9/5</strong> (+5,000 mascotas felices)</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Hero Image Card -->
-        <div class="lg:col-span-5 flex justify-center">
-          <div class="relative w-full max-w-md bg-white p-4 rounded-3xl border border-sage-200 shadow-card-hover">
-            <div class="relative rounded-2xl overflow-hidden aspect-[4/3] bg-sage-100">
-              <img src="https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?auto=format&fit=crop&w=800&q=80" alt="PETGO-RD Mascotas Escandinavas" class="w-full h-full object-cover">
-              <span class="absolute top-3 right-3 bg-white/95 backdrop-blur text-forest-900 text-[10px] font-extrabold px-3 py-1 rounded-full border border-sage-200 shadow-sm">
-                🌿 Eco Collection
-              </span>
-            </div>
-            <div class="mt-4 flex items-center justify-between px-2">
-              <div>
-                <h4 class="text-sm font-bold text-slate-800">Cama Ergonómica Salvia</h4>
-                <p class="text-xs text-slate-500">Algodón orgánico y lino natural</p>
-              </div>
-              <span class="text-xs font-extrabold text-forest-800 bg-sage-100 border border-sage-200 px-3 py-1.5 rounded-xl">
-                RD$ 3,450
-              </span>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- FEATURES BAR -->
-  <section class="border-y border-sage-200/80 bg-white py-6">
-    <div class="max-w-7xl mx-auto px-4 grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
-      <div class="flex items-center justify-center gap-3.5 p-2">
-        <div class="w-10 h-10 rounded-2xl bg-sage-100 text-forest-800 flex items-center justify-center text-lg shrink-0">
-          <i class="fa-solid fa-seedling"></i>
-        </div>
-        <div class="text-left">
-          <p class="text-xs font-bold text-slate-800">Materiales Orgánicos</p>
-          <p class="text-[11px] text-slate-500">100% no tóxicos & sustentables</p>
-        </div>
-      </div>
-
-      <div class="flex items-center justify-center gap-3.5 p-2">
-        <div class="w-10 h-10 rounded-2xl bg-sage-100 text-forest-800 flex items-center justify-center text-lg shrink-0">
-          <i class="fa-solid fa-truck-ramp-box"></i>
-        </div>
-        <div class="text-left">
-          <p class="text-xs font-bold text-slate-800">Envío Rápido RD</p>
-          <p class="text-[11px] text-slate-500">Entregas seguras y puntuales</p>
-        </div>
-      </div>
-
-      <div class="flex items-center justify-center gap-3.5 p-2">
-        <div class="w-10 h-10 rounded-2xl bg-sage-100 text-forest-800 flex items-center justify-center text-lg shrink-0">
-          <i class="fa-solid fa-stethoscope"></i>
-        </div>
-        <div class="text-left">
-          <p class="text-xs font-bold text-slate-800">Aprobado por Vets</p>
-          <p class="text-[11px] text-slate-500">Recomendado por expertos</p>
-        </div>
-      </div>
-
-      <div class="flex items-center justify-center gap-3.5 p-2">
-        <div class="w-10 h-10 rounded-2xl bg-sage-100 text-forest-800 flex items-center justify-center text-lg shrink-0">
-          <i class="fa-solid fa-rotate-left"></i>
-        </div>
-        <div class="text-left">
-          <p class="text-xs font-bold text-slate-800">Garantía de Satisfacción</p>
-          <p class="text-[11px] text-slate-500">30 días de cambio sin complicaciones</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CATÁLOGO DE PRODUCTOS -->
-  <section id="catalogo" class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full flex-grow">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="PETGO-RD - La tienda de mascotas líder en República Dominicana. Alimentos premium, accesorios, juguetes y salud para tus mascotas con envío rápido a todo el país.">
+    <title>PETGO-RD | Tu Tienda de Mascotas de Confianza</title>
     
-    <!-- Encabezado de Sección -->
-    <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4">
-      <div>
-        <div class="inline-flex items-center gap-1.5 text-xs font-bold text-forest-700 bg-sage-100 border border-sage-200 px-3 py-1 rounded-full mb-3">
-          <i class="fa-solid fa-paw text-[10px]"></i> Catálogo Oficial
-        </div>
-        <h2 class="text-2xl sm:text-3xl font-extrabold text-forest-950 tracking-tight">
-          Productos Destacados
-        </h2>
-        <p class="text-slate-500 text-xs sm:text-sm mt-1">
-          Nutrición, descanso y juego con los estándares escandinavos más exigentes.
-        </p>
-      </div>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts: Plus Jakarta Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
-      <!-- Píldoras de Filtro por Categoría -->
-      <div id="categoryFilters" class="flex items-center gap-2 overflow-x-auto no-scrollbar pb-2 md:pb-0">
-        <!-- Las categorías serán inyectadas o renderizadas dinámicamente -->
-      </div>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    colors: {
+                        pet: {
+                            orange: '#FF6B00',
+                            'orange-dark': '#E05D00',
+                            teal: '#00A896',
+                            yellow: '#FFC72C',
+                            dark: '#1E293B',
+                            light: '#F8FAFC'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        details[open] summary i {
+            transform: rotate(180deg);
+        }
+        summary::-webkit-details-marker {
+            display: none;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans antialiased flex flex-col min-h-screen selection:bg-pet-orange selection:text-white">
+
+    <!-- TOP ANNOUNCEMENT BANNER -->
+    <div class="bg-gradient-to-r from-pet-orange via-orange-500 to-amber-500 text-white text-xs md:text-sm font-semibold py-2 px-4 text-center shadow-inner flex items-center justify-center gap-2">
+        <span class="bg-white/20 backdrop-blur-md px-2 py-0.5 rounded-full text-[10px] md:text-xs uppercase tracking-wider font-extrabold animate-pulse">Oferta Relámpago</span>
+        <span>🚚 Envío GRATIS a nivel nacional por compras mayores a RD$ 2,500</span>
+        <span class="hidden md:inline">| 🐾 ¡Descuentos de hasta 35% en marcas seleccionadas!</span>
     </div>
 
-    <!-- CONTENEDOR EXACTO DE PRODUCTOS (DOBEHA COMMERCE OS INJECTOR TARGET) -->
-    <div id="productsGrid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"></div>
+    <!-- MAIN HEADER -->
+    <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-100 shadow-sm transition-all">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20 gap-4">
+                
+                <!-- BRAND LOGO -->
+                <a href="#" class="flex items-center gap-2 group flex-shrink-0">
+                    <div class="w-11 h-11 bg-gradient-to-tr from-pet-orange to-amber-400 rounded-2xl flex items-center justify-center text-white shadow-lg shadow-pet-orange/30 group-hover:scale-105 transition-transform duration-300">
+                        <i class="fa-solid fa-paw text-2xl"></i>
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="text-2xl font-black tracking-tight text-slate-900 group-hover:text-pet-orange transition-colors">PETGO<span class="text-pet-orange">.RD</span></span>
+                        <span class="text-[10px] font-bold uppercase tracking-widest text-pet-teal -mt-1">Pet Commerce OS</span>
+                    </div>
+                </a>
 
-  </section>
+                <!-- SEARCH BAR -->
+                <div class="hidden md:flex flex-1 max-w-md mx-6">
+                    <div class="relative w-full">
+                        <input type="text" id="searchInput" placeholder="Buscar productos..." class="w-full pl-11 pr-4 py-2.5 bg-slate-100 border border-transparent rounded-full text-sm text-slate-800 focus:bg-white focus:border-pet-orange focus:ring-4 focus:ring-pet-orange/10 focus:outline-none transition-all placeholder-slate-400 font-medium">
+                        <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-slate-400"></i>
+                    </div>
+                </div>
 
-  <!-- SECCIÓN DE TESTIMONIOS / RESEÑAS DE CLIENTES -->
-  <section class="bg-gradient-to-b from-white to-sage-50/60 py-16 border-t border-sage-200/80">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      
-      <div class="text-center max-w-2xl mx-auto mb-12">
-        <span class="bg-forest-100 text-forest-800 text-xs font-bold px-3.5 py-1 rounded-full border border-sage-200 inline-block mb-3">
-          💬 Experiencias Reales
-        </span>
-        <h2 class="text-2xl sm:text-4xl font-extrabold text-forest-950 tracking-tight">
-          Lo que dicen los pet lovers
-        </h2>
-        <p class="text-slate-600 text-xs sm:text-sm mt-2">
-          Más de 5,000 mascotas disfrutan de la máxima calidad, bienestar y estilo en República Dominicana.
-        </p>
-      </div>
+                <!-- NAV LINKS -->
+                <nav class="hidden lg:flex items-center space-x-6 text-sm font-semibold text-slate-600">
+                    <a href="#" class="text-pet-orange hover:text-pet-orange transition-colors">Inicio</a>
+                    <a href="#catalogo" class="hover:text-pet-orange transition-colors">Catálogo</a>
+                    <a href="#nosotros" class="hover:text-pet-orange transition-colors">Nosotros</a>
+                    <a href="#beneficios" class="hover:text-pet-orange transition-colors">Garantía</a>
+                    <a href="#faq" class="hover:text-pet-orange transition-colors">FAQ</a>
+                    <a href="#contacto" class="hover:text-pet-orange transition-colors">Contacto</a>
+                </nav>
 
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- USER & CART ACTIONS -->
+                <div class="flex items-center gap-3">
+                    <button class="md:hidden text-slate-600 hover:text-pet-orange p-2" onclick="document.getElementById('mobileSearch').classList.toggle('hidden')">
+                        <i class="fa-solid fa-magnifying-glass text-xl"></i>
+                    </button>
+                    
+                    <button id="cartBtn" class="relative bg-slate-100 hover:bg-pet-orange/10 hover:text-pet-orange text-slate-800 p-3 rounded-full transition-all duration-300 flex items-center justify-center group" aria-label="Carrito de compras">
+                        <i class="fa-solid fa-shopping-bag text-xl group-hover:scale-110 transition-transform"></i>
+                        <span id="cartBadge" class="absolute -top-1 -right-1 bg-pet-orange text-white text-xs font-black rounded-full h-5 w-5 flex items-center justify-center shadow-md ring-2 ring-white">0</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- MOBILE SEARCH BAR (TOGGLEABLE) -->
+            <div id="mobileSearch" class="hidden pb-4 md:hidden">
+                <div class="relative w-full">
+                    <input type="text" id="searchInputMobile" placeholder="Buscar productos..." class="w-full pl-11 pr-4 py-2.5 bg-slate-100 border border-transparent rounded-full text-sm text-slate-800 focus:bg-white focus:border-pet-orange focus:ring-2 focus:ring-pet-orange/20 focus:outline-none">
+                    <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-slate-400"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-grow">
         
-        <!-- Review Card 1 -->
-        <div class="bg-white p-7 rounded-3xl border border-sage-200 shadow-nordic hover:shadow-card-hover transition-all duration-300 flex flex-col justify-between relative group">
-          <div class="absolute -top-3 right-6 bg-emerald-500 text-white text-[10px] font-extrabold px-3 py-0.5 rounded-full uppercase tracking-wider">
-            Compra Verificada
-          </div>
-          <div>
-            <div class="flex text-amber-400 gap-1 text-sm mb-4">
-              <i class="fa-solid fa-star"></i>
-              <i class="fa-solid fa-star"></i>
-              <i class="fa-solid fa-star"></i>
-              <i class="fa-solid fa-star"></i>
-              <i class="fa-solid fa-star"></i>
-            </div>
-            <p class="text-slate-700 text-xs sm:text-sm leading-relaxed italic mb-6">
-              "Compré la cama nórdica en tono salvia para mi Golden Retriever y superó mis expectativas. La tela es increíblemente suave, repelente al agua y combina perfecto con la decoración de la sala."
-            </p>
-          </div>
-          <div class="flex items-center gap-3.5 pt-4 border-t border-sage-100">
-            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80" alt="Camila Morales" class="w-11 h-11 rounded-2xl object-cover border border-sage-200">
-            <div>
-              <h4 class="text-xs font-bold text-forest-950">Camila Morales</h4>
-              <p class="text-[11px] text-slate-400 font-medium flex items-center gap-1">
-                <i class="fa-solid fa-dog text-forest-600"></i> Mamá de 'Bruno' (Golden)
-              </p>
-            </div>
-          </div>
-        </div>
+        <!-- HERO BANNER SECTION -->
+        <section class="relative bg-gradient-to-b from-orange-50/50 via-white to-slate-50 py-12 lg:py-20 overflow-hidden">
+            <div class="absolute -top-24 -right-24 w-96 h-96 bg-amber-200/40 rounded-full blur-3xl pointer-events-none"></div>
+            <div class="absolute top-1/2 -left-24 w-80 h-80 bg-pet-teal/10 rounded-full blur-3xl pointer-events-none"></div>
 
-        <!-- Review Card 2 -->
-        <div class="bg-white p-7 rounded-3xl border border-sage-200 shadow-nordic hover:shadow-card-hover transition-all duration-300 flex flex-col justify-between relative group">
-          <div class="absolute -top-3 right-6 bg-emerald-500 text-white text-[10px] font-extrabold px-3 py-0.5 rounded-full uppercase tracking-wider">
-            Compra Verificada
-          </div>
-          <div>
-            <div class="flex text-amber-400 gap-1 text-sm mb-4">
-              <i class="fa-solid fa-star"></i>
-              <i class="fa-solid fa-star"></i>
-              <i class="fa-solid fa-star"></i>
-              <i class="fa-solid fa-star"></i>
-              <i class="fa-solid fa-star"></i>
-            </div>
-            <p class="text-slate-700 text-xs sm:text-sm leading-relaxed italic mb-6">
-              "El alimento holístico orgánico le cambió la digestión a mi gato. Ya no sufre de sensibilidad y el envío a Santo Domingo llegó al día siguiente. 10/10 en atención."
-            </p>
-          </div>
-          <div class="flex items-center gap-3.5 pt-4 border-t border-sage-100">
-            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80" alt="David Alcántara" class="w-11 h-11 rounded-2xl object-cover border border-sage-200">
-            <div>
-              <h4 class="text-xs font-bold text-forest-950">David Alcántara</h4>
-              <p class="text-[11px] text-slate-400 font-medium flex items-center gap-1">
-                <i class="fa-solid fa-cat text-forest-600"></i> Papá de 'Milo' (Persa)
-              </p>
-            </div>
-          </div>
-        </div>
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="grid lg:grid-cols-2 gap-12 items-center">
+                    
+                    <!-- HERO CONTENT -->
+                    <div class="space-y-6 text-center lg:text-left">
+                        <div class="inline-flex items-center gap-2 bg-amber-100/80 border border-amber-200 text-amber-900 text-xs font-bold px-3 py-1.5 rounded-full">
+                            <i class="fa-solid fa-shield-cat text-pet-orange"></i>
+                            <span>N° 1 en Atención Veterinaria & Nutrición RD</span>
+                        </div>
+                        
+                        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-slate-900 tracking-tight leading-tight">
+                            Todo lo que tu <span class="bg-gradient-to-r from-pet-orange via-amber-500 to-orange-600 bg-clip-text text-transparent">Mascota Ama</span> en un solo lugar.
+                        </h1>
+                        
+                        <p class="text-slate-600 text-base sm:text-lg max-w-xl mx-auto lg:mx-0 font-normal leading-relaxed">
+                            Alimentos super premium, snacks nutritivos, juguetes interactivos y accesorios de diseño. Entregamos felicidad en la puerta de tu hogar.
+                        </p>
 
-        <!-- Review Card 3 -->
-        <div class="bg-white p-7 rounded-3xl border border-sage-200 shadow-nordic hover:shadow-card-hover transition-all duration-300 flex flex-col justify-between relative group">
-          <div class="absolute -top-3 right-6 bg-emerald-500 text-white text-[10px] font-extrabold px-3 py-0.5 rounded-full uppercase tracking-wider">
-            Compra Verificada
-          </div>
-          <div>
-            <div class="flex text-amber-400 gap-1 text-sm mb-4">
-              <i class="fa-solid fa-star"></i>
-              <i class="fa-solid fa-star"></i>
-              <i class="fa-solid fa-star"></i>
-              <i class="fa-solid fa-star"></i>
-              <i class="fa-solid fa-star"></i>
+                        <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-2">
+                            <a href="#catalogo" class="bg-pet-orange hover:bg-pet-orange-dark text-white font-bold px-8 py-4 rounded-full shadow-lg shadow-pet-orange/30 hover:shadow-xl hover:shadow-pet-orange/40 hover:-translate-y-0.5 transition-all text-center flex items-center justify-center gap-2">
+                                <i class="fa-solid fa-bag-shopping"></i>
+                                <span>Explorar Catálogo</span>
+                            </a>
+                            <a href="#ofertas" class="bg-white border-2 border-slate-200 hover:border-pet-orange hover:text-pet-orange text-slate-700 font-bold px-8 py-4 rounded-full transition-all text-center flex items-center justify-center gap-2">
+                                <i class="fa-solid fa-bolt text-amber-500"></i>
+                                <span>Ofertas Relámpago</span>
+                            </a>
+                        </div>
+
+                        <!-- TRUST METRICS -->
+                        <div class="pt-8 grid grid-cols-3 gap-4 border-t border-slate-200/60 max-w-md mx-auto lg:mx-0">
+                            <div>
+                                <p class="text-2xl font-extrabold text-slate-900">15K+</p>
+                                <p class="text-xs text-slate-500 font-medium">Mascotas Felices</p>
+                            </div>
+                            <div>
+                                <p class="text-2xl font-extrabold text-slate-900">24h</p>
+                                <p class="text-xs text-slate-500 font-medium">Entrega Express</p>
+                            </div>
+                            <div>
+                                <p class="text-2xl font-extrabold text-slate-900">4.9★</p>
+                                <p class="text-xs text-slate-500 font-medium">Calificación</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- HERO VISUAL -->
+                    <div class="relative">
+                        <div class="relative mx-auto max-w-md lg:max-w-none">
+                            <img src="https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?auto=format&fit=crop&w=900&q=80" alt="Perro feliz PETGO-RD" class="rounded-3xl shadow-2xl object-cover w-full h-[450px] lg:h-[520px]">
+                            
+                            <!-- Floating Badge 1 -->
+                            <div class="absolute -bottom-6 -left-6 bg-white p-4 rounded-2xl shadow-xl border border-slate-100 flex items-center gap-3 animate-bounce hidden sm:flex">
+                                <div class="w-10 h-10 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center font-bold">
+                                    <i class="fa-solid fa-truck-fast"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xs font-bold text-slate-900">Envío Gratis Hoy</p>
+                                    <p class="text-[10px] text-slate-500">En pedidos desde RD$ 2,500</p>
+                                </div>
+                            </div>
+
+                            <!-- Floating Badge 2 -->
+                            <div class="absolute -top-6 -right-6 bg-white p-4 rounded-2xl shadow-xl border border-slate-100 flex items-center gap-3 hidden sm:flex">
+                                <div class="w-10 h-10 rounded-full bg-amber-100 text-amber-600 flex items-center justify-center font-bold">
+                                    <i class="fa-solid fa-award"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xs font-bold text-slate-900">Calidad Premium</p>
+                                    <p class="text-[10px] text-slate-500">Marcas Certificadas</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
             </div>
-            <p class="text-slate-700 text-xs sm:text-sm leading-relaxed italic mb-6">
-              "Los juguetes de madera sustentable e hilos de algodón ecológico son súper duraderos. Mis dos perritos juegan a diario y se ven preciosos en casa."
-            </p>
-          </div>
-          <div class="flex items-center gap-3.5 pt-4 border-t border-sage-100">
-            <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=150&q=80" alt="Isabella Pimentel" class="w-11 h-11 rounded-2xl object-cover border border-sage-200">
-            <div>
-              <h4 class="text-xs font-bold text-forest-950">Isabella Pimentel</h4>
-              <p class="text-[11px] text-slate-400 font-medium flex items-center gap-1">
-                <i class="fa-solid fa-shield-dog text-forest-600"></i> Mamá de 'Luna' & 'Kobe'
-              </p>
+        </section>
+
+        <!-- FLASH SALE TICKER SECTION -->
+        <section id="ofertas" class="bg-slate-900 py-6 text-white overflow-hidden">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+                    <div class="flex items-center gap-3">
+                        <span class="flex h-3 w-3 relative">
+                          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
+                          <span class="relative inline-flex rounded-full h-3 w-3 bg-red-500"></span>
+                        </span>
+                        <h3 class="font-extrabold text-lg tracking-wide uppercase flex items-center gap-2">
+                            <i class="fa-solid fa-bolt text-amber-400"></i> Ofertas Relámpago del Día
+                        </h3>
+                    </div>
+                    <p class="text-slate-300 text-sm font-medium text-center md:text-left">
+                        Usa el código <span class="bg-pet-orange text-white font-mono px-2 py-0.5 rounded font-bold">PETGO2025</span> para un 10% adicional al finalizar tu compra.
+                    </p>
+                    <a href="#catalogo" class="text-xs bg-white text-slate-900 hover:bg-amber-400 font-bold px-4 py-2 rounded-full transition-colors">
+                        Ver Ofertas
+                    </a>
+                </div>
             </div>
-          </div>
-        </div>
+        </section>
 
-      </div>
-    </div>
-  </section>
+        <!-- 4 PILLARS OF GUARANTEE & BENEFITS -->
+        <section id="beneficios" class="py-16 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-3xl mx-auto mb-12">
+                    <h2 class="text-xs font-extrabold uppercase tracking-widest text-pet-orange mb-2">¿Por qué elegirnos?</h2>
+                    <p class="text-3xl font-extrabold text-slate-900 sm:text-4xl">4 Pilares de Garantía PETGO-RD</p>
+                    <p class="text-slate-500 mt-3 text-sm sm:text-base">Diseñado para la tranquilidad de los dueños y el máximo bienestar de las mascotas.</p>
+                </div>
 
-  <!-- SECCIÓN DE PREGUNTAS FRECUENTES (FAQ) -->
-  <section class="py-16 bg-white border-t border-sage-200/80">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      
-      <div class="text-center mb-12">
-        <span class="bg-sage-100 text-forest-800 text-xs font-bold px-3.5 py-1 rounded-full border border-sage-200 inline-block mb-3">
-          ❓ Resuelve tus dudas
-        </span>
-        <h2 class="text-2xl sm:text-4xl font-extrabold text-forest-950 tracking-tight">
-          Preguntas Frecuentes
-        </h2>
-        <p class="text-slate-500 text-xs sm:text-sm mt-2">
-          Todo lo que necesitas saber sobre envíos, garantías y productos ecológicos en PETGO-RD.
-        </p>
-      </div>
+                <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <!-- Pilar 1 -->
+                    <div class="bg-slate-50 p-8 rounded-3xl border border-slate-100 hover:shadow-xl hover:border-orange-200 transition-all group">
+                        <div class="w-14 h-14 bg-orange-100 text-pet-orange rounded-2xl flex items-center justify-center text-2xl mb-6 group-hover:scale-110 group-hover:bg-pet-orange group-hover:text-white transition-all">
+                            <i class="fa-solid fa-truck-fast"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 mb-2">Envío Rápido 24/48h</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed">Entregas ultra rápidas en Gran Santo Domingo y envíos seguros a todas las provincias.</p>
+                    </div>
 
-      <!-- FAQ Accordion List -->
-      <div class="space-y-4">
-        
-        <!-- FAQ Item 1 -->
-        <details class="group bg-sage-
+                    <!-- Pilar 2 -->
+                    <div class="bg-slate-50 p-8 rounded-3xl border border-slate-100 hover:shadow-xl hover:border-teal-200 transition-all group">
+                        <div class="w-14 h-14 bg-teal-100 text-pet-teal rounded-2xl flex items-center justify-center text-2xl mb-6 group-hover:scale-110 group-hover:bg-pet-teal group-hover:text-white transition-all">
+                            <i class="fa-solid fa-shield-halved"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 mb-2">100% Originales</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed">Trabajamos directo con distribuidores oficiales. Garantía de frescura y autenticidad.</p>
+                    </div>
+
+                    <!-- Pilar 3 -->
+                    <div class="bg-slate-50 p-8 rounded-3xl border border-slate-100 hover:shadow-xl hover:border-amber-200 transition-all group">
+                        <div class="w-14 h-14 bg-amber-100 text-amber-600 rounded-2xl flex items-center justify-center text-2xl mb-6 group-hover:scale-110 group-hover:bg-amber-500 group-hover:text-white transition-all">
+                            <i class="fa-solid fa-headset"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 mb-2">Soporte Dedicado</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed">Asesoría experta por WhatsApp para asistirte en la elección del mejor alimento o talla.</p>
+                    </div>
+
+                    <!-- Pilar 4 -->
+                    <div class="bg-slate-50 p-8 rounded-3xl border border-slate-100 hover:shadow-xl hover:border-rose-200 transition-all group">
+                        <div class="w-14 h-14 bg-rose-100 text-rose-500 rounded-2xl flex items-center justify-center text-2xl mb-6 group-hover:scale-110 group-hover:bg-rose-500 group-hover:text-white transition-all">
+                            <i class="fa-solid fa-rotate-left"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 mb-2">Devolución Fácil</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed">¿No le quedó el accesorio? Tienes hasta 7 días para cambios sin contratiempos.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- OFFICIAL CATALOG SECTION (MANDATORY STRUCTURE) -->
+        <section id="catalogo" class="py-16 bg-slate-50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <!-- Section Header -->
+                <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4">
+                    <div>
+                        <span class="text-pet-orange text-xs font-extrabold uppercase tracking-widest">Tienda Oficial</span>
+                        <h2 class="text-3xl font-extrabold text-slate-900 sm:text-4xl mt-1">Explora Nuestro Catálogo</h2>
+                        <p class="text-slate-500 text-sm mt-1">Encuentra los mejores artículos seleccionados para perros, gatos y más.</p>
+                    </div>
+                </div>
+
+                <!-- CATEGORY FILTER PILLS -->
+                <div id="categoryFilters" class="flex flex-wrap items-center gap-2 mb-8 justify-start">
+                    <!-- Dynamic pills injected by DOBEHA engine -->
+                </div>
+
+                <!-- MANDATORY PRODUCTS GRID CONTAINER -->
+                <div id="productsGrid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                    <!-- DOBEHA Commerce OS populates products automatically here -->
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ABOUT US SECTION -->
+        <section id="nosotros" class="py-20 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid lg:grid-cols-2 gap-12 items-center">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1548199973-03cce0bbc87b?auto=format&fit=crop&w=900&q=80" alt="Sobre PETGO-RD" class="rounded-3xl shadow-xl w-full h-[400px] object-cover">
+                        <div class="absolute -bottom-6 -right-6 bg-pet-orange text-white p-6 rounded-3xl shadow-lg max-w-xs hidden sm:block">
+                            <p class="text-3xl font-black mb-1">100%</p>
+                            <p class="text-xs font-medium">Comprometidos con la salud y nutrición animal en República Dominicana.</p>
+                        </div>
+                    </div>
+
+                    <div class="space-y-6">
+                        <span class="text-pet-teal text-xs font-extrabold uppercase tracking-widest">Nuestra Historia</span>
+                        <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 leading-tight">Apasionados por el Cuidado de tus Compañeros</h2>
+                        <p class="text-slate-600 leading-relaxed text-sm sm:text-base">
+                            PETGO-RD nació de una idea sencilla: facilitarle a las familias dominicanas el acceso a productos de nutrición y bienestar animal de nivel global, sin salir de casa y con el asesoramiento de verdaderos amantes de las mascotas.
+                        </p>
+                        <p class="text-slate-600 leading-relaxed text-sm sm:text-base">
+                            Seleccionamos minuciosamente cada marca de comida, juguete o suplemento para garantizar que recibas solo lo más alto en estándares de calidad internacional.
+                        </p>
+
+                        <div class="grid grid-cols-2 gap-4 pt-4">
+                            <div class="border-l-4 border-pet-orange pl-4">
+                                <h4 class="font-bold text-slate-900 text-lg">Misión</h4>
+                                <p class="text-xs text-slate-500 mt-1">Brindar bienestar integral y felicidad continua a cada mascota.</p>
+                            </div>
+                            <div class="border-l-4 border-pet-teal pl-4">
+                                <h4 class="font-bold text-slate-900 text-lg">Visión</h4>
+                                <p class="text-xs text-slate-500 mt-1">Ser la plataforma e-commerce de mascotas predilecta en el Caribe.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TESTIMONIALS / REVIEWS SECTION -->
+        <section class="py-20 bg-slate-100">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-2xl mx-auto mb-14">
+                    <span class="text-pet-orange text-xs font-extrabold uppercase tracking-widest">Comunidad PETGO</span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-1">Lo que Dicen Nuestros Clientes</h2>
+                    <p class="text-slate-500 text-sm mt-2">Testimonios reales de dueños de mascotas en todo el país.</p>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-8">
+                    <!-- Review Card 1 -->
+                    <div class="bg-white p-8 rounded-3xl shadow-sm border border-slate-200/80 hover:shadow-xl transition-all flex flex-col justify-between">
+                        <div>
+                            <div
 
   <!-- ================= 1. DOBEHA CART DRAWER & CHECKOUT ================= -->
   <div id="dobehaCartDrawer" class="fixed inset-0 z-50 pointer-events-none transition-all duration-300 opacity-0 invisible" aria-hidden="true">
