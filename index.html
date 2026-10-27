@@ -3,240 +3,229 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PETVET PetGord | Diseño Nórdico & Bienestar Mascotas</title>
-  
-  <!-- Tailwind CSS & FontAwesome -->
+  <title>PETGO-RD | Bienestar & Diseño Escandinavo para Mascotas</title>
+
+  <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  
-  <!-- Fonts: Plus Jakarta Sans -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  
   <script>
     tailwind.config = {
       theme: {
         extend: {
+          colors: {
+            sage: {
+              50: '#f4f7f4',
+              100: '#e4ebe4',
+              200: '#c6d6c6',
+              300: '#9eb89e',
+              400: '#759675',
+              500: '#587a58',
+              600: '#446144',
+              700: '#374e37',
+              800: '#2e402e',
+              900: '#273627',
+              950: '#141d14',
+            },
+            forest: {
+              50: '#f2f7f4',
+              100: '#dfede5',
+              200: '#c1ddce',
+              300: '#97c5b0',
+              400: '#69a68e',
+              500: '#468972',
+              600: '#346e5b',
+              700: '#2a584a',
+              800: '#23473c',
+              900: '#1e3b33',
+              950: '#10211d',
+            }
+          },
           fontFamily: {
             sans: ['"Plus Jakarta Sans"', 'sans-serif'],
           },
-          colors: {
-            sage: {
-              50: '#f0fdf4',
-              100: '#dcfce7',
-              200: '#bbf7d0',
-              300: '#86efac',
-              400: '#4ade80',
-              500: '#22c55e',
-              600: '#16a34a',
-              700: '#15803d',
-              800: '#166534',
-              900: '#14532d',
-            },
-            nordic: {
-              bg: '#fbfcfb',
-              surface: '#ffffff',
-              card: '#f4f7f5',
-              dark: '#1c2826',
-              muted: '#64748b'
-            }
-          },
           boxShadow: {
-            'nordic': '0 10px 30px -5px rgba(21, 128, 61, 0.05)',
-            'card-hover': '0 20px 40px -15px rgba(21, 128, 61, 0.12)',
-            'soft': '0 4px 20px 0 rgba(0, 0, 0, 0.03)'
+            'nordic': '0 10px 30px -10px rgba(55, 78, 55, 0.08)',
+            'card-hover': '0 20px 35px -12px rgba(42, 88, 74, 0.12)',
           }
         }
       }
     }
   </script>
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- Google Fonts: Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
   <style>
     body {
-      background-color: #fbfcfb;
+      background-color: #fafbf9;
     }
     ::-webkit-scrollbar {
-      width: 6px;
-      height: 6px;
+      width: 7px;
+      height: 7px;
     }
     ::-webkit-scrollbar-track {
-      background: #f0fdf4;
+      background: #f4f7f4;
     }
     ::-webkit-scrollbar-thumb {
-      background: #86efac;
+      background: #c6d6c6;
       border-radius: 999px;
     }
     ::-webkit-scrollbar-thumb:hover {
-      background: #15803d;
+      background: #587a58;
     }
-    .badge-nordic {
-      background: #f0fdf4;
-      color: #15803d;
-      border: 1px solid #bbf7d0;
+    .nordic-glass {
+      background: rgba(255, 255, 255, 0.88);
+      backdrop-filter: blur(12px);
     }
   </style>
 </head>
-<body class="text-slate-800 antialiased font-sans min-h-screen flex flex-col selection:bg-sage-100 selection:text-sage-900">
+<body class="text-slate-800 antialiased font-sans min-h-screen flex flex-col selection:bg-sage-200 selection:text-sage-900">
 
-  <!-- Toast Container -->
+  <!-- Toast Notification Container -->
   <div id="toastContainer" class="fixed bottom-6 right-6 z-50 flex flex-col gap-3 pointer-events-none"></div>
 
-  <!-- TOP ANNOUNCEMENT BAR -->
-  <div class="bg-sage-700 text-white text-xs py-2.5 px-4">
+  <!-- TOP PROMOTION BANNER -->
+  <div class="bg-forest-900 text-emerald-50 text-xs py-2.5 px-4 font-medium border-b border-forest-800">
     <div class="max-w-7xl mx-auto flex flex-wrap justify-between items-center gap-2">
       <div class="flex items-center gap-2 mx-auto sm:mx-0">
-        <span class="bg-sage-800/80 text-emerald-200 px-2.5 py-0.5 rounded-full text-[11px] font-semibold tracking-wide border border-sage-600">
+        <span class="bg-forest-800 text-emerald-200 px-2.5 py-0.5 rounded-full text-[11px] font-semibold tracking-wide border border-forest-700">
           🌿 Estilo Escandinavo
         </span>
-        <span class="font-medium text-emerald-50 text-[11px] sm:text-xs">
-          Envío neutral en carbono en todos los pedidos mayores a $35.00
+        <span class="text-emerald-100 text-[11px] sm:text-xs">
+          Envío gratis en compras mayores a RD$ 2,500 en Santo Domingo & Santiago
         </span>
       </div>
-      <div class="hidden sm:flex items-center gap-4 text-[11px] text-emerald-100 font-medium">
-        <span><i class="fa-solid fa-leaf mr-1 text-emerald-300"></i> Materiales Orgánicos</span>
-        <span><i class="fa-solid fa-shield-cat mr-1 text-emerald-300"></i> Garantía Vet 60 Días</span>
+      <div class="hidden md:flex items-center gap-5 text-[11px] text-emerald-200 font-medium">
+        <span><i class="fa-solid fa-leaf mr-1.5 text-sage-300"></i> Materiales Orgánicos</span>
+        <span><i class="fa-solid fa-truck-fast mr-1.5 text-sage-300"></i> Entrega en 24-48h</span>
+        <span><i class="fa-solid fa-shield-cat mr-1.5 text-sage-300"></i> Garantía Vet Approved</span>
       </div>
     </div>
   </div>
 
   <!-- HEADER / NAVIGATION -->
-  <header class="bg-white/90 backdrop-blur-md sticky top-0 z-40 border-b border-sage-100 shadow-soft">
+  <header class="nordic-glass sticky top-0 z-40 border-b border-sage-100 shadow-sm">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex items-center justify-between h-20 gap-4">
-        
-        <!-- Brand Logo -->
+
+        <!-- Logo -->
         <a href="#" class="flex items-center gap-3 group">
-          <div class="w-11 h-11 rounded-2xl bg-sage-50 border border-sage-200 text-sage-700 flex items-center justify-center text-xl font-bold shadow-sm group-hover:bg-sage-700 group-hover:text-white transition-all duration-300">
+          <div class="w-11 h-11 rounded-2xl bg-sage-100 text-forest-800 border border-sage-200 flex items-center justify-center text-xl font-bold shadow-sm group-hover:bg-forest-800 group-hover:text-white transition-all duration-300">
             <i class="fa-solid fa-paw"></i>
           </div>
           <div class="flex flex-col">
-            <span class="font-extrabold text-xl tracking-tight text-slate-900">
-              PETVET<span class="text-sage-700 font-normal">.nordic</span>
+            <span class="font-extrabold text-xl tracking-tight text-forest-950 flex items-center gap-1">
+              PETGO<span class="text-sage-600 font-semibold">-RD</span>
             </span>
             <span class="text-[10px] font-semibold text-slate-400 uppercase tracking-widest -mt-1">
-              Care & Scandinavian Living
+              Nordic Pet Wellness
             </span>
           </div>
         </a>
 
-        <!-- Desktop Search Bar -->
-        <div class="hidden md:flex flex-1 max-w-md mx-8">
+        <!-- Search Bar -->
+        <div class="hidden md:flex flex-1 max-w-md mx-6">
           <div class="relative w-full">
-            <input type="text" id="searchInput" onkeyup="filterProducts()" placeholder="Buscar comida natural, juguetes de madera, camas salvia..." class="w-full bg-sage-50/60 border border-sage-200/80 text-slate-700 text-xs rounded-full pl-11 pr-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-sage-600 focus:bg-white transition-all duration-200">
+            <input type="text" id="searchInput" placeholder="Buscar alimento holístico, camas salvia, juguetes de madera..." class="w-full bg-sage-50/80 border border-sage-200 text-slate-700 text-xs rounded-full pl-11 pr-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-forest-600 focus:bg-white transition-all duration-200">
             <div class="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 text-xs">
               <i class="fa-solid fa-magnifying-glass"></i>
             </div>
           </div>
         </div>
 
-        <!-- Action Items (Cart & Wishlist) -->
+        <!-- Action Icons & Cart -->
         <div class="flex items-center gap-3">
-          
-          <!-- Quick Filter Pill / Natural Label -->
-          <div class="hidden lg:flex items-center gap-2 bg-sage-50 text-sage-800 border border-sage-200 px-3 py-1.5 rounded-full text-xs font-semibold">
-            <span class="w-2 h-2 rounded-full bg-sage-500 animate-pulse"></span>
-            100% Eco-Friendly
+
+          <div class="hidden lg:flex items-center gap-2 bg-sage-50 text-forest-800 border border-sage-200 px-3 py-1.5 rounded-full text-xs font-semibold">
+            <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+            100% Eco & Orgánico
           </div>
 
           <!-- Cart Button -->
-          <button onclick="toggleCartDrawer()" id="cartBtn" class="bg-sage-700 hover:bg-sage-800 text-white px-4 py-2.5 rounded-2xl transition-all duration-200 flex items-center gap-3 shadow-sm hover:shadow-nordic active:scale-95">
+          <button id="cartBtn" class="bg-forest-800 hover:bg-forest-900 text-white px-4 py-2.5 rounded-2xl transition-all duration-200 flex items-center gap-3 shadow-nordic hover:shadow-card-hover active:scale-95">
             <div class="relative">
-              <i class="fa-solid fa-bag-shopping text-sm"></i>
-              <span id="cartBadge" class="absolute -top-2 -right-2 bg-emerald-400 text-sage-950 text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center border border-white">0</span>
+              <i class="fa-solid fa-bag-shopping text-base"></i>
+              <span id="cartBadge" class="absolute -top-2 -right-2 bg-emerald-400 text-forest-950 text-[10px] font-extrabold w-4 h-4 rounded-full flex items-center justify-center border border-white">0</span>
             </div>
             <div class="flex flex-col text-left leading-none">
-              <span class="text-[9px] uppercase font-bold text-emerald-200 tracking-wider">Mi Bolsa</span>
-              <span id="cartTotalHeader" class="text-xs font-extrabold text-white">$0.00</span>
+              <span class="text-[9px] uppercase font-bold text-emerald-200 tracking-wider">Mi Carrito</span>
+              <span id="cartTotalHeader" class="text-xs font-extrabold text-white">RD$ 0.00</span>
             </div>
           </button>
 
         </div>
-
       </div>
 
-      <!-- Mobile Search Bar -->
+      <!-- Mobile Search Input -->
       <div class="pb-3 md:hidden">
         <div class="relative w-full">
-          <input type="text" id="searchInputMobile" onkeyup="filterProductsMobile()" placeholder="Buscar productos para mascotas..." class="w-full bg-sage-50 border border-sage-200 text-slate-700 text-xs rounded-full pl-10 pr-4 py-2 focus:outline-none focus:ring-2 focus:ring-sage-600">
+          <input type="text" id="searchInputMobile" placeholder="Buscar productos para mascotas..." class="w-full bg-sage-50 border border-sage-200 text-slate-700 text-xs rounded-full pl-10 pr-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-forest-600">
           <div class="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-xs">
             <i class="fa-solid fa-magnifying-glass"></i>
           </div>
         </div>
       </div>
     </div>
-
-    <!-- Category Filter Bar (Scandinavian Minimalist Navigation) -->
-    <nav class="border-t border-sage-100 bg-white py-2.5 px-4 overflow-x-auto scrollbar-none">
-      <div class="max-w-7xl mx-auto flex items-center gap-2 sm:gap-3 text-xs font-medium">
-        <button onclick="filterCategory('all')" class="cat-pill active-pill bg-sage-700 text-white px-4 py-1.5 rounded-full shadow-sm transition shrink-0">
-          <i class="fa-solid fa-border-all mr-1.5 text-[10px]"></i> Colección Completa
-        </button>
-        <button onclick="filterCategory('dog')" class="cat-pill bg-sage-50 text-slate-700 hover:bg-sage-100 border border-sage-200/60 px-4 py-1.5 rounded-full transition shrink-0">
-          <i class="fa-solid fa-dog mr-1.5 text-sage-700"></i> Perros
-        </button>
-        <button onclick="filterCategory('cat')" class="cat-pill bg-sage-50 text-slate-700 hover:bg-sage-100 border border-sage-200/60 px-4 py-1.5 rounded-full transition shrink-0">
-          <i class="fa-solid fa-cat mr-1.5 text-sage-700"></i> Gatos
-        </button>
-        <button onclick="filterCategory('health')" class="cat-pill bg-sage-50 text-slate-700 hover:bg-sage-100 border border-sage-200/60 px-4 py-1.5 rounded-full transition shrink-0">
-          <i class="fa-solid fa-leaf mr-1.5 text-sage-700"></i> Nutrición & Salud
-        </button>
-        <button onclick="filterCategory('toys')" class="cat-pill bg-sage-50 text-slate-700 hover:bg-sage-100 border border-sage-200/60 px-4 py-1.5 rounded-full transition shrink-0">
-          <i class="fa-solid fa-bone mr-1.5 text-sage-700"></i> Juguetes Escandinavos
-        </button>
-        <button onclick="filterCategory('acc')" class="cat-pill bg-sage-50 text-slate-700 hover:bg-sage-100 border border-sage-200/60 px-4 py-1.5 rounded-full transition shrink-0">
-          <i class="fa-solid fa-couch mr-1.5 text-sage-700"></i> Camas & Descanso
-        </button>
-      </div>
-    </nav>
   </header>
 
-  <!-- HERO BANNER (SCANDINAVIAN FRESHNESS) -->
-  <section class="bg-gradient-to-b from-sage-50/70 via-sage-50/30 to-nordic-bg py-10 sm:py-16 relative overflow-hidden">
+  <!-- HERO BANNER -->
+  <section class="bg-gradient-to-b from-sage-100/60 via-sage-50/40 to-transparent py-12 sm:py-20 relative overflow-hidden">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
         
-        <!-- Left Content -->
-        <div class="lg:col-span-7 space-y-5 text-center lg:text-left">
-          <div class="inline-flex items-center gap-2 badge-nordic px-3.5 py-1 rounded-full text-xs font-semibold">
-            <i class="fa-solid fa-sparkles text-sage-600"></i> Edición Primavera / Verano 2025
+        <!-- Hero Text -->
+        <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+          <div class="inline-flex items-center gap-2 bg-white/80 border border-sage-200 text-forest-800 px-4 py-1.5 rounded-full text-xs font-semibold shadow-sm">
+            <i class="fa-solid fa-sparkles text-emerald-600"></i> Colección Nórdica 2025
           </div>
           
-          <h1 class="text-3xl sm:text-5xl font-extrabold text-slate-900 tracking-tight leading-tight">
-            Diseño minimalista & bienestar orgánico para tu mascota.
+          <h1 class="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-forest-950 tracking-tight leading-tight">
+            Diseño minimalista & nutrición pura para tu mascota.
           </h1>
 
-          <p class="text-slate-600 text-xs sm:text-sm font-normal max-w-xl mx-auto lg:mx-0 leading-relaxed">
-            Explora accesorios duraderos en tonos salvia y menta suaves, formulados con ingredientes 100% naturales y probados por veterinarios nórdicos.
+          <p class="text-slate-600 text-sm sm:text-base font-normal max-w-2xl mx-auto lg:mx-0 leading-relaxed">
+            Descubre accesorios escandinavos en tonos salvia y verde bosque, elaborados con fibras naturales, maderas sustentables y alimentos 100% orgánicos para el máximo confort de tus perros y gatos en República Dominicana.
           </p>
 
           <div class="flex flex-wrap items-center justify-center lg:justify-start gap-4 pt-2">
-            <a href="#productsCatalog" class="bg-sage-700 hover:bg-sage-800 text-white text-xs font-bold px-6 py-3.5 rounded-2xl transition shadow-nordic hover:shadow-card-hover flex items-center gap-2">
-              <span>Explorar Catálogo</span>
-              <i class="fa-solid fa-arrow-right text-[10px]"></i>
+            <a href="#catalogo" class="bg-forest-800 hover:bg-forest-900 text-white text-xs sm:text-sm font-bold px-7 py-4 rounded-2xl transition-all shadow-nordic hover:shadow-card-hover flex items-center gap-3">
+              <span>Ver Colección Completa</span>
+              <i class="fa-solid fa-arrow-right text-xs"></i>
             </a>
-            <div class="flex items-center gap-2 text-xs text-slate-600 font-medium bg-white border border-sage-200/80 px-4 py-3 rounded-2xl shadow-soft">
-              <i class="fa-solid fa-star text-amber-400"></i>
-              <span><strong>4.9/5</strong> por más de 12,000 tutores</span>
+            
+            <div class="flex items-center gap-3 text-xs text-slate-700 font-semibold bg-white border border-sage-200 px-4 py-3.5 rounded-2xl shadow-sm">
+              <div class="flex text-amber-400 gap-0.5">
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+              </div>
+              <span><strong>4.9/5</strong> (+5,000 mascotas felices)</span>
             </div>
           </div>
         </div>
 
-        <!-- Right Visual Feature -->
+        <!-- Hero Image Card -->
         <div class="lg:col-span-5 flex justify-center">
-          <div class="relative w-full max-w-md bg-white p-4 rounded-3xl border border-sage-200/70 shadow-nordic">
-            <div class="relative rounded-2xl overflow-hidden aspect-4/3 bg-sage-100">
-              <img src="https://images.unsplash.com/photo-1543466835-00a7907e9de1?auto=format&fit=crop&w=800&q=80" alt="Pet Minimal Nordic" class="w-full h-full object-cover">
-              <span class="absolute top-3 right-3 bg-white/90 backdrop-blur text-sage-800 text-[10px] font-bold px-3 py-1 rounded-full border border-sage-200">
-                Eco-Friendly Collection
+          <div class="relative w-full max-w-md bg-white p-4 rounded-3xl border border-sage-200 shadow-card-hover">
+            <div class="relative rounded-2xl overflow-hidden aspect-[4/3] bg-sage-100">
+              <img src="https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?auto=format&fit=crop&w=800&q=80" alt="PETGO-RD Mascotas Escandinavas" class="w-full h-full object-cover">
+              <span class="absolute top-3 right-3 bg-white/95 backdrop-blur text-forest-900 text-[10px] font-extrabold px-3 py-1 rounded-full border border-sage-200 shadow-sm">
+                🌿 Eco Collection
               </span>
             </div>
-            <div class="mt-3 flex items-center justify-between px-2">
+            <div class="mt-4 flex items-center justify-between px-2">
               <div>
-                <h4 class="text-xs font-bold text-slate-800">Cama Ergonómica Salvia</h4>
-                <p class="text-[11px] text-slate-500">Algodón orgánico lavable</p>
+                <h4 class="text-sm font-bold text-slate-800">Cama Ergonómica Salvia</h4>
+                <p class="text-xs text-slate-500">Algodón orgánico y lino natural</p>
               </div>
-              <span class="text-xs font-extrabold text-sage-700 bg-sage-50 border border-sage-200 px-2.5 py-1 rounded-xl">
-                $49.99
+              <span class="text-xs font-extrabold text-forest-800 bg-sage-100 border border-sage-200 px-3 py-1.5 rounded-xl">
+                RD$ 3,450
               </span>
             </div>
           </div>
@@ -246,318 +235,337 @@
     </div>
   </section>
 
-  <!-- HIGHLIGHT FEATURES STRIP -->
-  <section class="border-y border-sage-100 bg-white py-4 px-4">
-    <div class="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
-      <div class="flex items-center justify-center gap-3 p-2">
-        <div class="w-8 h-8 rounded-full bg-sage-50 text-sage-700 flex items-center justify-center text-sm shrink-0">
+  <!-- FEATURES BAR -->
+  <section class="border-y border-sage-200/80 bg-white py-6">
+    <div class="max-w-7xl mx-auto px-4 grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+      <div class="flex items-center justify-center gap-3.5 p-2">
+        <div class="w-10 h-10 rounded-2xl bg-sage-100 text-forest-800 flex items-center justify-center text-lg shrink-0">
           <i class="fa-solid fa-seedling"></i>
         </div>
         <div class="text-left">
-          <p class="text-xs font-bold text-slate-800">100% No Tóxico</p>
-          <p class="text-[10px] text-slate-500">Materiales aprobados</p>
+          <p class="text-xs font-bold text-slate-800">Materiales Orgánicos</p>
+          <p class="text-[11px] text-slate-500">100% no tóxicos & sustentables</p>
         </div>
       </div>
-      <div class="flex items-center justify-center gap-3 p-2">
-        <div class="w-8 h-8 rounded-full bg-sage-50 text-sage-700 flex items-center justify-center text-sm shrink-0">
+
+      <div class="flex items-center justify-center gap-3.5 p-2">
+        <div class="w-10 h-10 rounded-2xl bg-sage-100 text-forest-800 flex items-center justify-center text-lg shrink-0">
           <i class="fa-solid fa-truck-ramp-box"></i>
         </div>
         <div class="text-left">
-          <p class="text-xs font-bold text-slate-800">Envío Rápido</p>
-          <p class="text-[10px] text-slate-500">Empaque compostable</p>
+          <p class="text-xs font-bold text-slate-800">Envío Rápido RD</p>
+          <p class="text-[11px] text-slate-500">Entregas seguras y puntuales</p>
         </div>
       </div>
-      <div class="flex items-center justify-center gap-3 p-2">
-        <div class="w-8 h-8 rounded-full bg-sage-50 text-sage-700 flex items-center justify-center text-sm shrink-0">
-          <i class="fa-solid fa-heart-pulse"></i>
+
+      <div class="flex items-center justify-center gap-3.5 p-2">
+        <div class="w-10 h-10 rounded-2xl bg-sage-100 text-forest-800 flex items-center justify-center text-lg shrink-0">
+          <i class="fa-solid fa-stethoscope"></i>
         </div>
         <div class="text-left">
-          <p class="text-xs font-bold text-slate-800">Calidad Veterinaria</p>
-          <p class="text-[10px] text-slate-500">Recomendado por expertos</p>
+          <p class="text-xs font-bold text-slate-800">Aprobado por Vets</p>
+          <p class="text-[11px] text-slate-500">Recomendado por expertos</p>
         </div>
       </div>
-      <div class="flex items-center justify-center gap-3 p-2">
-        <div class="w-8 h-8 rounded-full bg-sage-50 text-sage-700 flex items-center justify-center text-sm shrink-0">
+
+      <div class="flex items-center justify-center gap-3.5 p-2">
+        <div class="w-10 h-10 rounded-2xl bg-sage-100 text-forest-800 flex items-center justify-center text-lg shrink-0">
           <i class="fa-solid fa-rotate-left"></i>
         </div>
         <div class="text-left">
-          <p class="text-xs font-bold text-slate-800">Devolución 60 días</p>
-          <p class="text-[10px] text-slate-500">Sin preguntas</p>
+          <p class="text-xs font-bold text-slate-800">Garantía de Satisfacción</p>
+          <p class="text-[11px] text-slate-500">30 días de cambio sin complicaciones</p>
         </div>
       </div>
     </div>
   </section>
 
   <!-- MAIN CATALOG SECTION -->
-  <main id="productsCatalog" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 flex-1 w-full">
+  <main id="catalogo" class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 w-full">
     
-    <!-- Title & Sort Header -->
-    <div class="flex flex-col sm:flex-row sm:items-center justify-between mb-8 pb-4 border-b border-sage-100 gap-4">
+    <!-- Section Title & Filters Header -->
+    <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4 border-b border-sage-200 pb-6">
       <div>
-        <h2 id="catalogTitle" class="text-2xl font-extrabold text-slate-900 tracking-tight">
-          Colección Escandinava
+        <span class="text-xs font-extrabold uppercase tracking-widest text-forest-700">Catálogo Oficial</span>
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight mt-1">
+          Productos Destacados para Tu Mascota
         </h2>
-        <p class="text-xs text-slate-500 mt-0.5">Productos funcionales con diseño estético para el hogar</p>
+        <p class="text-xs sm:text-sm text-slate-500 mt-1">
+          Explora alimentos, accesorios y confort escandinavo seleccionado para PETGO-RD.
+        </p>
       </div>
-      
-      <div class="flex items-center gap-2 self-end sm:self-auto">
-        <span class="text-xs text-slate-500 font-medium">Ordenar por:</span>
-        <select id="sortSelect" onchange="sortProducts()" class="bg-white border border-sage-200 text-slate-700 text-xs rounded-xl px-3 py-2 font-medium focus:outline-none focus:ring-2 focus:ring-sage-600">
-          <option value="popular">Más Populares</option>
-          <option value="priceAsc">Precio: Menor a Mayor</option>
-          <option value="priceDesc">Precio: Mayor a Menor</option>
-        </select>
+
+      <!-- Quick Filter Pills -->
+      <div class="flex items-center gap-2 overflow-x-auto pb-2 md:pb-0 scrollbar-none">
+        <button class="bg-forest-800 text-white text-xs font-bold px-4 py-2 rounded-full whitespace-nowrap shadow-sm">
+          Todos los Productos
+        </button>
+        <button class="bg-sage-100 hover:bg-sage-200 text-forest-900 text-xs font-semibold px-4 py-2 rounded-full whitespace-nowrap transition">
+          <i class="fa-solid fa-dog mr-1"></i> Perros
+        </button>
+        <button class="bg-sage-100 hover:bg-sage-200 text-forest-900 text-xs font-semibold px-4 py-2 rounded-full whitespace-nowrap transition">
+          <i class="fa-solid fa-cat mr-1"></i> Gatos
+        </button>
+        <button class="bg-sage-100 hover:bg-sage-200 text-forest-900 text-xs font-semibold px-4 py-2 rounded-full whitespace-nowrap transition">
+          <i class="fa-solid fa-bowl-food mr-1"></i> Nutrición
+        </button>
       </div>
     </div>
 
-    <!-- Mandatory DOBEHA Grid Container -->
+    <!-- MANDATORY DOBEHA PRODUCTS CONTAINER -->
     <div id="productsGrid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-      <!-- Dynamic Products populated via JS -->
+      <!-- Loading Placeholder Skeleton -->
+      <div class="bg-white rounded-3xl p-4 border border-sage-200 shadow-sm animate-pulse flex flex-col gap-3">
+        <div class="bg-sage-100 rounded-2xl h-48 w-full"></div>
+        <div class="h-4 bg-sage-100 rounded w-3/4"></div>
+        <div class="h-3 bg-sage-100 rounded w-1/2"></div>
+        <div class="mt-auto h-10 bg-sage-100 rounded-2xl w-full"></div>
+      </div>
+      <div class="bg-white rounded-3xl p-4 border border-sage-200 shadow-sm animate-pulse flex flex-col gap-3">
+        <div class="bg-sage-100 rounded-2xl h-48 w-full"></div>
+        <div class="h-4 bg-sage-100 rounded w-3/4"></div>
+        <div class="h-3 bg-sage-100 rounded w-1/2"></div>
+        <div class="mt-auto h-10 bg-sage-100 rounded-2xl w-full"></div>
+      </div>
+      <div class="bg-white rounded-3xl p-4 border border-sage-200 shadow-sm animate-pulse flex flex-col gap-3">
+        <div class="bg-sage-100 rounded-2xl h-48 w-full"></div>
+        <div class="h-4 bg-sage-100 rounded w-3/4"></div>
+        <div class="h-3 bg-sage-100 rounded w-1/2"></div>
+        <div class="mt-auto h-10 bg-sage-100 rounded-2xl w-full"></div>
+      </div>
+      <div class="bg-white rounded-3xl p-4 border border-sage-200 shadow-sm animate-pulse flex flex-col gap-3">
+        <div class="bg-sage-100 rounded-2xl h-48 w-full"></div>
+        <div class="h-4 bg-sage-100 rounded w-3/4"></div>
+        <div class="h-3 bg-sage-100 rounded w-1/2"></div>
+        <div class="mt-auto h-10 bg-sage-100 rounded-2xl w-full"></div>
+      </div>
     </div>
 
   </main>
 
-  <!-- CART DRAWER / SIDEBAR -->
-  <div id="cartDrawer" class="fixed inset-0 z-50 pointer-events-none transition-opacity duration-300 opacity-0">
-    <!-- Backdrop -->
-    <div onclick="toggleCartDrawer()" class="absolute inset-0 bg-slate-900/40 backdrop-blur-sm"></div>
-    
-    <!-- Panel -->
-    <div id="cartPanel" class="absolute right-0 top-0 bottom-0 w-full max-w-md bg-white shadow-2xl p-6 flex flex-col justify-between transform translate-x-full transition-transform duration-300 pointer-events-auto">
-      
-      <!-- Cart Header -->
-      <div class="flex items-center justify-between border-b border-sage-100 pb-4">
-        <div class="flex items-center gap-2">
-          <i class="fa-solid fa-bag-shopping text-sage-700 text-lg"></i>
-          <h3 class="font-extrabold text-lg text-slate-900">Tu Bolsa de Compras</h3>
-        </div>
-        <button onclick="toggleCartDrawer()" class="text-slate-400 hover:text-slate-700 w-8 h-8 rounded-full flex items-center justify-center hover:bg-sage-50 transition">
-          <i class="fa-solid fa-xmark text-lg"></i>
-        </button>
-      </div>
-
-      <!-- Cart Items Container -->
-      <div id="cartItems" class="flex-1 overflow-y-auto py-4 space-y-4">
-        <!-- Rendered via JS -->
-      </div>
-
-      <!-- Cart Footer -->
-      <div class="border-t border-sage-100 pt-4 space-y-3">
-        <div class="flex items-center justify-between text-xs text-slate-500">
-          <span>Envío</span>
-          <span class="font-bold text-sage-700">¡GRATIS!</span>
-        </div>
-        <div class="flex items-center justify-between text-base font-extrabold text-slate-900">
-          <span>Total Estimado</span>
-          <span id="cartTotalDrawer">$0.00</span>
-        </div>
-        <button onclick="checkout()" class="w-full bg-sage-700 hover:bg-sage-800 text-white font-bold py-3.5 rounded-2xl shadow-nordic transition flex items-center justify-center gap-2 text-xs uppercase tracking-wider">
-          <i class="fa-solid fa-lock text-xs"></i>
-          <span>Finalizar Compra Segura</span>
-        </button>
-      </div>
-
-    </div>
-  </div>
-
-  <!-- NORDIC SCANDINAVIAN FOOTER -->
-  <footer class="bg-nordic-dark text-slate-300 text-xs pt-12 pb-8 border-t border-sage-900 mt-16">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-4 gap-8 mb-10">
-      
-      <div class="space-y-3">
-        <div class="flex items-center gap-2 text-white font-extrabold text-lg">
-          <i class="fa-solid fa-paw text-sage-400"></i> PETVET nordic
-        </div>
-        <p class="text-slate-400 leading-relaxed text-[11px]">
-          Inspirados en la naturaleza y la simplicidad del norte de Europa. Cuidamos la salud de tu mascota con diseño consciente.
+  <!-- BRAND BANNER / PHILOSOPHY -->
+  <section class="bg-forest-900 text-white py-16 px-4 my-10 relative overflow-hidden">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+      <div class="space-y-4 text-center lg:text-left">
+        <span class="text-xs font-bold uppercase tracking-widest text-emerald-300">Estilo de Vida Escandinavo</span>
+        <h3 class="text-2xl sm:text-4xl font-extrabold text-white tracking-tight">
+          Harmonía en tu hogar, bienestar absoluto para ellos.
+        </h3>
+        <p class="text-emerald-100 text-xs sm:text-sm leading-relaxed">
+          En PETGO-RD creemos que los accesorios para mascotas no tienen por qué desentonar con la decoración de tu hogar. Diseñamos y seleccionamos piezas con paletas neutras de salvia y verde bosque que brindan calma, elegancia y la máxima ergonomía para tu compañero fiel.
         </p>
-      </div>
-
-      <div>
-        <h4 class="text-white font-bold mb-3 uppercase tracking-wider text-[11px]">Categorías</h4>
-        <ul class="space-y-2 text-slate-400 text-[11px]">
-          <li><a href="#" class="hover:text-sage-300 transition">Alimentación Orgánica</a></li>
-          <li><a href="#" class="hover:text-sage-300 transition">Camas & Textiles Salvia</a></li>
-          <li><a href="#" class="hover:text-sage-300 transition">Juguetes de Madera & Cuerda</a></li>
-          <li><a href="#" class="hover:text-sage-300 transition">Higiene & Suplementos</a></li>
-        </ul>
-      </div>
-
-      <div>
-        <h4 class="text-white font-bold mb-3 uppercase tracking-wider text-[11px]">Compromiso</h4>
-        <ul class="space-y-2 text-slate-400 text-[11px]">
-          <li><i class="fa-solid fa-leaf text-sage-400 mr-1.5"></i> Materiales sostenibles</li>
-          <li><i class="fa-solid fa-check text-sage-400 mr-1.5"></i> Sin plásticos de un solo uso</li>
-          <li><i class="fa-solid fa-heart text-sage-400 mr-1.5"></i> Aprobado por Veterinarios</li>
-        </ul>
-      </div>
-
-      <div>
-        <h4 class="text-white font-bold mb-3 uppercase tracking-wider text-[11px]">Boletín Nórdico</h4>
-        <p class="text-slate-400 text-[11px] mb-2">Recibe consejos de salud y un 10% OFF en tu primer pedido.</p>
-        <div class="flex gap-2">
-          <input type="email" placeholder="Tu correo..." class="bg-slate-800 border border-slate-700 text-white px-3 py-2 rounded-xl text-xs flex-1 focus:outline-none focus:border-sage-500">
-          <button onclick="showToast('¡Gracias por suscribirte!')" class="bg-sage-700 hover:bg-sage-600 text-white px-3 py-2 rounded-xl text-xs font-bold transition">Unirme</button>
+        <div class="pt-2 flex flex-wrap justify-center lg:justify-start gap-4 text-xs font-semibold">
+          <span class="bg-forest-800 px-3.5 py-2 rounded-xl border border-forest-700"><i class="fa-solid fa-check text-emerald-400 mr-1.5"></i> Diseños Nórdicos</span>
+          <span class="bg-forest-800 px-3.5 py-2 rounded-xl border border-forest-700"><i class="fa-solid fa-check text-emerald-400 mr-1.5"></i> Materiales Biodegradables</span>
+          <span class="bg-forest-800 px-3.5 py-2 rounded-xl border border-forest-700"><i class="fa-solid fa-check text-emerald-400 mr-1.5"></i> Calidad Veterinaria</span>
         </div>
       </div>
 
-    </div>
+      <div class="grid grid-cols-2 gap-4">
+        <div class="bg-forest-800/80 p-5 rounded-3xl border border-forest-700 text-center">
+          <div class="w-12 h-12 mx-auto rounded-2xl bg-emerald-500/10 text-emerald-300 flex items-center justify-center text-xl mb-3">
+            <i class="fa-solid fa-heart-pulse"></i>
+          </div>
+          <h4 class="text-sm font-bold text-white mb-1">Salud Digestiva</h4>
+          <p class="text-[11px] text-emerald-100">Fórmulas orgánicas sin aditivos ni conservantes artificiales.</p>
+        </div>
 
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 border-t border-slate-800/80 pt-6 flex flex-col sm:flex-row justify-between items-center gap-4 text-slate-500 text-[11px]">
-      <p>© 2025 PETVET PetGord Commerce OS. Todos los derechos reservados.</p>
-      <div class="flex gap-4">
-        <span>Términos</span>
-        <span>Privacidad</span>
-        <span>Envíos Escandinavos</span>
+        <div class="bg-forest-800/80 p-5 rounded-3xl border border-forest-700 text-center">
+          <div class="w-12 h-12 mx-auto rounded-2xl bg-emerald-500/10 text-emerald-300 flex items-center justify-center text-xl mb-3">
+            <i class="fa-solid fa-couch"></i>
+          </div>
+          <h4 class="text-sm font-bold text-white mb-1">Confort Ergonómico</h4>
+          <p class="text-[11px] text-emerald-100">Camas con memory foam de alta densidad para articulaciones.</p>
+        </div>
       </div>
     </div>
-  </footer>
+  </section>
 
-  <!-- MANDATORY JAVASCRIPT & SHOP-API INTEGRATION -->
+  <!-- FOOTER -->
+  <footer class="bg-white border-t border-sage-200 pt-16 pb-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 pb-12 border-b border-sage-100">
+        
+        <!-- Brand Info -->
+        <div class="lg:col-span-2 space-y-4">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-2xl bg-forest-800 text-white flex items-center justify-center text-lg font-bold">
+              <i class="fa-solid fa-paw"></i>
+            </div>
+            <span class="font-extrabold text-xl tracking-tight text-forest-950">
+              PETGO<span class="text-sage-600 font-semibold">-RD</span>
+            </span>
+          </div>
+          <p class="text-slate-500 text-xs sm:text-sm leading-relaxed max-w-sm">
+            Tienda líder en República Dominicana dedicada al bienestar integral de tus mascotas con estética escandinava limpia y materiales de primer nivel.
+          </p>
+          <div class="flex items-center gap-3 text-forest-800 pt-1">
+            <a href="#" class="w-8 h-8 rounded-full bg-sage-100 hover:bg-forest-800 hover:text-white transition flex items-center justify-center text-xs"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" class="w-8 h-8 rounded-full bg-sage-100 hover:bg-forest-800 hover:text-white transition flex items-center justify-center text-xs"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="#" class="w-8 h-8 rounded-full bg-sage-100 hover:bg-forest
+
   <script>
-    // State Management
-    let products = [];
-    let cart = [];
-    let currentCategory = 'all';
+    (function() {
+      const VENDURE_SHOP_API = 'https://dobeha-core-778104196562.us-east1.run.app/shop-api';
+      const CHANNEL_TOKEN = 'petgord';
+      let cart = [];
+      let allProducts = [];
 
-    // DOBEHA Core Endpoint
-    const API_ENDPOINT = 'https://dobeha-core-778104196562.us-east1.run.app/shop-api';
-
-    // Scandinavian Fallback Products Dataset
-    const fallbackProducts = [
-      {
-        id: '1',
-        name: 'Cama Ergonómica Salvia Nordic',
-        price: 45.99,
-        category: 'acc',
-        image: 'https://images.unsplash.com/photo-1541599540903-216a46ca1dc0?auto=format&fit=crop&w=600&q=80',
-        rating: 4.9,
-        badge: 'Top Ventas'
-      },
-      {
-        id: '2',
-
-  <script>
-    const VENDURE_SHOP_API = 'https://dobeha-core-778104196562.us-east1.run.app/shop-api';
-    const CHANNEL_TOKEN = 'petgord';
-    let cart = [];
-
-    const query = `
-      query {
-        products(options: { take: 20 }) {
-          items {
-            id
-            name
-            slug
-            description
-            featuredAsset {
-              preview
-            }
-            variants {
+      const query = `
+        query {
+          products(options: { take: 50 }) {
+            totalItems
+            items {
               id
               name
-              priceWithTax
-              currencyCode
+              slug
+              description
+              featuredAsset {
+                preview
+              }
+              variants {
+                id
+                name
+                price
+                priceWithTax
+                stockLevel
+              }
             }
           }
         }
-      }
-    `;
+      `;
 
-    async function loadProducts() {
-      const grid = document.getElementById('productsGrid');
-      if (!grid) return;
-      grid.innerHTML = '<div class="col-span-full text-center py-12 text-slate-400 font-medium"><i class="fa-solid fa-spinner fa-spin text-2xl mb-2"></i><p>Cargando productos de la tienda...</p></div>';
+      async function fetchProducts() {
+        const grid = document.getElementById('productsGrid');
+        if (!grid) return;
 
-      try {
-        const res = await fetch(VENDURE_SHOP_API, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'vendure-token': CHANNEL_TOKEN
-          },
-          body: JSON.stringify({ query })
-        });
-        const json = await res.json();
-        const items = json?.data?.products?.items || [];
+        grid.innerHTML = `
+          <div class="col-span-full text-center py-16">
+            <div class="inline-block animate-spin rounded-full h-10 w-10 border-4 border-indigo-600 border-t-transparent mb-4"></div>
+            <p class="text-slate-600 font-bold text-base">Cargando productos oficiales...</p>
+            <p class="text-xs text-slate-400 mt-1">Sincronizando con DOBEHA Multi-tenant Core</p>
+          </div>
+        `;
 
-        if (items.length === 0) {
-          renderFallbackProducts();
-          return;
+        try {
+          // Si estamos en un iframe en localhost, usar proxy para evitar bloqueo CORS de "null" origin
+          const targetUrl = (window.location.origin.includes('localhost') || window.location.origin.includes('127.0.0.1'))
+            ? '/api/shop-proxy'
+            : VENDURE_SHOP_API;
+
+          const res = await fetch(targetUrl, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'vendure-token': CHANNEL_TOKEN
+            },
+            body: JSON.stringify({ query })
+          });
+
+          const json = await res.json();
+          allProducts = json?.data?.products?.items || [];
+
+          if (allProducts.length === 0) {
+            grid.innerHTML = `
+              <div class="col-span-full text-center py-12 bg-white rounded-2xl border border-dashed border-slate-300 p-8">
+                <i class="fa-solid fa-box-open text-4xl text-slate-300 mb-3"></i>
+                <h4 class="font-bold text-slate-700">No hay productos disponibles actualmente</h4>
+                <p class="text-xs text-slate-400 mt-1">Los nuevos productos agregados desde el panel aparecerán aquí.</p>
+              </div>
+            `;
+            return;
+          }
+
+          renderProducts(allProducts);
+        } catch (err) {
+          console.error('Error al cargar productos de Vendure:', err);
+          renderFallback();
         }
+      }
+
+      function renderProducts(items) {
+        const grid = document.getElementById('productsGrid');
+        if (!grid) return;
 
         grid.innerHTML = items.map(p => {
-          const img = p.featuredAsset?.preview || 'https://images.unsplash.com/photo-1543466835-00a7907e9de1?w=500&q=80';
-          const price = p.variants?.[0]?.priceWithTax ? (p.variants[0].priceWithTax / 100).toFixed(2) : '15.00';
-          const currency = p.variants?.[0]?.currencyCode || 'USD';
+          const img = p.featuredAsset?.preview || 'https://images.unsplash.com/photo-1543466835-00a7907e9de1?w=600&q=80';
+          const rawPrice = p.variants?.[0]?.priceWithTax || p.variants?.[0]?.price || 0;
+          // Vendure almacena en centavos
+          const formattedPrice = (rawPrice / 100).toLocaleString('es-DO', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+          const cleanDesc = (p.description || '').replace(/<[^>]*>/g, '').trim() || 'Producto oficial garantizado DOBEHA.';
+          const safeName = (p.name || 'Producto').replace(/'/g, "\\'");
 
           return `
-            <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden hover:shadow-md transition flex flex-col">
+            <div class="bg-white rounded-2xl border border-slate-200/90 shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col group hover:-translate-y-1">
               <div class="relative aspect-square bg-slate-100 overflow-hidden">
-                <img src="${img}" alt="${p.name}" class="w-full h-full object-cover hover:scale-105 transition duration-300">
+                <img src="${img}" alt="${p.name}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
+                <span class="absolute top-3 left-3 bg-indigo-600/90 backdrop-blur-md text-white text-[10px] font-extrabold uppercase px-2.5 py-1 rounded-full shadow-sm">
+                  Garantía DOBEHA
+                </span>
               </div>
               <div class="p-5 flex-1 flex flex-col justify-between">
                 <div>
-                  <h4 class="font-bold text-slate-900 line-clamp-1 mb-1 text-base">${p.name}</h4>
-                  <p class="text-xs text-slate-500 line-clamp-2 mb-3">${p.description || 'Producto premium garantizado'}</p>
+                  <h4 class="font-bold text-slate-900 group-hover:text-indigo-600 transition-colors line-clamp-1 text-base mb-1.5" title="${p.name}">
+                    ${p.name}
+                  </h4>
+                  <p class="text-xs text-slate-500 line-clamp-2 leading-relaxed mb-4">
+                    ${cleanDesc}
+                  </p>
                 </div>
                 <div class="flex items-center justify-between pt-3 border-t border-slate-100">
-                  <span class="font-black text-lg text-indigo-600">${currency} $${price}</span>
-                  <button onclick="addToCart('${p.name}')" class="px-3.5 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl text-xs font-bold transition flex items-center gap-1.5 shadow-sm">
-                    <i class="fa-solid fa-cart-plus"></i> Añadir
+                  <div class="flex flex-col">
+                    <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Precio</span>
+                    <span class="text-lg font-black text-slate-900">RD$ ${formattedPrice}</span>
+                  </div>
+                  <button 
+                    type="button" 
+                    onclick="window.dobehaAddToCart('${safeName}')"
+                    class="px-4 py-2.5 bg-indigo-600 hover:bg-indigo-700 active:scale-95 text-white rounded-xl text-xs font-bold transition flex items-center gap-2 shadow-md shadow-indigo-600/20 cursor-pointer"
+                  >
+                    <i class="fa-solid fa-cart-plus text-sm"></i>
+                    <span>Comprar</span>
                   </button>
                 </div>
               </div>
             </div>
           `;
         }).join('');
-      } catch (e) {
-        console.warn('Usando catálogo de respaldo:', e);
-        renderFallbackProducts();
       }
-    }
 
-    function renderFallbackProducts() {
-      const grid = document.getElementById('productsGrid');
-      if (!grid) return;
-      const demo = [
-        { name: 'Alimento Premium Adulto 15kg', price: '45.00', img: 'https://images.unsplash.com/photo-1568640347023-a616a30bc3bd?w=500&q=80', desc: 'Fórmula completa rica en proteínas y vitaminas para perros activos.' },
-        { name: 'Arnés Táctico Ergonómico Ajustable', price: '24.99', img: 'https://images.unsplash.com/photo-1543466835-00a7907e9de1?w=500&q=80', desc: 'Arnés antitirones acolchado transpirable para paseos seguros.' },
-        { name: 'Cama Ortopédica Antiestrés', price: '38.50', img: 'https://images.unsplash.com/photo-1541599540903-216a46ca1dc0?w=500&q=80', desc: 'Espuma viscoelástica para soporte articular y descanso profundo.' },
-        { name: 'Juguete Mordedor Interactivo', price: '12.00', img: 'https://images.unsplash.com/photo-1576201836106-db1758fd1c97?w=500&q=80', desc: 'Caucho natural resistente ideal para limpieza dental y diversión.' }
-      ];
-
-      grid.innerHTML = demo.map(p => `
-        <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden hover:shadow-md transition flex flex-col">
-          <div class="relative aspect-square bg-slate-100 overflow-hidden">
-            <img src="${p.img}" alt="${p.name}" class="w-full h-full object-cover hover:scale-105 transition duration-300">
+      function renderFallback() {
+        const grid = document.getElementById('productsGrid');
+        if (!grid) return;
+        grid.innerHTML = `
+          <div class="col-span-full text-center py-12 bg-amber-50 rounded-2xl border border-amber-200 p-6">
+            <i class="fa-solid fa-triangle-exclamation text-3xl text-amber-500 mb-2"></i>
+            <h4 class="font-bold text-amber-800">Conexión en curso</h4>
+            <p class="text-xs text-amber-700 mt-1">Reconectando con el servidor de la tienda...</p>
+            <button onclick="window.dobehaReloadProducts()" class="mt-4 px-4 py-2 bg-amber-600 text-white rounded-xl text-xs font-bold shadow-sm">
+              Reintentar
+            </button>
           </div>
-          <div class="p-5 flex-1 flex flex-col justify-between">
-            <div>
-              <h4 class="font-bold text-slate-900 line-clamp-1 mb-1 text-base">${p.name}</h4>
-              <p class="text-xs text-slate-500 line-clamp-2 mb-3">${p.desc}</p>
-            </div>
-            <div class="flex items-center justify-between pt-3 border-t border-slate-100">
-              <span class="font-black text-lg text-indigo-600">USD $${p.price}</span>
-              <button onclick="addToCart('${p.name}')" class="px-3.5 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl text-xs font-bold transition flex items-center gap-1.5 shadow-sm">
-                <i class="fa-solid fa-cart-plus"></i> Añadir
-              </button>
-            </div>
-          </div>
-        </div>
-      `).join('');
-    }
+        `;
+      }
 
-    function addToCart(name) {
-      cart.push(name);
-      const badge = document.getElementById('cartBadge');
-      if (badge) badge.innerText = cart.length;
-      alert('¡' + name + ' añadido al carrito!');
-    }
+      window.dobehaAddToCart = function(name) {
+        cart.push(name);
+        const badges = document.querySelectorAll('#cartBadge, .cartBadge');
+        badges.forEach(b => b.innerText = cart.length);
+        
+        // Notificación toast visual
+        const toast = document.createElement('div');
+        toast.className = 'fixed bottom-5 right-5 z-50 bg-slate-900 text-white px-5 py-3 rounded-2xl shadow-2xl flex items-center gap-3 border border-slate-700 animate-bounce';
+        toast.innerHTML = '<i class="fa-solid fa-circle-check text-emerald-400 text-lg"></i><span class="text-xs font-bold">' + name + ' añadido al carrito</span>';
+        document.body.appendChild(toast);
+        setTimeout(() => toast.remove(), 2500);
+      };
 
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', loadProducts);
-    } else {
-      loadProducts();
-    }
+      window.dobehaReloadProducts = fetchProducts;
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', fetchProducts);
+      } else {
+        fetchProducts();
+      }
+    })();
   </script>
