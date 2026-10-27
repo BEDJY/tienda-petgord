@@ -3,12 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PETVET PetGord | Ofertas Épicas Temu Style - Mascotas & Accesorios</title>
+  <title>PETVET PetGord | Diseño Nórdico & Bienestar Mascotas</title>
+  
+  <!-- Tailwind CSS & FontAwesome -->
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Fonts: Plus Jakarta Sans -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
   <script>
     tailwind.config = {
       theme: {
@@ -17,241 +22,287 @@
             sans: ['"Plus Jakarta Sans"', 'sans-serif'],
           },
           colors: {
-            temu: {
-              orange: '#fb5200',
-              deepOrange: '#e04200',
-              yellow: '#ffc200',
-              dark: '#111111',
-              lightBg: '#f6f6f6'
+            sage: {
+              50: '#f0fdf4',
+              100: '#dcfce7',
+              200: '#bbf7d0',
+              300: '#86efac',
+              400: '#4ade80',
+              500: '#22c55e',
+              600: '#16a34a',
+              700: '#15803d',
+              800: '#166534',
+              900: '#14532d',
+            },
+            nordic: {
+              bg: '#fbfcfb',
+              surface: '#ffffff',
+              card: '#f4f7f5',
+              dark: '#1c2826',
+              muted: '#64748b'
             }
           },
-          animation: {
-            'bounce-fast': 'bounce 0.8s infinite',
-            'pulse-fast': 'pulse 1s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-            'spin-slow': 'spin 8s linear infinite',
-            'shimmer': 'shimmer 2s infinite linear'
+          boxShadow: {
+            'nordic': '0 10px 30px -5px rgba(21, 128, 61, 0.05)',
+            'card-hover': '0 20px 40px -15px rgba(21, 128, 61, 0.12)',
+            'soft': '0 4px 20px 0 rgba(0, 0, 0, 0.03)'
           }
         }
       }
     }
   </script>
   <style>
+    body {
+      background-color: #fbfcfb;
+    }
     ::-webkit-scrollbar {
       width: 6px;
       height: 6px;
     }
     ::-webkit-scrollbar-track {
-      background: #f1f1f1;
+      background: #f0fdf4;
     }
     ::-webkit-scrollbar-thumb {
-      background: #fb5200;
-      border-radius: 3px;
+      background: #86efac;
+      border-radius: 999px;
     }
-    .temu-badge {
-      background: linear-gradient(135deg, #ffc200 0%, #ff9100 100%);
+    ::-webkit-scrollbar-thumb:hover {
+      background: #15803d;
     }
-    .temu-gradient {
-      background: linear-gradient(90deg, #fb5200 0%, #ff7a00 50%, #fb5200 100%);
-    }
-    .line-clamp-2 {
-      display: -webkit-box;
-      -webkit-line-clamp: 2;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
-    }
-    @keyframes shimmer {
-      0% { background-position: -200% 0; }
-      100% { background-position: 200% 0; }
+    .badge-nordic {
+      background: #f0fdf4;
+      color: #15803d;
+      border: 1px solid #bbf7d0;
     }
   </style>
 </head>
-<body class="bg-stone-100 text-stone-900 antialiased font-sans flex flex-col min-h-screen selection:bg-temu-orange selection:text-white">
+<body class="text-slate-800 antialiased font-sans min-h-screen flex flex-col selection:bg-sage-100 selection:text-sage-900">
 
-  <!-- Toast Notification System -->
-  <div id="toastContainer" class="fixed top-5 right-5 z-50 flex flex-col gap-2 pointer-events-none"></div>
+  <!-- Toast Container -->
+  <div id="toastContainer" class="fixed bottom-6 right-6 z-50 flex flex-col gap-3 pointer-events-none"></div>
 
-  <!-- TEMU STYLE URGENCY BAR / TOP BANNER -->
-  <div class="bg-temu-dark text-white text-xs py-2 px-3 relative z-50 overflow-hidden shadow-md">
+  <!-- TOP ANNOUNCEMENT BAR -->
+  <div class="bg-sage-700 text-white text-xs py-2.5 px-4">
     <div class="max-w-7xl mx-auto flex flex-wrap justify-between items-center gap-2">
-      <div class="flex items-center gap-2 font-black">
-        <span class="bg-temu-orange text-white font-black text-[11px] px-2 py-0.5 rounded tracking-wide animate-pulse">⚡ Ofertón Temu</span>
-        <span class="text-amber-300 font-bold">¡Hasta 90% Dcto. + Envío GRATIS en todo tu pedido!</span>
+      <div class="flex items-center gap-2 mx-auto sm:mx-0">
+        <span class="bg-sage-800/80 text-emerald-200 px-2.5 py-0.5 rounded-full text-[11px] font-semibold tracking-wide border border-sage-600">
+          🌿 Estilo Escandinavo
+        </span>
+        <span class="font-medium text-emerald-50 text-[11px] sm:text-xs">
+          Envío neutral en carbono en todos los pedidos mayores a $35.00
+        </span>
       </div>
-      
-      <!-- Countdown Timer -->
-      <div class="flex items-center gap-1.5 font-bold text-stone-200 text-[11px]">
-        <span>Termina en:</span>
-        <div class="flex items-center gap-1 text-white font-black">
-          <span id="timerHours" class="bg-stone-800 border border-stone-700 px-1.5 py-0.5 rounded text-amber-400">02</span>:
-          <span id="timerMinutes" class="bg-stone-800 border border-stone-700 px-1.5 py-0.5 rounded text-amber-400">45</span>:
-          <span id="timerSeconds" class="bg-stone-800 border border-stone-700 px-1.5 py-0.5 rounded text-amber-400">18</span>
-        </div>
-        <span class="hidden md:inline-block ml-3 text-emerald-400"><i class="fa-solid fa-rotate-left mr-1"></i>Devolución gratis en 90 días</span>
+      <div class="hidden sm:flex items-center gap-4 text-[11px] text-emerald-100 font-medium">
+        <span><i class="fa-solid fa-leaf mr-1 text-emerald-300"></i> Materiales Orgánicos</span>
+        <span><i class="fa-solid fa-shield-cat mr-1 text-emerald-300"></i> Garantía Vet 60 Días</span>
       </div>
     </div>
   </div>
 
-  <!-- MAIN HEADER TEMU STYLE -->
-  <header class="bg-white sticky top-0 z-40 border-b border-stone-200 shadow-md">
-    <div class="max-w-7xl mx-auto px-3 sm:px-6 py-2.5 flex items-center justify-between gap-2 sm:gap-4">
-      
-      <!-- Logo Brand -->
-      <a href="#" class="flex items-center gap-2 shrink-0 group">
-        <div class="w-10 h-10 rounded-xl bg-temu-orange text-white flex items-center justify-center text-xl font-black shadow-lg shadow-orange-500/40 group-hover:scale-105 transition duration-200">
-          <i class="fa-solid fa-paw"></i>
-        </div>
-        <div class="flex flex-col leading-none">
-          <span class="font-black text-xl sm:text-2xl tracking-tighter text-stone-900">PETVET<span class="text-temu-orange">.PetGord</span></span>
-          <span class="text-[9px] font-extrabold text-stone-500 uppercase tracking-widest -mt-1">Precios Directos de Fábrica</span>
-        </div>
-      </a>
-
-      <!-- Search Bar Temu Style -->
-      <div class="flex-1 max-w-2xl mx-2 hidden sm:block">
-        <div class="relative flex items-center">
-          <input type="text" id="searchInput" onkeyup="filterProducts()" placeholder="Busca alimentos, juguetes $0.99, arneses, rascadores..." class="w-full bg-stone-100 border-2 border-temu-orange text-stone-900 text-sm rounded-full pl-5 pr-14 py-2 focus:outline-none focus:ring-2 focus:ring-orange-500 transition shadow-inner">
-          <button onclick="filterProducts()" class="absolute right-1 top-1/2 -translate-y-1/2 bg-temu-orange hover:bg-temu-deepOrange text-white rounded-full px-5 py-1.5 text-sm font-bold transition flex items-center gap-1 shadow">
-            <i class="fa-solid fa-magnifying-glass"></i>
-          </button>
-        </div>
-      </div>
-
-      <!-- Action Icons -->
-      <div class="flex items-center gap-2 sm:gap-4">
+  <!-- HEADER / NAVIGATION -->
+  <header class="bg-white/90 backdrop-blur-md sticky top-0 z-40 border-b border-sage-100 shadow-soft">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20 gap-4">
         
-        <!-- Wheel / Reward Spin Modal Trigger -->
-        <button onclick="toggleSpinModal()" class="flex flex-col items-center justify-center text-stone-700 hover:text-temu-orange transition px-2">
-          <div class="relative">
-            <i class="fa-solid fa-gift text-xl text-amber-500 animate-bounce-fast"></i>
-            <span class="absolute -top-1 -right-2 bg-red-600 text-white font-black text-[9px] rounded-full px-1">GRATIS</span>
+        <!-- Brand Logo -->
+        <a href="#" class="flex items-center gap-3 group">
+          <div class="w-11 h-11 rounded-2xl bg-sage-50 border border-sage-200 text-sage-700 flex items-center justify-center text-xl font-bold shadow-sm group-hover:bg-sage-700 group-hover:text-white transition-all duration-300">
+            <i class="fa-solid fa-paw"></i>
           </div>
-          <span class="text-[10px] font-extrabold hidden md:inline">Ruleta $100</span>
-        </button>
+          <div class="flex flex-col">
+            <span class="font-extrabold text-xl tracking-tight text-slate-900">
+              PETVET<span class="text-sage-700 font-normal">.nordic</span>
+            </span>
+            <span class="text-[10px] font-semibold text-slate-400 uppercase tracking-widest -mt-1">
+              Care & Scandinavian Living
+            </span>
+          </div>
+        </a>
 
-        <!-- Cart Trigger -->
-        <button onclick="toggleCartDrawer()" id="cartBtn" class="relative bg-temu-orange hover:bg-temu-deepOrange text-white px-3.5 py-2 rounded-full transition flex items-center gap-2.5 shadow-md active:scale-95">
-          <div class="relative">
-            <i class="fa-solid fa-cart-shopping text-base"></i>
-            <span id="cartBadge" class="absolute -top-2.5 -right-2.5 bg-yellow-400 text-stone-900 text-[10px] font-black w-5 h-5 rounded-full flex items-center justify-center border-2 border-white shadow">0</span>
+        <!-- Desktop Search Bar -->
+        <div class="hidden md:flex flex-1 max-w-md mx-8">
+          <div class="relative w-full">
+            <input type="text" id="searchInput" onkeyup="filterProducts()" placeholder="Buscar comida natural, juguetes de madera, camas salvia..." class="w-full bg-sage-50/60 border border-sage-200/80 text-slate-700 text-xs rounded-full pl-11 pr-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-sage-600 focus:bg-white transition-all duration-200">
+            <div class="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 text-xs">
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </div>
           </div>
-          <div class="flex flex-col text-left leading-none">
-            <span class="text-[9px] uppercase font-extrabold text-orange-100 tracking-wider">Carrito</span>
-            <span id="cartTotalHeader" class="text-xs font-black text-white">$0.00</span>
-          </div>
-        </button>
+        </div>
 
+        <!-- Action Items (Cart & Wishlist) -->
+        <div class="flex items-center gap-3">
+          
+          <!-- Quick Filter Pill / Natural Label -->
+          <div class="hidden lg:flex items-center gap-2 bg-sage-50 text-sage-800 border border-sage-200 px-3 py-1.5 rounded-full text-xs font-semibold">
+            <span class="w-2 h-2 rounded-full bg-sage-500 animate-pulse"></span>
+            100% Eco-Friendly
+          </div>
+
+          <!-- Cart Button -->
+          <button onclick="toggleCartDrawer()" id="cartBtn" class="bg-sage-700 hover:bg-sage-800 text-white px-4 py-2.5 rounded-2xl transition-all duration-200 flex items-center gap-3 shadow-sm hover:shadow-nordic active:scale-95">
+            <div class="relative">
+              <i class="fa-solid fa-bag-shopping text-sm"></i>
+              <span id="cartBadge" class="absolute -top-2 -right-2 bg-emerald-400 text-sage-950 text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center border border-white">0</span>
+            </div>
+            <div class="flex flex-col text-left leading-none">
+              <span class="text-[9px] uppercase font-bold text-emerald-200 tracking-wider">Mi Bolsa</span>
+              <span id="cartTotalHeader" class="text-xs font-extrabold text-white">$0.00</span>
+            </div>
+          </button>
+
+        </div>
+
+      </div>
+
+      <!-- Mobile Search Bar -->
+      <div class="pb-3 md:hidden">
+        <div class="relative w-full">
+          <input type="text" id="searchInputMobile" onkeyup="filterProductsMobile()" placeholder="Buscar productos para mascotas..." class="w-full bg-sage-50 border border-sage-200 text-slate-700 text-xs rounded-full pl-10 pr-4 py-2 focus:outline-none focus:ring-2 focus:ring-sage-600">
+          <div class="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-xs">
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </div>
+        </div>
       </div>
     </div>
 
-    <!-- Mobile Search -->
-    <div class="sm:hidden px-3 pb-2 pt-1">
-      <div class="relative flex items-center">
-        <input type="text" id="searchInputMobile" onkeyup="filterProductsMobile()" placeholder="Mascotas: Buscar productos desde $0.99..." class="w-full bg-stone-100 border-2 border-temu-orange text-stone-900 text-xs rounded-full pl-4 pr-10 py-2 focus:outline-none">
-        <button onclick="filterProductsMobile()" class="absolute right-1 top-1/2 -translate-y-1/2 bg-temu-orange text-white rounded-full w-7 h-7 flex items-center justify-center text-xs">
-          <i class="fa-solid fa-magnifying-glass"></i>
+    <!-- Category Filter Bar (Scandinavian Minimalist Navigation) -->
+    <nav class="border-t border-sage-100 bg-white py-2.5 px-4 overflow-x-auto scrollbar-none">
+      <div class="max-w-7xl mx-auto flex items-center gap-2 sm:gap-3 text-xs font-medium">
+        <button onclick="filterCategory('all')" class="cat-pill active-pill bg-sage-700 text-white px-4 py-1.5 rounded-full shadow-sm transition shrink-0">
+          <i class="fa-solid fa-border-all mr-1.5 text-[10px]"></i> Colección Completa
         </button>
-      </div>
-    </div>
-
-    <!-- Category Pills Navigation Bar -->
-    <nav class="bg-stone-50 border-t border-stone-200 overflow-x-auto whitespace-nowrap scrollbar-none py-1.5 px-4">
-      <div class="max-w-7xl mx-auto flex items-center gap-2 text-xs font-bold text-stone-700">
-        <button onclick="filterCategory('all')" class="cat-pill active-pill bg-temu-orange text-white px-3 py-1 rounded-full shadow-sm flex items-center gap-1.5 transition shrink-0">
-          <i class="fa-solid fa-bolt text-yellow-300"></i> Todo en Oferta
+        <button onclick="filterCategory('dog')" class="cat-pill bg-sage-50 text-slate-700 hover:bg-sage-100 border border-sage-200/60 px-4 py-1.5 rounded-full transition shrink-0">
+          <i class="fa-solid fa-dog mr-1.5 text-sage-700"></i> Perros
         </button>
-        <button onclick="filterCategory('dog')" class="cat-pill bg-white hover:bg-stone-200 border border-stone-300 text-stone-800 px-3 py-1 rounded-full flex items-center gap-1.5 transition shrink-0">
-          <i class="fa-solid fa-dog text-orange-500"></i> Perros
+        <button onclick="filterCategory('cat')" class="cat-pill bg-sage-50 text-slate-700 hover:bg-sage-100 border border-sage-200/60 px-4 py-1.5 rounded-full transition shrink-0">
+          <i class="fa-solid fa-cat mr-1.5 text-sage-700"></i> Gatos
         </button>
-        <button onclick="filterCategory('cat')" class="cat-pill bg-white hover:bg-stone-200 border border-stone-300 text-stone-800 px-3 py-1 rounded-full flex items-center gap-1.5 transition shrink-0">
-          <i class="fa-solid fa-cat text-amber-500"></i> Gatos
+        <button onclick="filterCategory('health')" class="cat-pill bg-sage-50 text-slate-700 hover:bg-sage-100 border border-sage-200/60 px-4 py-1.5 rounded-full transition shrink-0">
+          <i class="fa-solid fa-leaf mr-1.5 text-sage-700"></i> Nutrición & Salud
         </button>
-        <button onclick="filterCategory('health')" class="cat-pill bg-white hover:bg-stone-200 border border-stone-300 text-stone-800 px-3 py-1 rounded-full flex items-center gap-1.5 transition shrink-0">
-          <i class="fa-solid fa-notes-medical text-rose-500"></i> Salud Vet
+        <button onclick="filterCategory('toys')" class="cat-pill bg-sage-50 text-slate-700 hover:bg-sage-100 border border-sage-200/60 px-4 py-1.5 rounded-full transition shrink-0">
+          <i class="fa-solid fa-bone mr-1.5 text-sage-700"></i> Juguetes Escandinavos
         </button>
-        <button onclick="filterCategory('toys')" class="cat-pill bg-white hover:bg-stone-200 border border-stone-300 text-stone-800 px-3 py-1 rounded-full flex items-center gap-1.5 transition shrink-0">
-          <i class="fa-solid fa-baseball text-emerald-500"></i> Juguetes
-        </button>
-        <button onclick="filterCategory('acc')" class="cat-pill bg-white hover:bg-stone-200 border border-stone-300 text-stone-800 px-3 py-1 rounded-full flex items-center gap-1.5 transition shrink-0">
-          <i class="fa-solid fa-shirt text-purple-500"></i> Arneses & Ropa
+        <button onclick="filterCategory('acc')" class="cat-pill bg-sage-50 text-slate-700 hover:bg-sage-100 border border-sage-200/60 px-4 py-1.5 rounded-full transition shrink-0">
+          <i class="fa-solid fa-couch mr-1.5 text-sage-700"></i> Camas & Descanso
         </button>
       </div>
     </nav>
   </header>
 
-  <!-- TEMU HERO PROMO BANNER -->
-  <section class="bg-gradient-to-r from-orange-600 via-temu-orange to-red-600 text-white relative overflow-hidden py-6 sm:py-8 shadow-inner">
-    <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-12 gap-6 items-center relative z-10">
-      
-      <div class="md:col-span-8 space-y-3 text-center md:text-left">
-        <div class="inline-flex items-center gap-2 bg-yellow-400 text-stone-900 font-black text-xs px-3 py-1 rounded-full shadow tracking-wider uppercase">
-          <i class="fa-solid fa-fire text-red-600 animate-bounce"></i> MEGAVENTA PETS TEMU STYLE
-        </div>
+  <!-- HERO BANNER (SCANDINAVIAN FRESHNESS) -->
+  <section class="bg-gradient-to-b from-sage-50/70 via-sage-50/30 to-nordic-bg py-10 sm:py-16 relative overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
         
-        <h1 class="text-3xl sm:text-5xl font-black tracking-tight leading-tight uppercase drop-shadow-md">
-          ¡Ahorra hasta un <span class="text-yellow-300 underline underline-offset-4 decoration-yellow-400">90% OFF</span> en todo para tu mascota!
-        </h1>
-
-        <p class="text-orange-100 text-xs sm:text-sm font-semibold max-w-xl">
-          Compra directamente de los distribuidores principales. Calidad veterinaria garantizada, envíos ultra-rápidos y devoluciones sin costo.
-        </p>
-
-        <!-- Live Sales Ticker -->
-        <div class="flex flex-wrap items-center justify-center md:justify-start gap-3 pt-2 text-xs font-bold text-stone-900">
-          <div class="bg-white/90 backdrop-blur px-3 py-1.5 rounded-lg flex items-center gap-2 shadow">
-            <i class="fa-solid fa-truck-fast text-temu-orange text-base"></i>
-            <span>Envío GRATIS sin mínimo</span>
+        <!-- Left Content -->
+        <div class="lg:col-span-7 space-y-5 text-center lg:text-left">
+          <div class="inline-flex items-center gap-2 badge-nordic px-3.5 py-1 rounded-full text-xs font-semibold">
+            <i class="fa-solid fa-sparkles text-sage-600"></i> Edición Primavera / Verano 2025
           </div>
-          <div class="bg-white/90 backdrop-blur px-3 py-1.5 rounded-lg flex items-center gap-2 shadow">
-            <i class="fa-solid fa-shield-halved text-emerald-600 text-base"></i>
-            <span>Garantía de Devolución 90 días</span>
+          
+          <h1 class="text-3xl sm:text-5xl font-extrabold text-slate-900 tracking-tight leading-tight">
+            Diseño minimalista & bienestar orgánico para tu mascota.
+          </h1>
+
+          <p class="text-slate-600 text-xs sm:text-sm font-normal max-w-xl mx-auto lg:mx-0 leading-relaxed">
+            Explora accesorios duraderos en tonos salvia y menta suaves, formulados con ingredientes 100% naturales y probados por veterinarios nórdicos.
+          </p>
+
+          <div class="flex flex-wrap items-center justify-center lg:justify-start gap-4 pt-2">
+            <a href="#productsCatalog" class="bg-sage-700 hover:bg-sage-800 text-white text-xs font-bold px-6 py-3.5 rounded-2xl transition shadow-nordic hover:shadow-card-hover flex items-center gap-2">
+              <span>Explorar Catálogo</span>
+              <i class="fa-solid fa-arrow-right text-[10px]"></i>
+            </a>
+            <div class="flex items-center gap-2 text-xs text-slate-600 font-medium bg-white border border-sage-200/80 px-4 py-3 rounded-2xl shadow-soft">
+              <i class="fa-solid fa-star text-amber-400"></i>
+              <span><strong>4.9/5</strong> por más de 12,000 tutores</span>
+            </div>
           </div>
         </div>
-      </div>
 
-      <!-- Quick Interactive Wheel / Coupon Banner -->
-      <div class="md:col-span-4 flex justify-center">
-        <div onclick="toggleSpinModal()" class="cursor-pointer bg-white text-stone-900 p-4 rounded-2xl shadow-2xl border-4 border-yellow-400 transform hover:scale-105 transition max-w-xs text-center w-full relative">
-          <span class="absolute -top-3 -right-3 bg-red-600 text-white font-black text-xs px-2 py-0.5 rounded-full shadow uppercase">¡Aprovecha!</span>
-          <div class="w-14 h-14 bg-gradient-to-tr from-amber-400 to-yellow-300 text-stone-900 rounded-full flex items-center justify-center text-3xl mx-auto mb-2 shadow-inner">
-            <i class="fa-solid fa-trophy"></i>
+        <!-- Right Visual Feature -->
+        <div class="lg:col-span-5 flex justify-center">
+          <div class="relative w-full max-w-md bg-white p-4 rounded-3xl border border-sage-200/70 shadow-nordic">
+            <div class="relative rounded-2xl overflow-hidden aspect-4/3 bg-sage-100">
+              <img src="https://images.unsplash.com/photo-1543466835-00a7907e9de1?auto=format&fit=crop&w=800&q=80" alt="Pet Minimal Nordic" class="w-full h-full object-cover">
+              <span class="absolute top-3 right-3 bg-white/90 backdrop-blur text-sage-800 text-[10px] font-bold px-3 py-1 rounded-full border border-sage-200">
+                Eco-Friendly Collection
+              </span>
+            </div>
+            <div class="mt-3 flex items-center justify-between px-2">
+              <div>
+                <h4 class="text-xs font-bold text-slate-800">Cama Ergonómica Salvia</h4>
+                <p class="text-[11px] text-slate-500">Algodón orgánico lavable</p>
+              </div>
+              <span class="text-xs font-extrabold text-sage-700 bg-sage-50 border border-sage-200 px-2.5 py-1 rounded-xl">
+                $49.99
+              </span>
+            </div>
           </div>
-          <h3 class="font-black text-base uppercase text-stone-900">¿Reclamaste tu Cupón?</h3>
-          <p class="text-xs text-stone-600 font-bold mb-3">Toca aquí para girar la ruleta y ganar hasta $100 en productos PETVET.</p>
-          <button class="w-full bg-temu-orange hover:bg-orange-700 text-white font-black py-2 rounded-xl text-xs uppercase tracking-wider shadow">
-            ⚡ Reclamar Mi Regalo Gratis
-          </button>
         </div>
-      </div>
 
+      </div>
     </div>
   </section>
 
-  <!-- FLASH SALE CAROUSEL BAR -->
-  <section class="bg-amber-100 border-b border-amber-200 py-3 px-4">
-    <div class="max-w-7xl mx-auto flex items-center justify-between text-xs font-black text-stone-800">
-      <div class="flex items-center gap-2">
-        <i class="fa-solid fa-bolt text-red-600 text-base animate-pulse"></i>
-        <span class="uppercase tracking-wide text-red-600 font-black">OFERTAS RELÁMPAGO DEL DÍA</span>
-        <span class="hidden sm:inline-block text-stone-500 font-medium">| Unidades limitadas por usuario</span>
+  <!-- HIGHLIGHT FEATURES STRIP -->
+  <section class="border-y border-sage-100 bg-white py-4 px-4">
+    <div class="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+      <div class="flex items-center justify-center gap-3 p-2">
+        <div class="w-8 h-8 rounded-full bg-sage-50 text-sage-700 flex items-center justify-center text-sm shrink-0">
+          <i class="fa-solid fa-seedling"></i>
+        </div>
+        <div class="text-left">
+          <p class="text-xs font-bold text-slate-800">100% No Tóxico</p>
+          <p class="text-[10px] text-slate-500">Materiales aprobados</p>
+        </div>
       </div>
-      <span class="text-stone-700 font-bold bg-white px-2.5 py-1 rounded-full border border-amber-300 shadow-sm">
-        <i class="fa-solid fa-users text-orange-500 mr-1"></i> +14,820 comprando ahora
-      </span>
+      <div class="flex items-center justify-center gap-3 p-2">
+        <div class="w-8 h-8 rounded-full bg-sage-50 text-sage-700 flex items-center justify-center text-sm shrink-0">
+          <i class="fa-solid fa-truck-ramp-box"></i>
+        </div>
+        <div class="text-left">
+          <p class="text-xs font-bold text-slate-800">Envío Rápido</p>
+          <p class="text-[10px] text-slate-500">Empaque compostable</p>
+        </div>
+      </div>
+      <div class="flex items-center justify-center gap-3 p-2">
+        <div class="w-8 h-8 rounded-full bg-sage-50 text-sage-700 flex items-center justify-center text-sm shrink-0">
+          <i class="fa-solid fa-heart-pulse"></i>
+        </div>
+        <div class="text-left">
+          <p class="text-xs font-bold text-slate-800">Calidad Veterinaria</p>
+          <p class="text-[10px] text-slate-500">Recomendado por expertos</p>
+        </div>
+      </div>
+      <div class="flex items-center justify-center gap-3 p-2">
+        <div class="w-8 h-8 rounded-full bg-sage-50 text-sage-700 flex items-center justify-center text-sm shrink-0">
+          <i class="fa-solid fa-rotate-left"></i>
+        </div>
+        <div class="text-left">
+          <p class="text-xs font-bold text-slate-800">Devolución 60 días</p>
+          <p class="text-[10px] text-slate-500">Sin preguntas</p>
+        </div>
+      </div>
     </div>
   </section>
 
-  <!-- MAIN CATALOG / PRODUCTS SECTION -->
-  <main class="max-w-7xl mx-auto px-2 sm:px-4 py-6 flex-1 w-full">
+  <!-- MAIN CATALOG SECTION -->
+  <main id="productsCatalog" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 flex-1 w-full">
     
-    <!-- Filter Status & Heading -->
-    <div class="flex items-center justify-between mb-4 px-2">
-      <div class="flex items-center gap-2">
-        <h2 id="catalogTitle" class="text-xl font-black text-stone-900 tracking-tight">🔥 Lo más vendido para Mascotas</h2>
-        <span class="bg-red-100 text-red-600 text-[10px] font-extrabold px-2 py-0.5 rounded-full uppercase">Precio de Fábrica</span>
+    <!-- Title & Sort Header -->
+    <div class="flex flex-col sm:flex-row sm:items-center justify-between mb-8 pb-4 border-b border-sage-100 gap-4">
+      <div>
+        <h2 id="catalogTitle" class="text-2xl font-extrabold text-slate-900 tracking-tight">
+          Colección Escandinava
+        </h2>
+        <p class="text-xs text-slate-500 mt-0.5">Productos funcionales con diseño estético para el hogar</p>
       </div>
-      <div class="text-xs font-bold text-stone-500 flex items-center gap-1">
-        <span>Ordenado por:</span>
-        <select id="sortSelect" onchange="sortProducts()" class="bg-white border border-stone-300 rounded px-2 py-1 text-xs font-bold text-stone-800 focus:outline-none">
+      
+      <div class="flex items-center gap-2 self-end sm:self-auto">
+        <span class="text-xs text-slate-500 font-medium">Ordenar por:</span>
+        <select id="sortSelect" onchange="sortProducts()" class="bg-white border border-sage-200 text-slate-700 text-xs rounded-xl px-3 py-2 font-medium focus:outline-none focus:ring-2 focus:ring-sage-600">
           <option value="popular">Más Populares</option>
           <option value="priceAsc">Precio: Menor a Mayor</option>
           <option value="priceDesc">Precio: Mayor a Menor</option>
@@ -259,82 +310,132 @@
       </div>
     </div>
 
-    <!-- Products Grid Container (Mandatory DOBEHA Element) -->
-    <div id="productsGrid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-2 sm:gap-3">
-      <!-- Dynamic Products injected via JavaScript -->
+    <!-- Mandatory DOBEHA Grid Container -->
+    <div id="productsGrid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+      <!-- Dynamic Products populated via JS -->
     </div>
 
   </main>
 
-  <!-- TEMU SHOPPING GUARANTEE FOOTER BAR -->
-  <section class="bg-stone-200 py-6 border-t border-stone-300 mt-10 text-xs text-stone-700">
-    <div class="max-w-7xl mx-auto px-4 grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
-      <div class="flex flex-col items-center justify-center p-2">
-        <i class="fa-solid fa-truck-fast text-2xl text-temu-orange mb-1"></i>
-        <span class="font-extrabold">ENVÍO RÁPIDO & GRATIS</span>
-        <span class="text-[10px] text-stone-500">Rastreo en tiempo real garantizado</span>
+  <!-- CART DRAWER / SIDEBAR -->
+  <div id="cartDrawer" class="fixed inset-0 z-50 pointer-events-none transition-opacity duration-300 opacity-0">
+    <!-- Backdrop -->
+    <div onclick="toggleCartDrawer()" class="absolute inset-0 bg-slate-900/40 backdrop-blur-sm"></div>
+    
+    <!-- Panel -->
+    <div id="cartPanel" class="absolute right-0 top-0 bottom-0 w-full max-w-md bg-white shadow-2xl p-6 flex flex-col justify-between transform translate-x-full transition-transform duration-300 pointer-events-auto">
+      
+      <!-- Cart Header -->
+      <div class="flex items-center justify-between border-b border-sage-100 pb-4">
+        <div class="flex items-center gap-2">
+          <i class="fa-solid fa-bag-shopping text-sage-700 text-lg"></i>
+          <h3 class="font-extrabold text-lg text-slate-900">Tu Bolsa de Compras</h3>
+        </div>
+        <button onclick="toggleCartDrawer()" class="text-slate-400 hover:text-slate-700 w-8 h-8 rounded-full flex items-center justify-center hover:bg-sage-50 transition">
+          <i class="fa-solid fa-xmark text-lg"></i>
+        </button>
       </div>
-      <div class="flex flex-col items-center justify-center p-2">
-        <i class="fa-solid fa-shield-cat text-2xl text-emerald-600 mb-1"></i>
-        <span class="font-extrabold">PROTECCIÓN AL COMPRADOR</span>
-        <span class="text-[10px] text-stone-500">Reembolso 100% si no llega a tiempo</span>
+
+      <!-- Cart Items Container -->
+      <div id="cartItems" class="flex-1 overflow-y-auto py-4 space-y-4">
+        <!-- Rendered via JS -->
       </div>
-      <div class="flex flex-col items-center justify-center p-2">
-        <i class="fa-solid fa-lock text-2xl text-blue-600 mb-1"></i>
-        <span class="font-extrabold">PAGO SEGURO Y ENCRIPTADO</span>
-        <span class="text-[10px] text-stone-500">Tarjetas, PayPal y Pago contra entrega</span>
+
+      <!-- Cart Footer -->
+      <div class="border-t border-sage-100 pt-4 space-y-3">
+        <div class="flex items-center justify-between text-xs text-slate-500">
+          <span>Envío</span>
+          <span class="font-bold text-sage-700">¡GRATIS!</span>
+        </div>
+        <div class="flex items-center justify-between text-base font-extrabold text-slate-900">
+          <span>Total Estimado</span>
+          <span id="cartTotalDrawer">$0.00</span>
+        </div>
+        <button onclick="checkout()" class="w-full bg-sage-700 hover:bg-sage-800 text-white font-bold py-3.5 rounded-2xl shadow-nordic transition flex items-center justify-center gap-2 text-xs uppercase tracking-wider">
+          <i class="fa-solid fa-lock text-xs"></i>
+          <span>Finalizar Compra Segura</span>
+        </button>
       </div>
-      <div class="flex flex-col items-center justify-center p-2">
-        <i class="fa-solid fa-headset text-2xl text-amber-600 mb-1"></i>
-        <span class="font-extrabold">SOPORTE VETERINARIO 24/7</span>
-        <span class="text-[10px] text-stone-500">Asesoría directa en cada compra</span>
+
+    </div>
+  </div>
+
+  <!-- NORDIC SCANDINAVIAN FOOTER -->
+  <footer class="bg-nordic-dark text-slate-300 text-xs pt-12 pb-8 border-t border-sage-900 mt-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-4 gap-8 mb-10">
+      
+      <div class="space-y-3">
+        <div class="flex items-center gap-2 text-white font-extrabold text-lg">
+          <i class="fa-solid fa-paw text-sage-400"></i> PETVET nordic
+        </div>
+        <p class="text-slate-400 leading-relaxed text-[11px]">
+          Inspirados en la naturaleza y la simplicidad del norte de Europa. Cuidamos la salud de tu mascota con diseño consciente.
+        </p>
+      </div>
+
+      <div>
+        <h4 class="text-white font-bold mb-3 uppercase tracking-wider text-[11px]">Categorías</h4>
+        <ul class="space-y-2 text-slate-400 text-[11px]">
+          <li><a href="#" class="hover:text-sage-300 transition">Alimentación Orgánica</a></li>
+          <li><a href="#" class="hover:text-sage-300 transition">Camas & Textiles Salvia</a></li>
+          <li><a href="#" class="hover:text-sage-300 transition">Juguetes de Madera & Cuerda</a></li>
+          <li><a href="#" class="hover:text-sage-300 transition">Higiene & Suplementos</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="text-white font-bold mb-3 uppercase tracking-wider text-[11px]">Compromiso</h4>
+        <ul class="space-y-2 text-slate-400 text-[11px]">
+          <li><i class="fa-solid fa-leaf text-sage-400 mr-1.5"></i> Materiales sostenibles</li>
+          <li><i class="fa-solid fa-check text-sage-400 mr-1.5"></i> Sin plásticos de un solo uso</li>
+          <li><i class="fa-solid fa-heart text-sage-400 mr-1.5"></i> Aprobado por Veterinarios</li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="text-white font-bold mb-3 uppercase tracking-wider text-[11px]">Boletín Nórdico</h4>
+        <p class="text-slate-400 text-[11px] mb-2">Recibe consejos de salud y un 10% OFF en tu primer pedido.</p>
+        <div class="flex gap-2">
+          <input type="email" placeholder="Tu correo..." class="bg-slate-800 border border-slate-700 text-white px-3 py-2 rounded-xl text-xs flex-1 focus:outline-none focus:border-sage-500">
+          <button onclick="showToast('¡Gracias por suscribirte!')" class="bg-sage-700 hover:bg-sage-600 text-white px-3 py-2 rounded-xl text-xs font-bold transition">Unirme</button>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 border-t border-slate-800/80 pt-6 flex flex-col sm:flex-row justify-between items-center gap-4 text-slate-500 text-[11px]">
+      <p>© 2025 PETVET PetGord Commerce OS. Todos los derechos reservados.</p>
+      <div class="flex gap-4">
+        <span>Términos</span>
+        <span>Privacidad</span>
+        <span>Envíos Escandinavos</span>
       </div>
     </div>
-  </section>
+  </footer>
 
-  <!-- FOOTER -->
-  <footer class="bg-stone-900 text-stone-400 text-xs py-10 border-t border-stone-800">
-    <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
-      <div>
-        <div class="flex items-center gap-2 mb-3">
-          <div class="w-8 h-8 rounded-lg bg-temu-orange text-white flex items-center justify-center font-black text-lg">
-            <i class="fa-solid fa-paw"></i>
-          </div>
-          <span class="font-black text-lg text-white tracking-tight">PETVET <span class="text-temu-orange">PetGord</span></span>
-        </div>
-        <p class="text-stone-400 text-xs leading-relaxed mb-3">
-          La plataforma #1 de comercio electrónico para consentir a tus animales de compañía con artículos de alta calidad y precios de liquidación estilo Temu.
-        </p>
-        <div class="flex gap-3 text-lg text-stone-300">
-          <a href="#" class="hover:text-temu-orange"><i class="fa-brands fa-facebook"></i></a>
-          <a href="#" class="hover:text-temu-orange"><i class="fa-brands fa-instagram"></i></a>
-          <a href="#" class="hover:text-temu-orange"><i class="fa-brands fa-tiktok"></i></a>
-          <a href="#" class="hover:text-temu-orange"><i class="fa-brands fa-whatsapp"></i></a>
-        </div>
-      </div>
+  <!-- MANDATORY JAVASCRIPT & SHOP-API INTEGRATION -->
+  <script>
+    // State Management
+    let products = [];
+    let cart = [];
+    let currentCategory = 'all';
 
-      <div>
-        <h4 class="font-bold text-white text-sm mb-3">Atención al Cliente</h4>
-        <ul class="space-y-2">
-          <li><a href="#" class="hover:underline">Estado de mi Pedido</a></li>
-          <li><a href="#" class="hover:underline">Política de Devoluciones (90 Días)</a></li>
-          <li><a href="#" class="hover:underline">Centro de Ayuda Vet</a></li>
-          <li><a href="#" class="hover:underline">Términos del Servicio</a></li>
-        </ul>
-      </div>
+    // DOBEHA Core Endpoint
+    const API_ENDPOINT = 'https://dobeha-core-778104196562.us-east1.run.app/shop-api';
 
-      <div>
-        <h4 class="font-bold text-white text-sm mb-3">Categorías Populares</h4>
-        <ul class="space-y-2">
-          <li><a href="#" onclick="filterCategory('dog')" class="hover:underline">Alimentos & Premios para Perros</a></li>
-          <li><a href="#" onclick="filterCategory('cat')" class="hover:underline">Rascadores & Areneros Gatos</a></li>
-          <li><a href="#" onclick="filterCategory('health')" class="hover:underline">Suplementos & Antipulgas</a></li>
-          <li><a href="#" onclick="filterCategory('toys')" class="hover:underline">Juguetes Interactivos</a></li>
-        </ul>
-      </div>
-
-      <div>
-        <h4 class="font-bold text-white text-sm mb-3">
+    // Scandinavian Fallback Products Dataset
+    const fallbackProducts = [
+      {
+        id: '1',
+        name: 'Cama Ergonómica Salvia Nordic',
+        price: 45.99,
+        category: 'acc',
+        image: 'https://images.unsplash.com/photo-1541599540903-216a46ca1dc0?auto=format&fit=crop&w=600&q=80',
+        rating: 4.9,
+        badge: 'Top Ventas'
+      },
+      {
+        id: '2',
 
   <script>
     const VENDURE_SHOP_API = 'https://dobeha-core-778104196562.us-east1.run.app/shop-api';
