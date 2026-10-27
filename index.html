@@ -3,356 +3,378 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PETGO-RD | Tienda Oficial de Mascotas & Accesorios</title>
-  <meta name="description" content="Tienda online oficial PETGO-RD. Catálogo de accesorios, alimentos y bienestar para mascotas con envíos garantizados.">
-
-  <!-- Tailwind CSS & FontAwesome -->
+  <title>LUCY STILO | Maquillaje High-Glam & Elegancia Rosa</title>
+  
+  <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-
   <script>
     tailwind.config = {
       theme: {
         extend: {
-          fontFamily: {
-            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
-          },
           colors: {
-            brand: {
-              50: '#fdf4ff',
-              100: '#fae8ff',
-              500: '#a855f7',
-              600: '#9333ea',
-              700: '#7e22ce',
-              900: '#581c87',
+            barbie: {
+              50: '#fff1f6',
+              100: '#ffe4ee',
+              200: '#fecddf',
+              300: '#fea3c5',
+              400: '#fc6aa0',
+              500: '#f43f82',
+              600: '#e11d62',
+              700: '#be124c',
+              800: '#9f1243',
+              900: '#85143d',
             }
+          },
+          fontFamily: {
+            sans: ['Plus Jakarta Sans', 'sans-serif'],
+            serif: ['Playfair Display', 'serif'],
           }
         }
       }
     }
   </script>
-
+  
+  <!-- FontAwesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Google Fonts: Playfair Display & Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,800;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
   <style>
-    body { font-family: 'Plus Jakarta Sans', sans-serif; }
-    .badge-glow { box-shadow: 0 0 20px rgba(99, 102, 241, 0.35); }
-    .glass-card { background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(12px); }
+    body {
+      background-color: #ffffff;
+      color: #1f2937;
+    }
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #fff1f6;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #f43f82;
+      border-radius: 999px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #be124c;
+    }
+    .pink-glow {
+      box-shadow: 0 10px 30px -5px rgba(244, 63, 130, 0.25);
+    }
+    .glass-card {
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(254, 205, 223, 0.6);
+    }
   </style>
 </head>
-<body class="bg-slate-50 text-slate-800 antialiased selection:bg-indigo-600 selection:text-white">
+<body class="font-sans antialiased selection:bg-barbie-200 selection:text-barbie-900 flex flex-col min-h-screen">
 
-  <!-- ================= 1. BARRA SUPERIOR DE AVISOS ================= -->
-  <div class="bg-gradient-to-r from-indigo-950 via-slate-900 to-purple-950 text-indigo-200 text-xs py-2.5 px-4 font-semibold text-center border-b border-indigo-900/50 flex items-center justify-center gap-2">
-    <span class="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-    <span>🐾 Envíos a todo el país | Pagos Contra Entrega Disponibles | DOBEHA Commerce Core Live</span>
+  <!-- TOP ANNOUNCEMENT BANNER -->
+  <div class="bg-gradient-to-r from-barbie-700 via-barbie-600 to-barbie-800 text-white text-xs py-2.5 px-4 font-medium tracking-wide shadow-inner">
+    <div class="max-w-7xl mx-auto flex flex-wrap justify-between items-center gap-2">
+      <div class="flex items-center gap-2 mx-auto sm:mx-0">
+        <span class="bg-white/20 text-white text-[10px] uppercase font-bold px-2.5 py-0.5 rounded-full border border-white/30 tracking-widest">
+          Glam Luxe
+        </span>
+        <span class="text-xs sm:text-sm">
+          Envío GRATIS en compras superiores a $45.00 | 100% Cruelty-Free
+        </span>
+      </div>
+      <div class="hidden md:flex items-center gap-6 text-[11px] font-semibold tracking-wider uppercase text-barbie-100">
+        <span><i class="fa-solid fa-sparkles mr-1 text-barbie-300"></i> Fórmulas Pro High-Pigment</span>
+        <span><i class="fa-solid fa-truck-fast mr-1 text-barbie-300"></i> Entrega Express</span>
+      </div>
+    </div>
   </div>
 
-  <!-- ================= 2. CABECERA & NAVEGACIÓN PRINCIPAL ================= -->
-  <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-200/80 shadow-xs transition-all">
-    <div class="max-w-7xl mx-auto px-4 h-20 flex items-center justify-between gap-4">
-      <!-- Logo y Marca -->
-      <a href="#" class="flex items-center space-x-3 group">
-        <div class="w-11 h-11 rounded-2xl bg-gradient-to-tr from-indigo-600 to-purple-600 text-white flex items-center justify-center font-black text-xl shadow-lg shadow-indigo-600/30 group-hover:scale-105 transition transform">
-          P
-        </div>
-        <div>
-          <span class="font-black text-xl tracking-tight text-slate-900 block leading-none">PETGO-RD</span>
-          <span class="text-[10px] text-indigo-600 font-extrabold uppercase tracking-widest mt-1 block">Tienda Oficial</span>
-        </div>
-      </a>
+  <!-- HEADER / NAVIGATION -->
+  <header class="bg-white/95 backdrop-blur-md sticky top-0 z-40 border-b border-barbie-100 shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20 gap-4">
+        
+        <!-- Brand Logo -->
+        <a href="#" class="flex items-center gap-3 group">
+          <div class="w-11 h-11 rounded-2xl bg-gradient-to-tr from-barbie-600 to-barbie-400 text-white flex items-center justify-center text-xl font-extrabold shadow-md transform group-hover:scale-105 transition duration-300">
+            <i class="fa-solid fa-wand-magic-sparkles"></i>
+          </div>
+          <div class="flex flex-col">
+            <span class="font-serif font-black text-2xl sm:text-3xl tracking-tight text-slate-900 group-hover:text-barbie-600 transition">
+              LUCY STILO
+            </span>
+            <span class="text-[9px] font-bold text-barbie-600 uppercase tracking-[0.25em] -mt-1">
+              Beauty & Color Studio
+            </span>
+          </div>
+        </a>
 
-      <!-- Buscador en tiempo real de productos -->
-      <div class="hidden md:flex flex-1 max-w-md mx-6">
-        <div class="relative w-full">
-          <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 text-xs"></i>
-          <input 
-            type="text" 
-            id="searchInput" 
-            oninput="window.dobehaFilterProducts()" 
-            placeholder="Buscar entre los 16 productos oficiales..." 
-            class="w-full pl-10 pr-4 py-2.5 bg-slate-100 hover:bg-slate-50 focus:bg-white rounded-2xl border border-transparent focus:border-indigo-500 focus:ring-3 focus:ring-indigo-500/15 text-xs text-slate-800 transition outline-hidden font-medium"
-          >
+        <!-- Desktop Search Bar -->
+        <div class="hidden md:flex flex-1 max-w-md mx-6">
+          <div class="relative w-full">
+            <input type="text" id="searchInput" placeholder="Buscar labiales, bases matte, iluminadores..." class="w-full bg-barbie-50/60 border border-barbie-200 text-slate-800 text-xs rounded-full pl-11 pr-4 py-3 focus:outline-none focus:ring-2 focus:ring-barbie-500 focus:bg-white transition-all duration-300 placeholder:text-slate-400">
+            <div class="absolute left-4 top-1/2 -translate-y-1/2 text-barbie-500 text-sm">
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </div>
+          </div>
         </div>
+
+        <!-- Cart Button -->
+        <div class="flex items-center gap-3">
+          <button id="cartBtn" class="bg-gradient-to-r from-barbie-600 to-barbie-500 hover:from-barbie-700 hover:to-barbie-600 text-white px-5 py-2.5 rounded-full transition-all duration-300 flex items-center gap-3 shadow-md hover:shadow-lg active:scale-95 border border-barbie-400/30">
+            <div class="relative">
+              <i class="fa-solid fa-bag-shopping text-base"></i>
+              <span id="cartBadge" class="absolute -top-2.5 -right-2.5 bg-slate-900 text-white text-[10px] font-extrabold w-5 h-5 rounded-full flex items-center justify-center border-2 border-white shadow-sm">0</span>
+            </div>
+            <span class="text-xs font-bold tracking-wider uppercase hidden sm:inline-block">Mi Carrito</span>
+          </button>
+        </div>
+
       </div>
 
-      <!-- Enlaces de Navegación SPA -->
-      <nav class="hidden lg:flex items-center space-x-7 text-xs font-bold text-slate-600">
-        <a href="#catalogo" class="hover:text-indigo-600 transition flex items-center gap-1.5"><i class="fa-solid fa-bag-shopping text-indigo-500"></i> Catálogo</a>
-        <a href="#ofertas" class="hover:text-indigo-600 transition flex items-center gap-1.5"><i class="fa-solid fa-bolt text-amber-500"></i> Ofertas</a>
-        <a href="#nosotros" class="hover:text-indigo-600 transition">Nosotros</a>
-        <a href="#testimonios" class="hover:text-indigo-600 transition">Reseñas</a>
-        <a href="#faq" class="hover:text-indigo-600 transition">Preguntas</a>
-        <a href="#contacto" class="hover:text-indigo-600 transition">Contacto</a>
-      </nav>
-
-      <!-- Botón Carrito de Compras -->
-      <div class="flex items-center gap-3">
-        <button 
-          id="cartBtn"
-          type="button" 
-          onclick="window.dobehaOpenCart()"
-          class="relative p-2.5 rounded-2xl bg-slate-100 hover:bg-indigo-50 text-slate-700 hover:text-indigo-600 transition flex items-center gap-2 border border-slate-200 cursor-pointer shadow-2xs group"
-          title="Ver Carrito de Compras"
-        >
-          <i class="fa-solid fa-cart-shopping text-base group-hover:scale-110 transition"></i>
-          <span class="text-xs font-black hidden sm:inline">Carrito</span>
-          <span id="cartBadge" class="cartBadge absolute -top-1.5 -right-1.5 bg-rose-500 text-white text-[10px] font-black w-5 h-5 rounded-full flex items-center justify-center shadow-md shadow-rose-500/40">
-            0
-          </span>
-        </button>
-
-        <a 
-          href="https://wa.me/18293998904?text=Hola,%20tengo%20una%20consulta%20sobre%20la%20tienda%20PETGO-RD" 
-          target="_blank" 
-          rel="noopener noreferrer"
-          class="hidden sm:inline-flex items-center gap-1.5 px-3.5 py-2.5 rounded-2xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-extrabold shadow-md shadow-emerald-600/20 transition cursor-pointer"
-        >
-          <i class="fa-brands fa-whatsapp text-sm"></i>
-          <span>Asistencia</span>
-        </a>
+      <!-- Mobile Search Bar -->
+      <div class="pb-3 md:hidden">
+        <div class="relative w-full">
+          <input type="text" placeholder="Buscar cosméticos..." class="w-full bg-barbie-50/80 border border-barbie-200 text-slate-800 text-xs rounded-full pl-10 pr-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-barbie-500">
+          <div class="absolute left-3.5 top-1/2 -translate-y-1/2 text-barbie-500 text-xs">
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </div>
+        </div>
       </div>
     </div>
   </header>
 
-  <!-- ================= 3. HERO BANNER PRINCIPAL CON CTA ================= -->
-  <section class="relative overflow-hidden bg-gradient-to-br from-slate-950 via-indigo-950 to-slate-900 text-white py-20 lg:py-28 px-4">
-    <div class="absolute inset-0 opacity-20 bg-[radial-gradient(#818cf8_1px,transparent_1px)] [background-size:24px_24px]"></div>
-    
-    <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10">
-      <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
-        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-indigo-500/20 border border-indigo-400/30 text-indigo-300 text-xs font-bold tracking-wide uppercase badge-glow">
-          <i class="fa-solid fa-sparkles text-amber-400"></i>
-          <span>Colección Oficial 2026</span>
-        </div>
-
-        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-tight">
-          Todo lo que tu mascota ama en un solo lugar
-        </h1>
-
-        <p class="text-indigo-200/90 text-base sm:text-lg max-w-xl mx-auto lg:mx-0 leading-relaxed font-normal">
-          Productos premium certificados para el bienestar, nutrición, salud y diversión de tus peludos amigos.
-        </p>
-
-        <div class="pt-4 flex flex-wrap items-center justify-center lg:justify-start gap-4">
-          <a href="#catalogo" class="px-8 py-4 rounded-2xl bg-indigo-600 hover:bg-indigo-500 text-white text-sm font-extrabold shadow-xl shadow-indigo-600/30 transition transform hover:-translate-y-0.5 flex items-center gap-2">
-            <span>Ver Catálogo Completo</span>
-            <i class="fa-solid fa-arrow-down ml-1"></i>
-          </a>
-          <a href="#beneficios" class="px-6 py-4 rounded-2xl bg-white/10 hover:bg-white/15 text-white border border-white/20 text-sm font-bold transition backdrop-blur-md">
-            Conocer Garantías
-          </a>
-        </div>
-
-        <!-- Badges de Confianza Rápidos -->
-        <div class="pt-8 border-t border-indigo-900/60 grid grid-cols-3 gap-4 max-w-lg mx-auto lg:mx-0 text-center">
-          <div>
-            <div class="text-xl sm:text-2xl font-black text-white">100%</div>
-            <div class="text-[11px] text-indigo-300 font-medium">Garantizado</div>
+  <!-- HERO BANNER (ELEGANT SOPHISTICATED BARBIE PINK) -->
+  <section class="relative bg-gradient-to-b from-barbie-50 via-white to-pink-50/30 py-12 sm:py-20 overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        
+        <!-- Hero Text -->
+        <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+          <div class="inline-flex items-center gap-2 bg-white border border-barbie-200 px-4 py-1.5 rounded-full shadow-sm">
+            <span class="w-2.5 h-2.5 rounded-full bg-barbie-500 animate-ping"></span>
+            <span class="text-xs font-bold text-barbie-700 tracking-wide uppercase">Nueva Colección Luxury Glam 2025</span>
           </div>
-          <div>
-            <div class="text-xl sm:text-2xl font-black text-white">24-48h</div>
-            <div class="text-[11px] text-indigo-300 font-medium">Envíos a todo el país</div>
+          
+          <h1 class="text-4xl sm:text-6xl font-serif font-bold text-slate-900 tracking-tight leading-tight">
+            El rosa elevado a la <span class="italic text-transparent bg-clip-text bg-gradient-to-r from-barbie-600 via-barbie-500 to-rose-600">máxima elegancia.</span>
+          </h1>
+
+          <p class="text-slate-600 text-sm sm:text-base font-normal max-w-xl mx-auto lg:mx-0 leading-relaxed">
+            Descubre cosméticos de calidad profesional diseñados para mujeres audaces, sofisticadas y seguras. Pigmentación intensa, texturas sedosas y acabado de alfombra roja sin esfuerzo infantil.
+          </p>
+
+          <div class="flex flex-wrap items-center justify-center lg:justify-start gap-4 pt-2">
+            <a href="#catalogo" class="bg-slate-900 hover:bg-barbie-600 text-white text-xs font-bold tracking-widest uppercase px-8 py-4 rounded-full transition-all duration-300 shadow-lg hover:shadow-barbie-500/20 flex items-center gap-3 active:scale-95">
+              <span>Explorar Catálogo</span>
+              <i class="fa-solid fa-arrow-right text-xs"></i>
+            </a>
+            <a href="#nosotros" class="bg-white hover:bg-barbie-50 text-slate-800 text-xs font-bold tracking-widest uppercase px-8 py-4 rounded-full border border-barbie-200 transition-all duration-300 shadow-sm">
+              Conocer la Marca
+            </a>
           </div>
-          <div>
-            <div class="text-xl sm:text-2xl font-black text-white">5 Estrellas</div>
-            <div class="text-[11px] text-indigo-300 font-medium">+500 Clientes Felices</div>
+
+          <!-- Social Proof Pill -->
+          <div class="pt-4 flex items-center justify-center lg:justify-start gap-4 text-xs text-slate-500 font-medium">
+            <div class="flex -space-x-2">
+              <img class="w-8 h-8 rounded-full border-2 border-white object-cover" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&auto=format&fit=crop&q=80" alt="User">
+              <img class="w-8 h-8 rounded-full border-2 border-white object-cover" src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=100&auto=format&fit=crop&q=80" alt="User">
+              <img class="w-8 h-8 rounded-full border-2 border-white object-cover" src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=100&auto=format&fit=crop&q=80" alt="User">
+            </div>
+            <span><strong>+15,000 Mujeres</strong> aman Lucy Stilo en toda la región</span>
           </div>
         </div>
-      </div>
 
-      <!-- Imagen Destacada del Hero -->
-      <div class="lg:col-span-5 relative">
-        <div class="relative mx-auto max-w-md lg:max-w-none">
-          <div class="absolute -inset-4 bg-gradient-to-r from-indigo-500 to-purple-600 rounded-3xl blur-2xl opacity-40 animate-pulse"></div>
-          <div class="relative rounded-3xl overflow-hidden border border-white/20 shadow-2xl bg-slate-900 aspect-4/3 sm:aspect-square">
-            <img src="https://images.unsplash.com/photo-1450778869180-41d0601e046e?w=1000&q=80" alt="PETGO-RD" class="w-full h-full object-cover">
+        <!-- Hero Image Showcase -->
+        <div class="lg:col-span-5 flex justify-center">
+          <div class="relative w-full max-w-md">
+            <!-- Decorative Pink Halo -->
+            <div class="absolute -inset-2 bg-gradient-to-tr from-barbie-500 to-rose-300 rounded-3xl blur-2xl opacity-40"></div>
+            
+            <div class="relative rounded-3xl overflow-hidden bg-white p-3 border border-barbie-200 shadow-2xl">
+              <div class="aspect-[4/5] rounded-2xl overflow-hidden relative">
+                <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=800&q=80" alt="Lucy Stilo Makeup Collection" class="w-full h-full object-cover transform hover:scale-105 transition duration-700">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent flex flex-col justify-end p-6 text-white">
+                  <span class="text-xs font-bold uppercase tracking-widest text-barbie-300">Colección Glamour</span>
+                  <h3 class="font-serif text-2xl font-bold">Paleta Velvet Luxe & Lipsticks</h3>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
+
       </div>
     </div>
   </section>
 
-  <!-- ================= 4. BANNER DE OFERTAS RELÁMPAGO (FLASH DEALS) ================= -->
-  <section id="ofertas" class="bg-gradient-to-r from-amber-500 via-orange-500 to-rose-600 text-white py-5 px-4 shadow-inner">
-    <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4 text-center md:text-left">
-      <div class="flex items-center gap-3">
-        <div class="w-10 h-10 rounded-2xl bg-white/20 flex items-center justify-center text-xl shrink-0">
-          🔥
+  <!-- 4 PILARES DE GARANTÍA Y CONFIANZA -->
+  <section class="bg-white border-y border-barbie-100 py-8 px-4">
+    <div class="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-6">
+      <div class="flex items-center gap-4 p-3 rounded-2xl bg-barbie-50/50 border border-barbie-100/80">
+        <div class="w-12 h-12 rounded-xl bg-barbie-600 text-white flex items-center justify-center text-lg shrink-0 shadow-sm">
+          <i class="fa-solid fa-heart"></i>
         </div>
         <div>
-          <h3 class="font-black text-base uppercase tracking-wider">¡Ofertas Flash de Temporada!</h3>
-          <p class="text-xs text-orange-100 font-medium">Aprovecha hasta un 40% OFF en productos seleccionados para perros y gatos.</p>
+          <h4 class="text-xs font-extrabold uppercase tracking-wider text-slate-900">100% Cruelty Free</h4>
+          <p class="text-[11px] text-slate-500">Nunca testeado en animales</p>
         </div>
       </div>
-      <div class="flex items-center gap-4">
-        <div class="flex items-center gap-1.5 font-mono text-xs font-black bg-black/30 px-3 py-1.5 rounded-xl border border-white/20">
-          <i class="fa-regular fa-clock mr-1"></i>
-          <span>Finaliza en: <span class="text-amber-300">23h : 42m : 15s</span></span>
+
+      <div class="flex items-center gap-4 p-3 rounded-2xl bg-barbie-50/50 border border-barbie-100/80">
+        <div class="w-12 h-12 rounded-xl bg-barbie-600 text-white flex items-center justify-center text-lg shrink-0 shadow-sm">
+          <i class="fa-solid fa-gem"></i>
         </div>
-        <a href="#catalogo" class="px-4 py-2 bg-white text-slate-900 font-black rounded-xl text-xs hover:bg-orange-50 transition shadow-md">
-          Aprovechar
-        </a>
+        <div>
+          <h4 class="text-xs font-extrabold uppercase tracking-wider text-slate-900">Alta Pigmentación</h4>
+          <p class="text-[11px] text-slate-500">Duración extendida 24h</p>
+        </div>
       </div>
-    </div>
-  </section>
 
-  <!-- ================= 5. BENEFICIOS Y 4 PILARES DE CONFIANZA ================= -->
-  <section id="beneficios" class="py-16 bg-white border-b border-slate-200/80">
-    <div class="max-w-7xl mx-auto px-4">
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        <div class="p-6 rounded-3xl bg-slate-50 border border-slate-200/80 hover:border-indigo-400 transition group">
-          <div class="w-12 h-12 rounded-2xl bg-indigo-100 text-indigo-600 flex items-center justify-center text-xl mb-4 group-hover:scale-110 transition">
-            <i class="fa-solid fa-truck-fast"></i>
-          </div>
-          <h4 class="font-black text-slate-900 text-sm mb-1.5">Envíos Rápidos</h4>
-          <p class="text-xs text-slate-500 leading-relaxed">Entregas en 24 a 48 horas en Santo Domingo, Santiago y todas las provincias.</p>
+      <div class="flex items-center gap-4 p-3 rounded-2xl bg-barbie-50/50 border border-barbie-100/80">
+        <div class="w-12 h-12 rounded-xl bg-barbie-600 text-white flex items-center justify-center text-lg shrink-0 shadow-sm">
+          <i class="fa-solid fa-truck-sparkles"></i>
         </div>
-
-        <div class="p-6 rounded-3xl bg-slate-50 border border-slate-200/80 hover:border-emerald-400 transition group">
-          <div class="w-12 h-12 rounded-2xl bg-emerald-100 text-emerald-600 flex items-center justify-center text-xl mb-4 group-hover:scale-110 transition">
-            <i class="fa-solid fa-hand-holding-dollar"></i>
-          </div>
-          <h4 class="font-black text-slate-900 text-sm mb-1.5">Pago Contra Entrega</h4>
-          <p class="text-xs text-slate-500 leading-relaxed">Paga en efectivo o transferencia cuando recibas tu pedido en la puerta de tu hogar.</p>
+        <div>
+          <h4 class="text-xs font-extrabold uppercase tracking-wider text-slate-900">Envío Rápido</h4>
+          <p class="text-[11px] text-slate-500">Despacho seguro en 24/48h</p>
         </div>
+      </div>
 
-        <div class="p-6 rounded-3xl bg-slate-50 border border-slate-200/80 hover:border-purple-400 transition group">
-          <div class="w-12 h-12 rounded-2xl bg-purple-100 text-purple-600 flex items-center justify-center text-xl mb-4 group-hover:scale-110 transition">
-            <i class="fa-solid fa-certificate"></i>
-          </div>
-          <h4 class="font-black text-slate-900 text-sm mb-1.5">Productos Premium</h4>
-          <p class="text-xs text-slate-500 leading-relaxed">Calidad certificada libre de tóxicos para el cuidado integral de tus mascotas.</p>
+      <div class="flex items-center gap-4 p-3 rounded-2xl bg-barbie-50/50 border border-barbie-100/80">
+        <div class="w-12 h-12 rounded-xl bg-barbie-600 text-white flex items-center justify-center text-lg shrink-0 shadow-sm">
+          <i class="fa-solid fa-shield-halved"></i>
         </div>
-
-        <div class="p-6 rounded-3xl bg-slate-50 border border-slate-200/80 hover:border-rose-400 transition group">
-          <div class="w-12 h-12 rounded-2xl bg-rose-100 text-rose-600 flex items-center justify-center text-xl mb-4 group-hover:scale-110 transition">
-            <i class="fa-solid fa-shield-heart"></i>
-          </div>
-          <h4 class="font-black text-slate-900 text-sm mb-1.5">Soporte Continuo</h4>
-          <p class="text-xs text-slate-500 leading-relaxed">Atención personalizada directa por WhatsApp antes, durante y después de tu compra.</p>
+        <div>
+          <h4 class="text-xs font-extrabold uppercase tracking-wider text-slate-900">Garantía VIP</h4>
+          <p class="text-[11px] text-slate-500">Satisfacción total garantizada</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ================= 6. CATÁLOGO OFICIAL VENDURE MULTI-TENANT CORE ================= -->
-  <main id="catalogo" class="py-16 px-4 max-w-7xl mx-auto">
-    <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8">
-      <div>
-        <span class="px-3 py-1 bg-indigo-50 text-indigo-700 text-[10px] font-extrabold uppercase rounded-full">
-          Sincronizado en Tiempo Real
-        </span>
-        <h2 class="text-3xl font-black text-slate-900 mt-2">Catálogo de Productos Oficiales</h2>
-        <p class="text-xs text-slate-500 mt-1">Conectado a la base de datos de DOBEHA Core Multi-tenant</p>
-      </div>
-
-      <!-- Filtros rápidos por píldora -->
-      <div id="categoryFilters" class="flex flex-wrap items-center gap-2">
-        <button type="button" onclick="window.dobehaSetCategory('all')" class="cat-pill px-4 py-2 rounded-2xl text-xs font-bold transition bg-indigo-600 text-white shadow-sm" data-category="all">Todos los Productos</button>
-        <button type="button" onclick="window.dobehaSetCategory('velon')" class="cat-pill px-4 py-2 rounded-2xl text-xs font-bold transition bg-white text-slate-700 hover:bg-slate-100 border border-slate-200" data-category="velon">Velones Aromáticos</button>
-        <button type="button" onclick="window.dobehaSetCategory('bolso')" class="cat-pill px-4 py-2 rounded-2xl text-xs font-bold transition bg-white text-slate-700 hover:bg-slate-100 border border-slate-200" data-category="bolso">Bolsos PetVet</button>
-        <button type="button" onclick="window.dobehaSetCategory('arenero')" class="cat-pill px-4 py-2 rounded-2xl text-xs font-bold transition bg-white text-slate-700 hover:bg-slate-100 border border-slate-200" data-category="arenero">Areneros Gatos</button>
-        <button type="button" onclick="window.dobehaSetCategory('semillas')" class="cat-pill px-4 py-2 rounded-2xl text-xs font-bold transition bg-white text-slate-700 hover:bg-slate-100 border border-slate-200" data-category="semillas">Semillas Aves</button>
-      </div>
+  <!-- CATÁLOGO DE PRODUCTOS -->
+  <section id="catalogo" class="py-16 px-4 max-w-7xl mx-auto w-full">
+    <div class="text-center max-w-2xl mx-auto mb-10 space-y-3">
+      <span class="text-xs font-bold text-barbie-600 uppercase tracking-widest bg-barbie-100/60 px-3 py-1 rounded-full">Catálogo Oficial</span>
+      <h2 class="font-serif text-3xl sm:text-4xl font-extrabold text-slate-900">Nuestra Colección Exclusiva</h2>
+      <p class="text-slate-500 text-xs sm:text-sm">Encuentra los tonos, sombras y acabados perfectos para realzar tu estilo único.</p>
     </div>
 
-    <!-- Contenedor Maestro de Productos (Poblado Dinámicamente) -->
+    <!-- Category Filter Pills -->
+    <div id="categoryFilters" class="flex items-center justify-center gap-2 sm:gap-3 flex-wrap mb-10 text-xs">
+      <button class="bg-barbie-600 text-white font-semibold px-5 py-2.5 rounded-full shadow-md transition">Todos los Productos</button>
+      <button class="bg-barbie-50 text-slate-700 hover:bg-barbie-100 font-medium px-5 py-2.5 rounded-full border border-barbie-200 transition">Labios Luxe</button>
+      <button class="bg-barbie-50 text-slate-700 hover:bg-barbie-100 font-medium px-5 py-2.5 rounded-full border border-barbie-200 transition">Rostro & Piel</button>
+      <button class="bg-barbie-50 text-slate-700 hover:bg-barbie-100 font-medium px-5 py-2.5 rounded-full border border-barbie-200 transition">Ojos & Mirada</button>
+      <button class="bg-barbie-50 text-slate-700 hover:bg-barbie-100 font-medium px-5 py-2.5 rounded-full border border-barbie-200 transition">Kits Glam</button>
+    </div>
+
+    <!-- Mandatory Product Grid Container -->
     <div id="productsGrid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"></div>
-  </main>
+  </section>
 
-  <!-- ================= 7. SECCIÓN SOBRE NOSOTROS & HISTORIA ================= -->
-  <section id="nosotros" class="py-20 bg-white border-t border-b border-slate-200">
-    <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-      <div class="lg:col-span-6 relative">
-        <div class="rounded-3xl overflow-hidden shadow-2xl border border-slate-200 aspect-4/3">
-          <img src="https://images.unsplash.com/photo-1548199973-03cce0bbc87b?w=800&q=80" alt="PETGO-RD Nosotros" class="w-full h-full object-cover">
-        </div>
-        <div class="absolute -bottom-6 -right-6 bg-slate-900 text-white p-6 rounded-3xl shadow-xl hidden sm:block border border-slate-800 max-w-xs">
-          <p class="text-xs font-bold text-amber-400 uppercase tracking-widest mb-1">Compromiso Total</p>
-          <p class="text-xs text-slate-300 font-medium">Cada producto es inspeccionado para garantizar seguridad y confort a tus mascotas.</p>
-        </div>
-      </div>
-
-      <div class="lg:col-span-6 space-y-6">
-        <span class="px-3 py-1 bg-purple-100 text-purple-800 text-xs font-extrabold uppercase rounded-full">
-          Nuestra Esencia
-        </span>
-        <h3 class="text-3xl sm:text-4xl font-black text-slate-900 tracking-tight">
-          Amor y Dedicación por el Bienestar Animal
-        </h3>
-        <p class="text-sm text-slate-600 leading-relaxed">
-          En PETGO-RD nacimos con una misión clara: ofrecer a los amantes de las mascotas en República Dominicana acceso a productos de la más alta calidad internacional, seleccionados por expertos veterinarios.
-        </p>
-        <p class="text-sm text-slate-600 leading-relaxed">
-          Nos aseguramos de que cada velón aromático, transportador, arenero o alimento que compres en nuestra tienda cumpla con rigurosos estándares de seguridad y confort.
-        </p>
-
-        <div class="grid grid-cols-2 gap-4 pt-4">
-          <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200">
-            <h5 class="font-extrabold text-indigo-600 text-base">+16</h5>
-            <p class="text-xs text-slate-500 font-bold mt-1">Productos Certificados</p>
-          </div>
-          <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200">
-            <h5 class="font-extrabold text-indigo-600 text-base">32 Provincias</h5>
-            <p class="text-xs text-slate-500 font-bold mt-1">Cobertura Nacional</p>
+  <!-- SECCIÓN QUIÉNES SOMOS (#nosotros) -->
+  <section id="nosotros" class="py-16 bg-gradient-to-r from-barbie-900 via-slate-900 to-barbie-950 text-white relative overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        
+        <div class="space-y-6">
+          <span class="text-xs font-extrabold text-barbie-400 uppercase tracking-widest bg-white/10 px-3.5 py-1 rounded-full border border-white/10">Nuestra Historia</span>
+          <h2 class="font-serif text-3xl sm:text-5xl font-bold leading-tight">Reinventando el Rosa para la Mujer Moderna</h2>
+          <p class="text-barbie-100 text-xs sm:text-sm leading-relaxed font-light">
+            En <strong>LUCY STILO</strong>, creemos que el color rosa no es un cliché ni un concepto infantil: es un símbolo de poder, sofisticación y expresión sin límites.
+          </p>
+          <p class="text-barbie-200 text-xs sm:text-sm leading-relaxed font-light">
+            Nuestra misión es ofrecer maquillaje de nivel profesional con texturas ultra-pigmentadas, empaques couture y fórmulas que cuidan tu piel. Diseñado para quienes buscan destacar con elegancia, clase y una actitud imparable.
+          </p>
+          <div class="pt-2 grid grid-cols-3 gap-4 text-center border-t border-white/10">
+            <div>
+              <p class="font-serif text-2xl sm:text-3xl font-bold text-barbie-300">100%</p>
+              <p class="text-[10px] text-barbie-200 uppercase tracking-wider">Vegano Pro</p>
+            </div>
+            <div>
+              <p class="font-serif text-2xl sm:text-3xl font-bold text-barbie-300">+50</p>
+              <p class="text-[10px] text-barbie-200 uppercase tracking-wider">Tonos Glam</p>
+            </div>
+            <div>
+              <p class="font-serif text-2xl sm:text-3xl font-bold text-barbie-300">24H</p>
+              <p class="text-[10px] text-barbie-200 uppercase tracking-wider">Larga Duración</p>
+            </div>
           </div>
         </div>
+
+        <div class="relative flex justify-center">
+          <div class="relative w-full max-w-md rounded-3xl overflow-hidden border-2 border-barbie-400/30 shadow-2xl">
+            <img src="https://images.unsplash.com/photo-1512496015851-a90fb38ba796?auto=format&fit=crop&w=800&q=80" alt="Lucy Stilo Beauty Studio" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent"></div>
+            <div class="absolute bottom-6 left-6 right-6 p-4 glass-card rounded-2xl text-slate-900">
+              <p class="font-serif font-bold text-sm">"El maquillaje es tu accesorio más poderoso."</p>
+              <p class="text-[10px] text-barbie-700 font-extrabold uppercase tracking-widest mt-1">— Lucy Stilo Founder</p>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
   </section>
 
-  <!-- ================= 8. TESTIMONIOS Y RESEÑAS VERIFICADAS ================= -->
-  <section id="testimonios" class="py-20 bg-slate-50 border-b border-slate-200">
-    <div class="max-w-7xl mx-auto px-4">
-      <div class="text-center max-w-2xl mx-auto mb-14">
-        <span class="px-3 py-1 bg-amber-100 text-amber-900 text-xs font-black uppercase rounded-full">
-          ★ ★ ★ ★ ★ Opiniones Reales
-        </span>
-        <h3 class="text-3xl font-black text-slate-900 mt-3">Lo que dicen quienes ya compraron</h3>
-        <p class="text-xs sm:text-sm text-slate-500 mt-2">Familias dominicanas que confían día a día en nuestros productos para sus mascotas.</p>
+  <!-- TESTIMONIOS Y RESEÑAS (#testimonios) -->
+  <section id="testimonios" class="py-16 bg-barbie-50/40 px-4">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center max-w-xl mx-auto mb-12">
+        <span class="text-xs font-bold text-barbie-600 uppercase tracking-widest">Reseñas Reales</span>
+        <h2 class="font-serif text-3xl font-extrabold text-slate-900 mt-1">Lo que dicen nuestras clientas</h2>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div class="bg-white p-7 rounded-3xl border border-slate-200/80 shadow-sm flex flex-col justify-between hover:shadow-md transition">
-          <div>
-            <div class="flex text-amber-400 text-sm mb-3">★★★★★</div>
-            <p class="text-xs text-slate-600 leading-relaxed italic">"El Velón Eliminador de Olores Island Rain es una maravilla. Tengo 3 perritos en apartamento y el ambiente huele fresco todo el día sin causarles alergias."</p>
+        <!-- Testimonio 1 -->
+        <div class="bg-white p-6 rounded-3xl border border-barbie-100 shadow-sm flex flex-col justify-between space-y-4">
+          <div class="space-y-3">
+            <div class="flex text-amber-400 text-xs">
+              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+            </div>
+            <p class="text-slate-600 text-xs leading-relaxed italic">"El labial líquido mate en tono 'Velvet Rose' dura literalmente todo el día. No reseca los labios y el empaque se siente super lujoso."</p>
           </div>
-          <div class="flex items-center gap-3 mt-6 pt-4 border-t border-slate-100">
-            <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=100&q=80" alt="Cliente" class="w-10 h-10 rounded-full object-cover">
+          <div class="flex items-center gap-3 pt-4 border-t border-slate-100">
+            <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=100&auto=format&fit=crop&q=80" class="w-10 h-10 rounded-full object-cover border border-barbie-300" alt="Valeria M.">
             <div>
-              <h5 class="font-bold text-slate-900 text-xs">María Fernández</h5>
-              <p class="text-[10px] text-slate-400">Piantini, Santo Domingo</p>
+              <h4 class="text-xs font-bold text-slate-900">Valeria M.</h4>
+              <p class="text-[10px] text-emerald-600 font-semibold"><i class="fa-solid fa-circle-check"></i> Compra Verificada</p>
             </div>
           </div>
         </div>
 
-        <div class="bg-white p-7 rounded-3xl border border-slate-200/80 shadow-sm flex flex-col justify-between hover:shadow-md transition">
-          <div>
-            <div class="flex text-amber-400 text-sm mb-3">★★★★★</div>
-            <p class="text-xs text-slate-600 leading-relaxed italic">"El Bolso Transportador PetVet llegó en menos de 24 horas a Santiago. Excelente ventilación, terminaciones de primera y súper cómodo para mi gata."</p>
+        <!-- Testimonio 2 -->
+        <div class="bg-white p-6 rounded-3xl border border-barbie-100 shadow-sm flex flex-col justify-between space-y-4">
+          <div class="space-y-3">
+            <div class="flex text-amber-400 text-xs">
+              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+            </div>
+            <p class="text-slate-600 text-xs leading-relaxed italic">"Tenía miedo de que se viera infantil por el color rosa, pero para nada. Es elegancia pura. La paleta de sombras se difumina de maravilla."</p>
           </div>
-          <div class="flex items-center gap-3 mt-6 pt-4 border-t border-slate-100">
-            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&q=80" alt="Cliente" class="w-10 h-10 rounded-full object-cover">
+          <div class="flex items-center gap-3 pt-4 border-t border-slate-100">
+            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&auto=format&fit=crop&q=80" class="w-10 h-10 rounded-full object-cover border border-barbie-300" alt="Camila R.">
             <div>
-              <h5 class="font-bold text-slate-900 text-xs">Carlos Mendoza</h5>
-              <p class="text-[10px] text-slate-400">Los Jardines, Santiago</p>
+              <h4 class="text-xs font-bold text-slate-900">Camila R.</h4>
+              <p class="text-[10px] text-emerald-600 font-semibold"><i class="fa-solid fa-circle-check"></i> Compra Verificada</p>
             </div>
           </div>
         </div>
 
-        <div class="bg-white p-7 rounded-3xl border border-slate-200/80 shadow-sm flex flex-col justify-between hover:shadow-md transition">
-          <div>
-            <div class="flex text-amber-400 text-sm mb-3">★★★★★</div>
-            <p class="text-xs text-slate-600 leading-relaxed italic">"El Arenero cerrado para gatos es espacioso y resolvió el problema del polvo. Muy fácil de limpiar. Servicio al cliente de 10 por WhatsApp."</p>
+        <!-- Testimonio 3 -->
+        <div class="bg-white p-6 rounded-3xl border border-barbie-100 shadow-sm flex flex-col justify-between space-y-4">
+          <div class="space-y-3">
+            <div class="flex text-amber-400 text-xs">
+              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+            </div>
+            <p class="text-slate-600 text-xs leading-relaxed italic">"Llegó rapidísimo a mi casa y la atención al cliente fue excelente. Definitivamente Lucy Stilo se convirtió en mi marca favorita."</p>
           </div>
-          <div class="flex items-center gap-3 mt-6 pt-4 border-t border-slate-100">
-            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&q=80" alt="Cliente" class="w-10 h-10 rounded-full object-cover">
+          <div class="flex items-center gap-3 pt-4 border-t border-slate-100">
+            <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=100&auto=format&fit=crop&q=80" class="w-10 h-10 rounded-full object-cover border border-barbie-300" alt="Sofia G.">
             <div>
-              <h5 class="font-bold text-slate-900 text-xs">Patricia Lora</h5>
-              <p class="text-[10px] text-slate-400">Bella Vista, Santo Domingo</p>
+              <h4 class="text-xs font-bold text-slate-900">Sofía G.</h4>
+              <p class="text-[10px] text-emerald-600 font-semibold"><i class="fa-solid fa-circle-check"></i> Compra Verificada</p>
             </div>
           </div>
         </div>
@@ -360,221 +382,179 @@
     </div>
   </section>
 
-  <!-- ================= 9. PREGUNTAS FRECUENTES (FAQ ACORDEÓN) ================= -->
-  <section id="faq" class="py-20 bg-white border-b border-slate-200">
-    <div class="max-w-4xl mx-auto px-4">
-      <div class="text-center mb-12">
-        <span class="px-3 py-1 bg-indigo-50 text-indigo-700 text-xs font-black uppercase rounded-full">
-          Despeja tus Dudas
-        </span>
-        <h3 class="text-3xl font-black text-slate-900 mt-3">Preguntas Frecuentes</h3>
-        <p class="text-xs text-slate-500 mt-2">Todo lo que necesitas saber antes de realizar tu pedido.</p>
-      </div>
-
-      <div class="space-y-4">
-        <details class="group p-5 rounded-2xl bg-slate-50 border border-slate-200 transition" open>
-          <summary class="font-bold text-slate-900 text-sm cursor-pointer list-none flex items-center justify-between">
-            <span>¿Cuánto tardan en entregar mi pedido?</span>
-            <i class="fa-solid fa-chevron-down text-slate-400 group-open:rotate-180 transition transform"></i>
-          </summary>
-          <p class="text-xs text-slate-600 mt-3 leading-relaxed">
-            En Santo Domingo y Santiago entregamos en un plazo de 24 a 48 horas laborables. Para el resto de las provincias los envíos se realizan vía mensajería privada express con entrega segura.
-          </p>
-        </details>
-
-        <details class="group p-5 rounded-2xl bg-slate-50 border border-slate-200 transition">
-          <summary class="font-bold text-slate-900 text-sm cursor-pointer list-none flex items-center justify-between">
-            <span>¿Puedo pagar en efectivo cuando llegue el mensajero?</span>
-            <i class="fa-solid fa-chevron-down text-slate-400 group-open:rotate-180 transition transform"></i>
-          </summary>
-          <p class="text-xs text-slate-600 mt-3 leading-relaxed">
-            ¡Sí! Ofrecemos la modalidad de <strong>Pago Contra Entrega</strong> en las principales zonas metropolitanas. Puedes pagar en efectivo al recibir o realizar una transferencia inmediata.
-          </p>
-        </details>
-
-        <details class="group p-5 rounded-2xl bg-slate-50 border border-slate-200 transition">
-          <summary class="font-bold text-slate-900 text-sm cursor-pointer list-none flex items-center justify-between">
-            <span>¿Los velones aromáticos son seguros para perros y gatos?</span>
-            <i class="fa-solid fa-chevron-down text-slate-400 group-open:rotate-180 transition transform"></i>
-          </summary>
-          <p class="text-xs text-slate-600 mt-3 leading-relaxed">
-            Absolutamente. Nuestros velones están formulados con ceras y esencias botánicas de grado seguro diseñadas especialmente para neutralizar enzimas de mal olor sin irritar el olfato sensible de las mascotas.
-          </p>
-        </details>
-
-        <details class="group p-5 rounded-2xl bg-slate-50 border border-slate-200 transition">
-          <summary class="font-bold text-slate-900 text-sm cursor-pointer list-none flex items-center justify-between">
-            <span>¿Tienen garantía o cambio en caso de defecto?</span>
-            <i class="fa-solid fa-chevron-down text-slate-400 group-open:rotate-180 transition transform"></i>
-          </summary>
-          <p class="text-xs text-slate-600 mt-3 leading-relaxed">
-            Todos nuestros productos cuentan con garantía directa de 30 días contra cualquier defecto de fabricación. Puedes tramitar tu reemplazo escribiéndonos directamente al WhatsApp de soporte.
-          </p>
-        </details>
-      </div>
+  <!-- PREGUNTAS FRECUENTES FAQ (#faq) -->
+  <section id="faq" class="py-16 px-4 max-w-4xl mx-auto">
+    <div class="text-center mb-10">
+      <span class="text-xs font-bold text-barbie-600 uppercase tracking-widest">Dudas Frecuentes</span>
+      <h2 class="font-serif text-3xl font-extrabold text-slate-900 mt-1">Preguntas Frecuentes</h2>
     </div>
-  </section>
 
-  <!-- ================= 10. FORMULARIO DE CONTACTO Y SOPORTE ================= -->
-  <section id="contacto" class="py-20 bg-slate-50 border-b border-slate-200">
-    <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 lg:grid-cols-12 gap-12">
-      <div class="lg:col-span-5 space-y-6">
-        <span class="px-3 py-1 bg-emerald-100 text-emerald-800 text-xs font-black uppercase rounded-full">
-          Estamos para Servirte
-        </span>
-        <h3 class="text-3xl font-black text-slate-900 tracking-tight">
-          ¿Tienes preguntas o deseas una orden especial?
+    <div class="space-y-4">
+      <div class="p-5 rounded-2xl bg-white border border-barbie-100 shadow-sm">
+        <h3 class="text-sm font-bold text-slate-900 flex items-center justify-between">
+          ¿Sus productos son aptos para pieles sensibles?
+          <i class="fa-solid fa-chevron-down text-barbie-500 text-xs"></i>
         </h3>
-        <p class="text-xs sm:text-sm text-slate-500 leading-relaxed">
-          Nuestro equipo de asesores para mascotas está listo para responder tus dudas por WhatsApp o teléfono.
-        </p>
-
-        <div class="space-y-4 pt-2 text-xs">
-          <div class="flex items-center gap-3 p-4 rounded-2xl bg-white border border-slate-200 shadow-2xs">
-            <i class="fa-brands fa-whatsapp text-emerald-600 text-2xl"></i>
-            <div>
-              <div class="font-black text-slate-900">WhatsApp Oficial</div>
-              <div class="text-slate-500">+1 (829) 399-8904 (Respuesta inmediata)</div>
-            </div>
-          </div>
-
-          <div class="flex items-center gap-3 p-4 rounded-2xl bg-white border border-slate-200 shadow-2xs">
-            <i class="fa-solid fa-envelope text-indigo-600 text-2xl"></i>
-            <div>
-              <div class="font-black text-slate-900">Correo Electrónico</div>
-              <div class="text-slate-500">soporte@dobeha.com</div>
-            </div>
-          </div>
-
-          <div class="flex items-center gap-3 p-4 rounded-2xl bg-white border border-slate-200 shadow-2xs">
-            <i class="fa-solid fa-location-dot text-rose-500 text-2xl"></i>
-            <div>
-              <div class="font-black text-slate-900">Centro de Despacho</div>
-              <div class="text-slate-500">Distrito Nacional, República Dominicana</div>
-            </div>
-          </div>
-        </div>
+        <p class="text-xs text-slate-600 mt-2 leading-relaxed">Sí, todas nuestras fórmulas son dermatológicamente probadas, hipoalergénicas y libres de parabenos dañinos.</p>
       </div>
 
-      <div class="lg:col-span-7 bg-white p-8 rounded-3xl border border-slate-200 shadow-xl">
-        <h4 class="font-black text-slate-900 text-lg mb-4">Envíanos un Mensaje Directo</h4>
-        <form onsubmit="event.preventDefault(); alert('¡Gracias por tu mensaje! Nos pondremos en contacto contigo en breve.'); this.reset();" class="space-y-4 text-xs">
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <div>
-              <label class="block font-bold text-slate-700 mb-1">Nombre Completo</label>
-              <input type="text" required placeholder="Tu nombre..." class="w-full rounded-xl border border-slate-200 px-3.5 py-2.5 focus:ring-2 focus:ring-indigo-500 focus:outline-hidden">
-            </div>
-            <div>
-              <label class="block font-bold text-slate-700 mb-1">Teléfono / WhatsApp</label>
-              <input type="tel" required placeholder="809-000-0000" class="w-full rounded-xl border border-slate-200 px-3.5 py-2.5 focus:ring-2 focus:ring-indigo-500 focus:outline-hidden">
-            </div>
-          </div>
-          <div>
-            <label class="block font-bold text-slate-700 mb-1">Correo Electrónico</label>
-            <input type="email" required placeholder="tu@correo.com" class="w-full rounded-xl border border-slate-200 px-3.5 py-2.5 focus:ring-2 focus:ring-indigo-500 focus:outline-hidden">
-          </div>
-          <div>
-            <label class="block font-bold text-slate-700 mb-1">¿En qué podemos ayudarte?</label>
-            <textarea rows="4" required placeholder="Escribe aquí tu consulta sobre productos, envíos o pedidos..." class="w-full rounded-xl border border-slate-200 p-3.5 focus:ring-2 focus:ring-indigo-500 focus:outline-hidden"></textarea>
-          </div>
-          <button type="submit" class="w-full py-3.5 bg-indigo-600 hover:bg-indigo-700 text-white font-extrabold rounded-xl shadow-md transition cursor-pointer">
-            Enviar Mensaje
-          </button>
-        </form>
+      <div class="p-5 rounded-2xl bg-white border border-barbie-100 shadow-sm">
+        <h3 class="text-sm font-bold text-slate-900 flex items-center justify-between">
+          ¿Cuánto tarda en llegar mi pedido?
+          <i class="fa-solid fa-chevron-down text-barbie-500 text-xs"></i>
+        </h3>
+        <p class="text-xs text-slate-600 mt-2 leading-relaxed">Los envíos nacionales tardan de 24 a 48 horas hábiles. Recibirás un código de rastreo en tu correo o WhatsApp.</p>
+      </div>
+
+      <div class="p-5 rounded-2xl bg-white border border-barbie-100 shadow-sm">
+        <h3 class="text-sm font-bold text-slate-900 flex items-center justify-between">
+          ¿Tienen garantía de devolución?
+          <i class="fa-solid fa-chevron-down text-barbie-500 text-xs"></i>
+        </h3>
+        <p class="text-xs text-slate-600 mt-2 leading-relaxed">Contamos con 30 días de garantía si el producto llega dañado o no corresponde a tu pedido.</p>
+      </div>
+
+      <div class="p-5 rounded-2xl bg-white border border-barbie-100 shadow-sm">
+        <h3 class="text-sm font-bold text-slate-900 flex items-center justify-between">
+          ¿Cómo sé cuál es mi tono ideal de base o corrector?
+          <i class="fa-solid fa-chevron-down text-barbie-500 text-xs"></i>
+        </h3>
+        <p class="text-xs text-slate-600 mt-2 leading-relaxed">Puedes escribirnos al formulario de soporte o a nuestro WhatsApp y una asesora de belleza te ayudará en minutos.</p>
       </div>
     </div>
   </section>
 
-  <!-- ================= 11. POLÍTICAS TRANSPARENTES DE COMPRA ================= -->
-  <section id="politicas" class="py-14 bg-white border-b border-slate-200">
-    <div class="max-w-7xl mx-auto px-4">
+  <!-- FORMULARIO DE CONTACTO Y SOPORTE (#contacto) -->
+  <section id="contacto" class="py-16 bg-barbie-50/60 px-4">
+    <div class="max-w-3xl mx-auto bg-white p-8 sm:p-10 rounded-3xl border border-barbie-200 shadow-md">
       <div class="text-center mb-8">
-        <h4 class="text-xl font-black text-slate-900">Políticas y Términos de Servicio</h4>
-        <p class="text-xs text-slate-500 mt-1">Transparencia y seguridad en cada compra.</p>
+        <span class="text-xs font-bold text-barbie-600 uppercase tracking-widest">Atención VIP</span>
+        <h2 class="font-serif text-3xl font-extrabold text-slate-900 mt-1">Soporte & Asesoría de Belleza</h2>
+        <p class="text-slate-500 text-xs mt-1">¿Tienes preguntas o necesitas recomendaciones personalizadas? Escríbenos.</p>
       </div>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-xs text-slate-600">
-        <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200">
-          <i class="fa-solid fa-truck-ramp-box text-indigo-600 text-lg mb-2"></i>
-          <h5 class="font-bold text-slate-900 text-xs mb-1">Tiempos de Entrega</h5>
-          <p class="leading-relaxed">Los pedidos se procesan de lunes a sábado. El tiempo estimado de entrega es de 24 a 48 horas tras confirmar la orden vía WhatsApp.</p>
+
+      <form onsubmit="event.preventDefault();" class="space-y-4">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Nombre Completo</label>
+            <input type="text" placeholder="Ej. Ana Sofía" class="w-full bg-barbie-50/40 border border-barbie-200 rounded-xl px-4 py-3 text-xs focus:outline-none focus:ring-2 focus:ring-barbie-500">
+          </div>
+          <div>
+            <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Correo Electrónico</label>
+            <input type="email" placeholder="ana@ejemplo.com" class="w-full bg-barbie-50/40 border border-barbie-200 rounded-xl px-4 py-3 text-xs focus:outline-none focus:ring-2 focus:ring-barbie-500">
+          </div>
         </div>
-        <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200">
-          <i class="fa-solid fa-box-open text-emerald-600 text-lg mb-2"></i>
-          <h5 class="font-bold text-slate-900 text-xs mb-1">Garantía y Devolución</h5>
-          <p class="leading-relaxed">Si recibes un producto con daño o no coincide con tu compra, gestionamos el cambio inmediato sin costo adicional durante los primeros 30 días.</p>
+
+        <div>
+          <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Asunto</label>
+          <input type="text" placeholder="Consulta sobre productos, tonos o envíos" class="w-full bg-barbie-50/40 border border-barbie-200 rounded-xl px-4 py-3 text-xs focus:outline-none focus:ring-2 focus:ring-barbie-500">
         </div>
-        <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200">
-          <i class="fa-solid fa-shield-halved text-rose-500 text-lg mb-2"></i>
-          <h5 class="font-bold text-slate-900 text-xs mb-1">Protección de Datos</h5>
-          <p class="leading-relaxed">Tus datos personales solo se utilizan para coordinar el envío de tu paquete y nunca se comparten con terceros.</p>
+
+        <div>
+          <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Mensaje</label>
+          <textarea rows="4" placeholder="Escribe tu mensaje aquí..." class="w-full bg-barbie-50/40 border border-barbie-200 rounded-xl px-4 py-3 text-xs focus:outline-none focus:ring-2 focus:ring-barbie-500"></textarea>
         </div>
+
+        <button type="submit" class="w-full bg-barbie-600 hover:bg-barbie-700 text-white font-bold text-xs uppercase tracking-widest py-3.5 rounded-xl transition shadow-md active:scale-98">
+          Enviar Mensaje
+        </button>
+      </form>
+    </div>
+  </section>
+
+  <!-- POLÍTICAS DE ENVÍO Y DEVOLUCIÓN (#politicas) -->
+  <section id="politicas" class="py-12 px-4 max-w-7xl mx-auto border-t border-slate-100">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-slate-600 text-xs">
+      <div class="p-5 bg-white rounded-2xl border border-barbie-100">
+        <h4 class="font-bold text-slate-900 uppercase tracking-wider mb-2 flex items-center gap-2">
+          <i class="fa-solid fa-truck text-barbie-600"></i> Políticas de Envío
+        </h4>
+        <p class="leading-relaxed">Despachamos todos los pedidos en un plazo de 24 horas hábiles. Envíos seguros con número de seguimiento en tiempo real.</p>
+      </div>
+
+      <div class="p-5 bg-white rounded-2xl border border-barbie-100">
+        <h4 class="font-bold text-slate-900 uppercase tracking-wider mb-2 flex items-center gap-2">
+          <i class="fa-solid fa-arrows-rotate text-barbie-600"></i> Cambios y Devoluciones
+        </h4>
+        <p class="leading-relaxed">Si recibes un producto defectuoso o incorrecto, tienes hasta 30 días para solicitar el cambio sin costo adicional.</p>
+      </div>
+
+      <div class="p-5 bg-white rounded-2xl border border-barbie-100">
+        <h4 class="font-bold text-slate-900 uppercase tracking-wider mb-2 flex items-center gap-2">
+          <i class="fa-solid fa-lock text-barbie-600"></i> Garantía de Autenticidad
+        </h4>
+        <p class="leading-relaxed">Garantizamos fórmulas 100% originales, selladas de fábrica y elaboradas bajo los más altos estándares de cosmética internacional.</p>
       </div>
     </div>
   </section>
 
-  <!-- ================= 12. FOOTER CORPORATIVO PROFESIONAL ================= -->
-  <footer class="bg-slate-950 text-slate-400 py-16 border-t border-slate-900">
-    <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10">
-      <div class="lg:col-span-2 space-y-4">
-        <div class="flex items-center space-x-3">
-          <div class="w-10 h-10 rounded-2xl bg-gradient-to-tr from-indigo-500 to-purple-500 text-white flex items-center justify-center font-black text-lg">
-            P
+  <!-- FOOTER CORPORATIVO -->
+  <footer class="bg-slate-950 text-white pt-16 pb-8 border-t border-barbie-900/50 mt-auto">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-10 pb-12 border-b border-slate-800">
+        
+        <!-- Brand Info -->
+        <div class="space-y-4">
+          <div class="flex items-center gap-3">
+            <div class="w-9 h-9 rounded-xl bg-barbie-600 text-white flex items-center justify-center font-bold text-lg">
+              <i class="fa-solid fa-wand-magic-sparkles"></i>
+            </div>
+            <span class="font-serif font-bold text-2xl tracking-tight">LUCY STILO</span>
           </div>
-          <span class="font-black text-xl text-white tracking-tight">PETGO-RD</span>
+          <p class="text-slate-400 text-xs leading-relaxed">
+            Alta cosmética moderna. Resaltando tu elegancia y belleza con fórmulas profesionales y sofisticación rosa.
+          </p>
+          <div class="flex gap-3 text-barbie-400 text-base">
+            <a href="#" class="w-8 h-8 rounded-full bg-slate-900 hover:bg-barbie-600 hover:text-white flex items-center justify-center transition"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" class="w-8 h-8 rounded-full bg-slate-900 hover:bg-barbie-600 hover:text-white flex items-center justify-center transition"><i class="fa-brands fa-tiktok"></i></a>
+            <a href="#" class="w-8 h-8 rounded-full bg-slate-900 hover:bg-barbie-600 hover:text-white flex items-center justify-center transition"><i class="fa-brands fa-facebook-f"></i></a>
+          </div>
         </div>
-        <p class="text-xs text-slate-400 max-w-sm leading-relaxed">
-          Plataforma oficial de comercio electrónico especializada en productos de bienestar, entretenimiento y cuidado integral para mascotas en República Dominicana.
-        </p>
-        <div class="flex items-center space-x-3 text-slate-400 pt-2">
-          <a href="#" class="w-8 h-8 rounded-xl bg-slate-900 flex items-center justify-center hover:text-white hover:bg-indigo-600 transition"><i class="fa-brands fa-instagram"></i></a>
-          <a href="#" class="w-8 h-8 rounded-xl bg-slate-900 flex items-center justify-center hover:text-white hover:bg-indigo-600 transition"><i class="fa-brands fa-facebook"></i></a>
-          <a href="https://wa.me/18293998904" class="w-8 h-8 rounded-xl bg-slate-900 flex items-center justify-center hover:text-white hover:bg-emerald-600 transition"><i class="fa-brands fa-whatsapp"></i></a>
+
+        <!-- Quick Links -->
+        <div>
+          <h4 class="text-xs font-bold uppercase tracking-widest text-barbie-400 mb-4">Navegación</h4>
+          <ul class="space-y-2 text-xs text-slate-400">
+            <li><a href="#catalogo" class="hover:text-white transition">Catálogo de Productos</a></li>
+            <li><a href="#nosotros" class="hover:text-white transition">Quiénes Somos</a></li>
+            <li><a href="#testimonios" class="hover:text-white transition">Reseñas de Clientas</a></li>
+            <li><a href="#faq" class="hover:text-white transition">Preguntas Frecuentes</a></li>
+          </ul>
         </div>
-      </div>
 
-      <div>
-        <h5 class="text-white font-extrabold text-xs uppercase tracking-wider mb-4">Navegación</h5>
-        <ul class="space-y-2.5 text-xs">
-          <li><a href="#catalogo" class="hover:text-white transition">Catálogo Completo</a></li>
-          <li><a href="#ofertas" class="hover:text-white transition">Ofertas Flash</a></li>
-          <li><a href="#nosotros" class="hover:text-white transition">Sobre Nosotros</a></li>
-          <li><a href="#testimonios" class="hover:text-white transition">Testimonios</a></li>
-        </ul>
-      </div>
-
-      <div>
-        <h5 class="text-white font-extrabold text-xs uppercase tracking-wider mb-4">Atención al Cliente</h5>
-        <ul class="space-y-2.5 text-xs">
-          <li><a href="#faq" class="hover:text-white transition">Preguntas Frecuentes</a></li>
-          <li><a href="#politicas" class="hover:text-white transition">Políticas de Envío</a></li>
-          <li><a href="#contacto" class="hover:text-white transition">Formulario de Ayuda</a></li>
-          <li><a href="https://wa.me/18293998904" class="hover:text-white transition">Chat WhatsApp</a></li>
-        </ul>
-      </div>
-
-      <div>
-        <h5 class="text-white font-extrabold text-xs uppercase tracking-wider mb-4">Medios de Pago</h5>
-        <p class="text-[11px] text-slate-400 mb-3">Transacciones 100% protegidas:</p>
-        <div class="flex flex-wrap gap-2 text-xs">
-          <span class="px-2.5 py-1 rounded-lg bg-slate-900 border border-slate-800 text-slate-300 font-bold">Efectivo</span>
-          <span class="px-2.5 py-1 rounded-lg bg-slate-900 border border-slate-800 text-slate-300 font-bold">Azul Card</span>
-          <span class="px-2.5 py-1 rounded-lg bg-slate-900 border border-slate-800 text-slate-300 font-bold">Transferencia</span>
+        <!-- Legal -->
+        <div>
+          <h4 class="text-xs font-bold uppercase tracking-widest text-barbie-400 mb-4">Soporte & Legal</h4>
+          <ul class="space-y-2 text-xs text-slate-400">
+            <li><a href="#contacto" class="hover:text-white transition">Contacto VIP</a></li>
+            <li><a href="#politicas" class="hover:text-white transition">Políticas de Envío</a></li>
+            <li><a href="#politicas" class="hover:text-white transition">Términos y Condiciones</a></li>
+            <li><a href="#politicas" class="hover:text-white transition">Privacidad de Datos</a></li>
+          </ul>
         </div>
+
+        <!-- Contact Info -->
+        <div>
+          <h4 class="text-xs font-bold uppercase tracking-widest text-barbie-400 mb-4">Atención al Cliente</h4>
+          <ul class="space-y-2 text-xs text-slate-400">
+            <li class="flex items-center gap-2"><i class="fa-solid fa-envelope text-barbie-500"></i> hola@lucystilo.com</li>
+            <li class="flex items-center gap-2"><i class="fa-brands fa-whatsapp text-barbie-500"></i> +1 (800) 582-9784</li>
+            <li class="flex items-center gap-2"><i class="fa-solid fa-location-dot text-barbie-500"></i> Beauty Studio Luxe</li>
+          </ul>
+        </div>
+
       </div>
-    </div>
 
-    <div class="max-w-7xl mx-auto px-4 mt-12 pt-6 border-t border-slate-900 flex flex-col sm:flex-row items-center justify-between text-[11px] text-slate-500 gap-4">
-      <p>© 2026 PETGO-RD. Todos los derechos reservados.</p>
-      <p>Potenciado por <strong>DOBEHA Commerce OS</strong> | Multi-tenant Engine</p>
-    </div>
-  </footer>
+      <div class="pt-8 flex flex-col sm:flex-row items-center justify-between text-[11px] text-slate-500 gap-4">
+        <p>© 2025 LUCY STILO Beauty Studio. Todos los derechos reservados. DOBEHA Commerce OS.</p>
+        <div class="flex items-center gap-4
 
-  <!-- ================= COMPONENTES REACTIVOS: CART DRAWER, QUICKVIEW, SOCIAL PROOF Y WHATSAPP ================= -->
-  
-  <!-- 1. CART DRAWER -->
+  <!-- ================= 1. DOBEHA CART DRAWER & CHECKOUT ================= -->
   <div id="dobehaCartDrawer" class="fixed inset-0 z-50 pointer-events-none transition-all duration-300 opacity-0 invisible" aria-hidden="true">
     <div id="dobehaCartOverlay" class="absolute inset-0 bg-black/60 backdrop-blur-xs transition-opacity duration-300 pointer-events-auto" onclick="window.dobehaCloseCart()"></div>
+    
     <div id="dobehaCartPanel" class="absolute right-0 top-0 bottom-0 w-full max-w-md bg-white shadow-2xl flex flex-col pointer-events-auto transform translate-x-full transition-transform duration-300 ease-out">
+      <!-- Cart Header -->
       <div class="px-6 py-5 border-b border-slate-100 flex items-center justify-between bg-slate-50/80">
         <div class="flex items-center gap-2.5">
           <div class="w-8 h-8 rounded-xl bg-indigo-600 text-white flex items-center justify-center font-bold text-sm shadow-sm">
@@ -589,7 +569,13 @@
           <i class="fa-solid fa-xmark text-lg"></i>
         </button>
       </div>
-      <div id="dobehaCartItems" class="flex-1 overflow-y-auto p-6 space-y-4"></div>
+
+      <!-- Cart Items List -->
+      <div id="dobehaCartItems" class="flex-1 overflow-y-auto p-6 space-y-4">
+        <!-- Generado dinámicamente -->
+      </div>
+
+      <!-- Cart Footer / Summary -->
       <div class="p-6 border-t border-slate-100 bg-slate-50/50 space-y-4">
         <div class="space-y-1.5 text-xs text-slate-500">
           <div class="flex justify-between">
@@ -605,21 +591,37 @@
             <span id="dobehaCartTotal" class="text-indigo-600">RD$ 0.00</span>
           </div>
         </div>
+
+        <!-- Checkout Buttons -->
         <div class="space-y-2 pt-1">
-          <button type="button" onclick="window.dobehaCheckoutWhatsApp()" class="w-full py-3.5 px-4 bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold rounded-2xl shadow-lg shadow-emerald-600/25 flex items-center justify-center gap-2.5 text-sm transition transform active:scale-98 cursor-pointer">
+          <button 
+            type="button" 
+            onclick="window.dobehaCheckoutWhatsApp()"
+            class="w-full py-3.5 px-4 bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold rounded-2xl shadow-lg shadow-emerald-600/25 flex items-center justify-center gap-2.5 text-sm transition transform active:scale-98 cursor-pointer"
+          >
             <i class="fa-brands fa-whatsapp text-lg"></i>
             <span>Pedir por WhatsApp (Entrega Rápida)</span>
           </button>
-          <button type="button" onclick="window.dobehaOpenPaymentModal()" class="w-full py-3 px-4 bg-slate-900 hover:bg-black text-white font-bold rounded-2xl shadow-md flex items-center justify-center gap-2 text-xs transition cursor-pointer">
+          
+          <button 
+            type="button" 
+            onclick="window.dobehaOpenPaymentModal()"
+            class="w-full py-3 px-4 bg-slate-900 hover:bg-black text-white font-bold rounded-2xl shadow-md flex items-center justify-center gap-2 text-xs transition cursor-pointer"
+          >
             <i class="fa-solid fa-credit-card"></i>
             <span>Pagar con Tarjeta / Azul</span>
           </button>
+        </div>
+
+        <div class="flex items-center justify-center gap-2 text-[10px] text-slate-400">
+          <i class="fa-solid fa-lock text-emerald-500"></i>
+          <span>Pagos protegidos por DOBEHA Commerce Shield</span>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- 2. QUICK VIEW MODAL -->
+  <!-- ================= 2. MODAL QUICK VIEW DE PRODUCTO ================= -->
   <div id="dobehaQuickViewModal" class="fixed inset-0 z-50 pointer-events-none transition-all duration-300 opacity-0 invisible" aria-hidden="true">
     <div class="absolute inset-0 bg-black/60 backdrop-blur-xs pointer-events-auto" onclick="window.dobehaCloseQuickView()"></div>
     <div class="relative min-h-screen flex items-center justify-center p-4">
@@ -627,6 +629,7 @@
         <button onclick="window.dobehaCloseQuickView()" class="absolute top-4 right-4 p-2 text-slate-400 hover:text-slate-700 rounded-full hover:bg-slate-100 transition">
           <i class="fa-solid fa-xmark text-lg"></i>
         </button>
+        
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
           <div class="aspect-square bg-slate-100 rounded-2xl overflow-hidden">
             <img id="qvImg" src="" alt="Producto" class="w-full h-full object-cover">
@@ -641,12 +644,22 @@
               <span class="text-xs text-emerald-600 font-bold bg-emerald-50 px-2 py-0.5 rounded-md">En Stock</span>
             </div>
             <p id="qvDesc" class="text-xs text-slate-500 leading-relaxed max-h-40 overflow-y-auto"></p>
+            
             <div class="pt-2 flex items-center gap-3">
-              <button id="qvAddBtn" type="button" class="flex-1 py-3 px-5 bg-indigo-600 hover:bg-indigo-700 text-white font-extrabold rounded-xl shadow-md transition flex items-center justify-center gap-2 text-xs">
+              <button 
+                id="qvAddBtn"
+                type="button" 
+                class="flex-1 py-3 px-5 bg-indigo-600 hover:bg-indigo-700 text-white font-extrabold rounded-xl shadow-md transition flex items-center justify-center gap-2 text-xs"
+              >
                 <i class="fa-solid fa-cart-plus"></i>
                 <span>Añadir al Carrito</span>
               </button>
-              <button id="qvWaBtn" type="button" class="p-3 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl shadow-md transition">
+              <button 
+                id="qvWaBtn"
+                type="button" 
+                class="p-3 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl shadow-md transition"
+                title="Consultar por WhatsApp"
+              >
                 <i class="fa-brands fa-whatsapp text-base"></i>
               </button>
             </div>
@@ -656,7 +669,7 @@
     </div>
   </div>
 
-  <!-- 3. SOCIAL PROOF FLOTANTE -->
+  <!-- ================= 3. SOCIAL PROOF FLOTANTE (Compra Reciente) ================= -->
   <div id="dobehaSocialProof" class="fixed bottom-6 left-6 z-40 bg-white/95 backdrop-blur-md rounded-2xl shadow-xl border border-slate-200/80 p-3.5 flex items-center gap-3.5 max-w-sm transform translate-y-24 opacity-0 transition-all duration-500 pointer-events-none">
     <div class="w-12 h-12 rounded-xl bg-slate-100 overflow-hidden shrink-0 border border-slate-200">
       <img id="spImg" src="https://images.unsplash.com/photo-1543466835-00a7907e9de1?w=200&q=80" alt="Compra reciente" class="w-full h-full object-cover">
@@ -671,15 +684,21 @@
     </div>
   </div>
 
-  <!-- 4. BOTÓN FLOTANTE WHATSAPP -->
-  <a href="https://wa.me/18293998904?text=Hola,%20tengo%20una%20consulta%20sobre%20los%20productos%20de%20la%20tienda%20PETGO-RD" target="_blank" rel="noopener noreferrer" class="fixed bottom-6 right-6 z-40 w-14 h-14 bg-emerald-500 hover:bg-emerald-600 text-white rounded-full shadow-2xl flex items-center justify-center text-2xl hover:scale-110 active:scale-95 transition-all duration-300 group cursor-pointer" title="Chatear por WhatsApp">
+  <!-- ================= 4. BOTÓN FLOTANTE PERMANENTE DE WHATSAPP ================= -->
+  <a 
+    href="https://wa.me/18293998904?text=Hola,%20tengo%20una%20consulta%20sobre%20los%20productos%20de%20la%20tienda%20PETGO-RD" 
+    target="_blank" 
+    rel="noopener noreferrer"
+    class="fixed bottom-6 right-6 z-40 w-14 h-14 bg-emerald-500 hover:bg-emerald-600 text-white rounded-full shadow-2xl flex items-center justify-center text-2xl hover:scale-110 active:scale-95 transition-all duration-300 group cursor-pointer"
+    title="Chatear por WhatsApp"
+  >
     <i class="fa-brands fa-whatsapp"></i>
     <span class="absolute right-16 bg-slate-900 text-white text-xs font-bold py-1.5 px-3 rounded-xl whitespace-nowrap shadow-lg opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
       ¿Dudas? Chatea con un asesor
     </span>
   </a>
 
-  <!-- 5. CHECKOUT MODAL -->
+  <!-- ================= 5. MODAL CHECKOUT PAGO ONLINE ================= -->
   <div id="dobehaPaymentModal" class="fixed inset-0 z-50 pointer-events-none transition-all duration-300 opacity-0 invisible" aria-hidden="true">
     <div class="absolute inset-0 bg-black/60 backdrop-blur-xs pointer-events-auto" onclick="window.dobehaClosePaymentModal()"></div>
     <div class="relative min-h-screen flex items-center justify-center p-4">
@@ -693,6 +712,7 @@
             <i class="fa-solid fa-xmark"></i>
           </button>
         </div>
+
         <form id="dobehaCheckoutForm" onsubmit="window.dobehaProcessPayment(event)" class="space-y-3 text-xs">
           <div>
             <label class="block font-bold text-slate-700 mb-1">Nombre Completo</label>
@@ -720,6 +740,7 @@
               <option value="transfer">Transferencia Bancaria (BHD / Banreservas / Popular)</option>
             </select>
           </div>
+
           <div class="pt-2">
             <button type="submit" class="w-full py-3.5 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl font-extrabold shadow-md transition flex items-center justify-center gap-2 cursor-pointer">
               <i class="fa-solid fa-lock"></i>
@@ -731,7 +752,7 @@
     </div>
   </div>
 
-  <!-- ================= SCRIPT DEL MOTOR DE PRODUCTOS, BUSCADOR, CARRITO Y CHECKOUT ================= -->
+
   <script>
     (function() {
       const VENDURE_SHOP_API = 'https://dobeha-core-778104196562.us-east1.run.app/shop-api';
@@ -772,8 +793,8 @@
         grid.innerHTML = `
           <div class="col-span-full text-center py-16">
             <div class="inline-block animate-spin rounded-full h-10 w-10 border-4 border-indigo-600 border-t-transparent mb-4"></div>
-            <p class="text-slate-600 font-bold text-base">Cargando catálogo oficial...</p>
-            <p class="text-xs text-slate-400 mt-1">Conectando con DOBEHA Multi-tenant Core</p>
+            <p class="text-slate-600 font-bold text-base">Cargando productos oficiales...</p>
+            <p class="text-xs text-slate-400 mt-1">Sincronizando con DOBEHA Multi-tenant Core</p>
           </div>
         `;
 
@@ -903,6 +924,7 @@
         `;
       }
 
+      // --- FILTROS Y BÚSQUEDA ---
       window.dobehaFilterProducts = function() {
         renderFilteredProducts();
       };
@@ -911,9 +933,9 @@
         currentCategory = cat;
         document.querySelectorAll('.cat-pill').forEach(btn => {
           if (btn.getAttribute('data-category') === cat) {
-            btn.className = 'cat-pill px-4 py-2 rounded-2xl text-xs font-bold transition bg-indigo-600 text-white shadow-sm';
+            btn.className = 'cat-pill px-4 py-1.5 rounded-full text-xs font-bold transition bg-indigo-600 text-white shadow-sm';
           } else {
-            btn.className = 'cat-pill px-4 py-2 rounded-2xl text-xs font-bold transition bg-white text-slate-700 hover:bg-slate-100 border border-slate-200';
+            btn.className = 'cat-pill px-4 py-1.5 rounded-full text-xs font-bold transition bg-white text-slate-700 hover:bg-slate-100 border border-slate-200';
           }
         });
         renderFilteredProducts();
@@ -925,6 +947,7 @@
         window.dobehaSetCategory('all');
       };
 
+      // --- QUICK VIEW MODAL ---
       window.dobehaOpenQuickView = function(id) {
         const p = allProducts.find(item => item.id === id);
         if (!p) return;
@@ -957,6 +980,7 @@
         if (modal) modal.classList.add('opacity-0', 'invisible');
       };
 
+      // --- SOCIAL PROOF FLOTANTE (Compra reciente automática) ---
       function startSocialProofTicker() {
         const buyers = [
           { name: 'Carolina M. de Piantini', city: 'Santo Domingo' },
@@ -988,6 +1012,7 @@
         setInterval(trigger, 25000);
       }
 
+      // --- FUNCIONES DEL CARRITO DE COMPRAS & CHECKOUT ---
       window.dobehaAddToCartItem = function(id, name, price, img) {
         const existing = cart.find(i => i.id === id);
         if (existing) {
@@ -1137,6 +1162,7 @@
         }, 1200);
       };
 
+      // Evento click en botones con id="cartBtn" o clase "cartBtn"
       document.addEventListener('click', function(e) {
         const target = e.target.closest('#cartBtn, .cartBtn');
         if (target) {
@@ -1154,5 +1180,3 @@
       }
     })();
   </script>
-</body>
-</html>
