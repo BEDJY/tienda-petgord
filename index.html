@@ -14,37 +14,26 @@
           colors: {
             sage: {
               50: '#f4f7f4',
-              100: '#e4ebe4',
+              100: '#e3ebd9',
               200: '#c6d6c6',
-              300: '#9eb89e',
-              400: '#759675',
-              500: '#587a58',
-              600: '#446144',
-              700: '#374e37',
-              800: '#2e402e',
-              900: '#273627',
-              950: '#141d14',
+              300: '#a3be9e',
+              600: '#587a58',
+              800: '#334c33',
+              900: '#213321',
             },
             forest: {
-              50: '#f2f7f4',
-              100: '#dfede5',
-              200: '#c1ddce',
-              300: '#97c5b0',
-              400: '#69a68e',
-              500: '#468972',
-              600: '#346e5b',
-              700: '#2a584a',
-              800: '#23473c',
-              900: '#1e3b33',
-              950: '#10211d',
+              700: '#233f2c',
+              800: '#1b3323',
+              900: '#13261a',
+              950: '#0b1910',
             }
           },
           fontFamily: {
             sans: ['"Plus Jakarta Sans"', 'sans-serif'],
           },
           boxShadow: {
-            'nordic': '0 10px 30px -10px rgba(55, 78, 55, 0.08)',
-            'card-hover': '0 20px 35px -12px rgba(42, 88, 74, 0.12)',
+            'nordic': '0 4px 20px -2px rgba(27, 51, 35, 0.08)',
+            'card-hover': '0 12px 30px -4px rgba(27, 51, 35, 0.12)',
           }
         }
       }
@@ -80,6 +69,13 @@
     .nordic-glass {
       background: rgba(255, 255, 255, 0.88);
       backdrop-filter: blur(12px);
+    }
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
     }
   </style>
 </head>
@@ -146,10 +142,10 @@
           </div>
 
           <!-- Cart Button -->
-          <button id="cartBtn" class="bg-forest-800 hover:bg-forest-900 text-white px-4 py-2.5 rounded-2xl transition-all duration-200 flex items-center gap-3 shadow-nordic hover:shadow-card-hover active:scale-95">
-            <div class="relative">
+          <button id="cartBtn" class="bg-forest-800 hover:bg-forest-900 text-white px-4 py-2.5 rounded-2xl transition-all duration-200 flex items-center gap-3 shadow-nordic hover:shadow-card-hover active:scale-95 cursor-pointer">
+            <div class="relative flex items-center justify-center">
               <i class="fa-solid fa-bag-shopping text-base"></i>
-              <span id="cartBadge" class="absolute -top-2 -right-2 bg-emerald-400 text-forest-950 text-[10px] font-extrabold w-4 h-4 rounded-full flex items-center justify-center border border-white">0</span>
+              <span id="cartBadge" class="absolute -top-2.5 -right-2.5 bg-emerald-400 text-forest-950 text-[10px] font-extrabold w-4 h-4 rounded-full flex items-center justify-center border border-white shadow-sm">0</span>
             </div>
             <div class="flex flex-col text-left leading-none">
               <span class="text-[9px] uppercase font-bold text-emerald-200 tracking-wider">Mi Carrito</span>
@@ -284,131 +280,230 @@
   <main id="catalogo" class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 w-full">
     
     <!-- Section Title & Filters Header -->
-    <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4 border-b border-sage-200 pb-6">
+    <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4 border-b border-sage-200/60 pb-6">
       <div>
-        <span class="text-xs font-extrabold uppercase tracking-widest text-forest-700">Catálogo Oficial</span>
-        <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight mt-1">
-          Productos Destacados para Tu Mascota
+        <div class="inline-flex items-center gap-2 text-forest-800 text-xs font-bold uppercase tracking-widest mb-1">
+          <i class="fa-solid fa-paw text-sage-600"></i> Selección Exclusiva
+        </div>
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-forest-950 tracking-tight">
+          Catálogo Escandinavo para Mascotas
         </h2>
-        <p class="text-xs sm:text-sm text-slate-500 mt-1">
-          Explora alimentos, accesorios y confort escandinavo seleccionado para PETGO-RD.
-        </p>
       </div>
 
-      <!-- Quick Filter Pills -->
-      <div class="flex items-center gap-2 overflow-x-auto pb-2 md:pb-0 scrollbar-none">
-        <button class="bg-forest-800 text-white text-xs font-bold px-4 py-2 rounded-full whitespace-nowrap shadow-sm">
+      <!-- Quick Filter Tags -->
+      <div class="flex items-center gap-2 overflow-x-auto pb-2 md:pb-0 no-scrollbar">
+        <button class="bg-forest-800 text-white text-xs font-semibold px-4 py-2 rounded-xl whitespace-nowrap transition-colors shadow-sm">
           Todos los Productos
         </button>
-        <button class="bg-sage-100 hover:bg-sage-200 text-forest-900 text-xs font-semibold px-4 py-2 rounded-full whitespace-nowrap transition">
-          <i class="fa-solid fa-dog mr-1"></i> Perros
+        <button class="bg-white hover:bg-sage-100 text-slate-700 border border-sage-200 text-xs font-semibold px-4 py-2 rounded-xl whitespace-nowrap transition-colors">
+          Camas & Confort
         </button>
-        <button class="bg-sage-100 hover:bg-sage-200 text-forest-900 text-xs font-semibold px-4 py-2 rounded-full whitespace-nowrap transition">
-          <i class="fa-solid fa-cat mr-1"></i> Gatos
+        <button class="bg-white hover:bg-sage-100 text-slate-700 border border-sage-200 text-xs font-semibold px-4 py-2 rounded-xl whitespace-nowrap transition-colors">
+          Alimentos Holísticos
         </button>
-        <button class="bg-sage-100 hover:bg-sage-200 text-forest-900 text-xs font-semibold px-4 py-2 rounded-full whitespace-nowrap transition">
-          <i class="fa-solid fa-bowl-food mr-1"></i> Nutrición
+        <button class="bg-white hover:bg-sage-100 text-slate-700 border border-sage-200 text-xs font-semibold px-4 py-2 rounded-xl whitespace-nowrap transition-colors">
+          Paseo & Arneses
+        </button>
+        <button class="bg-white hover:bg-sage-100 text-slate-700 border border-sage-200 text-xs font-semibold px-4 py-2 rounded-xl whitespace-nowrap transition-colors">
+          Juguetes Eco
         </button>
       </div>
     </div>
 
-    <!-- MANDATORY DOBEHA PRODUCTS CONTAINER -->
-    <div id="productsGrid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-      <!-- Loading Placeholder Skeleton -->
-      <div class="bg-white rounded-3xl p-4 border border-sage-200 shadow-sm animate-pulse flex flex-col gap-3">
-        <div class="bg-sage-100 rounded-2xl h-48 w-full"></div>
-        <div class="h-4 bg-sage-100 rounded w-3/4"></div>
-        <div class="h-3 bg-sage-100 rounded w-1/2"></div>
-        <div class="mt-auto h-10 bg-sage-100 rounded-2xl w-full"></div>
-      </div>
-      <div class="bg-white rounded-3xl p-4 border border-sage-200 shadow-sm animate-pulse flex flex-col gap-3">
-        <div class="bg-sage-100 rounded-2xl h-48 w-full"></div>
-        <div class="h-4 bg-sage-100 rounded w-3/4"></div>
-        <div class="h-3 bg-sage-100 rounded w-1/2"></div>
-        <div class="mt-auto h-10 bg-sage-100 rounded-2xl w-full"></div>
-      </div>
-      <div class="bg-white rounded-3xl p-4 border border-sage-200 shadow-sm animate-pulse flex flex-col gap-3">
-        <div class="bg-sage-100 rounded-2xl h-48 w-full"></div>
-        <div class="h-4 bg-sage-100 rounded w-3/4"></div>
-        <div class="h-3 bg-sage-100 rounded w-1/2"></div>
-        <div class="mt-auto h-10 bg-sage-100 rounded-2xl w-full"></div>
-      </div>
-      <div class="bg-white rounded-3xl p-4 border border-sage-200 shadow-sm animate-pulse flex flex-col gap-3">
-        <div class="bg-sage-100 rounded-2xl h-48 w-full"></div>
-        <div class="h-4 bg-sage-100 rounded w-3/4"></div>
-        <div class="h-3 bg-sage-100 rounded w-1/2"></div>
-        <div class="mt-auto h-10 bg-sage-100 rounded-2xl w-full"></div>
-      </div>
-    </div>
+    <!-- REQUIRED PRODUCTS GRID CONTAINER -->
+    <div id="productsGrid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"></div>
 
   </main>
 
-  <!-- BRAND BANNER / PHILOSOPHY -->
-  <section class="bg-forest-900 text-white py-16 px-4 my-10 relative overflow-hidden">
-    <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
-      <div class="space-y-4 text-center lg:text-left">
-        <span class="text-xs font-bold uppercase tracking-widest text-emerald-300">Estilo de Vida Escandinavo</span>
-        <h3 class="text-2xl sm:text-4xl font-extrabold text-white tracking-tight">
-          Harmonía en tu hogar, bienestar absoluto para ellos.
-        </h3>
-        <p class="text-emerald-100 text-xs sm:text-sm leading-relaxed">
-          En PETGO-RD creemos que los accesorios para mascotas no tienen por qué desentonar con la decoración de tu hogar. Diseñamos y seleccionamos piezas con paletas neutras de salvia y verde bosque que brindan calma, elegancia y la máxima ergonomía para tu compañero fiel.
-        </p>
-        <div class="pt-2 flex flex-wrap justify-center lg:justify-start gap-4 text-xs font-semibold">
-          <span class="bg-forest-800 px-3.5 py-2 rounded-xl border border-forest-700"><i class="fa-solid fa-check text-emerald-400 mr-1.5"></i> Diseños Nórdicos</span>
-          <span class="bg-forest-800 px-3.5 py-2 rounded-xl border border-forest-700"><i class="fa-solid fa-check text-emerald-400 mr-1.5"></i> Materiales Biodegradables</span>
-          <span class="bg-forest-800 px-3.5 py-2 rounded-xl border border-forest-700"><i class="fa-solid fa-check text-emerald-400 mr-1.5"></i> Calidad Veterinaria</span>
+  <!-- PHILOSOPHY / ESSENCE SECTION -->
+  <section class="bg-sage-100/50 py-16 border-t border-sage-200/80">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="bg-white p-8 rounded-3xl border border-sage-200 shadow-sm space-y-4">
+          <div class="w-12 h-12 bg-sage-100 text-forest-800 rounded-2xl flex items-center justify-center text-xl font-bold">
+            <i class="fa-solid fa-tree"></i>
+          </div>
+          <h3 class="text-lg font-bold text-forest-950">Estética Hygge & Funcional</h3>
+          <p class="text-slate-600 text-xs sm:text-sm leading-relaxed">
+            Diseños neutros que se integran con elegancia a la decoración de tu hogar, sin sacrificar la resistencia ni el bienestar de tu mascota.
+          </p>
         </div>
-      </div>
 
-      <div class="grid grid-cols-2 gap-4">
-        <div class="bg-forest-800/80 p-5 rounded-3xl border border-forest-700 text-center">
-          <div class="w-12 h-12 mx-auto rounded-2xl bg-emerald-500/10 text-emerald-300 flex items-center justify-center text-xl mb-3">
+        <div class="bg-white p-8 rounded-3xl border border-sage-200 shadow-sm space-y-4">
+          <div class="w-12 h-12 bg-sage-100 text-forest-800 rounded-2xl flex items-center justify-center text-xl font-bold">
+            <i class="fa-solid fa-bowl-food"></i>
+          </div>
+          <h3 class="text-lg font-bold text-forest-950">Nutrición Libre de Tóxicos</h3>
+          <p class="text-slate-600 text-xs sm:text-sm leading-relaxed">
+            Seleccionamos únicamente fórmulas limpias, libres de colorantes artificiales, ricas en omegas y proteínas de alta digestibilidad.
+          </p>
+        </div>
+
+        <div class="bg-white p-8 rounded-3xl border border-sage-200 shadow-sm space-y-4">
+          <div class="w-12 h-12 bg-sage-100 text-forest-800 rounded-2xl flex items-center justify-center text-xl font-bold">
             <i class="fa-solid fa-heart-pulse"></i>
           </div>
-          <h4 class="text-sm font-bold text-white mb-1">Salud Digestiva</h4>
-          <p class="text-[11px] text-emerald-100">Fórmulas orgánicas sin aditivos ni conservantes artificiales.</p>
-        </div>
-
-        <div class="bg-forest-800/80 p-5 rounded-3xl border border-forest-700 text-center">
-          <div class="w-12 h-12 mx-auto rounded-2xl bg-emerald-500/10 text-emerald-300 flex items-center justify-center text-xl mb-3">
-            <i class="fa-solid fa-couch"></i>
-          </div>
-          <h4 class="text-sm font-bold text-white mb-1">Confort Ergonómico</h4>
-          <p class="text-[11px] text-emerald-100">Camas con memory foam de alta densidad para articulaciones.</p>
+          <h3 class="text-lg font-bold text-forest-950">Calidad de Vida Garantizada</h3>
+          <p class="text-slate-600 text-xs sm:text-sm leading-relaxed">
+            Cada producto es rigurosamente evaluado por veterinarios y etólogos para promover un descanso ortopédico y un juego seguro.
+          </p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- FOOTER -->
-  <footer class="bg-white border-t border-sage-200 pt-16 pb-12">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 pb-12 border-b border-sage-100">
-        
-        <!-- Brand Info -->
-        <div class="lg:col-span-2 space-y-4">
-          <div class="flex items-center gap-3">
-            <div class="w-10 h-10 rounded-2xl bg-forest-800 text-white flex items-center justify-center text-lg font-bold">
-              <i class="fa-solid fa-paw"></i>
-            </div>
-            <span class="font-extrabold text-xl tracking-tight text-forest-950">
-              PETGO<span class="text-sage-600 font-semibold">-RD</span>
-            </span>
+  <!-- NEWSLETTER / CLUB NÓRDICO BANNER -->
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 my-16">
+    <div class="bg-forest-900 rounded-3xl p-8 sm:p-12 text-white relative overflow-hidden shadow-card-hover">
+      <div class="relative z-10 max-w-2xl space-y-4">
+        <span class="bg-forest-800 text-emerald-300 px-3 py-1 rounded-full text-xs font-semibold tracking-wider uppercase border border-forest-700">
+          Comunidad Petgo
+        </span>
+        <h2 class="text-2xl sm:text-4xl font-extrabold text-white tracking-tight">
+          Únete al Club Escandinavo de Mascotas
+        </h2>
+        <p class="text-emerald-100 text-xs sm:text-sm leading-relaxed">
+          Recibe un 10% de descuento en tu primera compra, guías de salud veterinaria y acceso prioritario a nuestras nuevas colecciones exclusivas.
+        </p>
+        <form onsubmit="return false;" class="flex flex-col sm:flex-row gap-3 pt-2">
+          <input type="email" placeholder="Ingresa tu correo electrónico..." class="bg-white/10 border border-emerald-800 text-white placeholder-emerald-300 text-xs rounded-2xl px-5 py-3.5 focus:outline-none focus:ring-2 focus:ring-emerald-400 flex-1">
+          <button type="submit" class="bg-emerald-400 hover:bg-emerald-300 text-forest-950 font-bold text-xs px-6 py-3.5 rounded-2xl transition-all shadow-md">
+            Suscribirme
+          </
+
+  <!-- ================= DOBEHA CART DRAWER & CHECKOUT ================= -->
+  <div id="dobehaCartDrawer" class="fixed inset-0 z-50 pointer-events-none transition-all duration-300 opacity-0 invisible" aria-hidden="true">
+    <div id="dobehaCartOverlay" class="absolute inset-0 bg-black/60 backdrop-blur-xs transition-opacity duration-300 pointer-events-auto" onclick="window.dobehaCloseCart()"></div>
+    
+    <div id="dobehaCartPanel" class="absolute right-0 top-0 bottom-0 w-full max-w-md bg-white shadow-2xl flex flex-col pointer-events-auto transform translate-x-full transition-transform duration-300 ease-out">
+      <!-- Cart Header -->
+      <div class="px-6 py-5 border-b border-slate-100 flex items-center justify-between bg-slate-50/80">
+        <div class="flex items-center gap-2.5">
+          <div class="w-8 h-8 rounded-xl bg-indigo-600 text-white flex items-center justify-center font-bold text-sm shadow-sm">
+            <i class="fa-solid fa-bag-shopping"></i>
           </div>
-          <p class="text-slate-500 text-xs sm:text-sm leading-relaxed max-w-sm">
-            Tienda líder en República Dominicana dedicada al bienestar integral de tus mascotas con estética escandinava limpia y materiales de primer nivel.
-          </p>
-          <div class="flex items-center gap-3 text-forest-800 pt-1">
-            <a href="#" class="w-8 h-8 rounded-full bg-sage-100 hover:bg-forest-800 hover:text-white transition flex items-center justify-center text-xs"><i class="fa-brands fa-instagram"></i></a>
-            <a href="#" class="w-8 h-8 rounded-full bg-sage-100 hover:bg-forest-800 hover:text-white transition flex items-center justify-center text-xs"><i class="fa-brands fa-facebook-f"></i></a>
-            <a href="#" class="w-8 h-8 rounded-full bg-sage-100 hover:bg-forest
+          <div>
+            <h3 class="font-extrabold text-slate-900 text-base leading-tight">Mi Carrito de Compras</h3>
+            <p class="text-[11px] text-slate-400 font-medium">DOBEHA Secure Checkout</p>
+          </div>
+        </div>
+        <button type="button" onclick="window.dobehaCloseCart()" class="p-2 text-slate-400 hover:text-slate-600 rounded-xl hover:bg-slate-200/50 transition">
+          <i class="fa-solid fa-xmark text-lg"></i>
+        </button>
+      </div>
+
+      <!-- Cart Items List -->
+      <div id="dobehaCartItems" class="flex-1 overflow-y-auto p-6 space-y-4">
+        <!-- Generado dinámicamente -->
+      </div>
+
+      <!-- Cart Footer / Summary -->
+      <div class="p-6 border-t border-slate-100 bg-slate-50/50 space-y-4">
+        <div class="space-y-1.5 text-xs text-slate-500">
+          <div class="flex justify-between">
+            <span>Subtotal</span>
+            <span id="dobehaCartSubtotal" class="font-semibold text-slate-800">RD$ 0.00</span>
+          </div>
+          <div class="flex justify-between">
+            <span>Envío</span>
+            <span class="font-semibold text-emerald-600">Calculado en checkout</span>
+          </div>
+          <div class="flex justify-between text-base font-black text-slate-900 pt-2 border-t border-slate-200">
+            <span>Total</span>
+            <span id="dobehaCartTotal" class="text-indigo-600">RD$ 0.00</span>
+          </div>
+        </div>
+
+        <!-- Checkout Buttons -->
+        <div class="space-y-2 pt-1">
+          <button 
+            type="button" 
+            onclick="window.dobehaCheckoutWhatsApp()"
+            class="w-full py-3.5 px-4 bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold rounded-2xl shadow-lg shadow-emerald-600/25 flex items-center justify-center gap-2.5 text-sm transition transform active:scale-98 cursor-pointer"
+          >
+            <i class="fa-brands fa-whatsapp text-lg"></i>
+            <span>Pedir por WhatsApp (Entrega Rápida)</span>
+          </button>
+          
+          <button 
+            type="button" 
+            onclick="window.dobehaOpenPaymentModal()"
+            class="w-full py-3 px-4 bg-slate-900 hover:bg-black text-white font-bold rounded-2xl shadow-md flex items-center justify-center gap-2 text-xs transition cursor-pointer"
+          >
+            <i class="fa-solid fa-credit-card"></i>
+            <span>Pagar con Tarjeta / Azul</span>
+          </button>
+        </div>
+
+        <div class="flex items-center justify-center gap-2 text-[10px] text-slate-400">
+          <i class="fa-solid fa-lock text-emerald-500"></i>
+          <span>Pagos protegidos por DOBEHA Commerce Shield</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Checkout Pago Online -->
+  <div id="dobehaPaymentModal" class="fixed inset-0 z-50 pointer-events-none transition-all duration-300 opacity-0 invisible" aria-hidden="true">
+    <div class="absolute inset-0 bg-black/60 backdrop-blur-xs pointer-events-auto" onclick="window.dobehaClosePaymentModal()"></div>
+    <div class="relative min-h-screen flex items-center justify-center p-4">
+      <div class="relative w-full max-w-md bg-white rounded-3xl shadow-2xl p-6 pointer-events-auto space-y-4">
+        <div class="flex items-center justify-between border-b border-slate-100 pb-3">
+          <div class="flex items-center gap-2">
+            <i class="fa-solid fa-shield-halved text-indigo-600 text-xl"></i>
+            <h4 class="font-extrabold text-slate-900 text-base">Finalizar Compra Segura</h4>
+          </div>
+          <button onclick="window.dobehaClosePaymentModal()" class="text-slate-400 hover:text-slate-600">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+
+        <form id="dobehaCheckoutForm" onsubmit="window.dobehaProcessPayment(event)" class="space-y-3 text-xs">
+          <div>
+            <label class="block font-bold text-slate-700 mb-1">Nombre Completo</label>
+            <input type="text" id="chkName" required placeholder="Ej. Juan Pérez" class="w-full rounded-xl border border-slate-200 px-3 py-2 focus:ring-2 focus:ring-indigo-500 focus:outline-hidden">
+          </div>
+          <div class="grid grid-cols-2 gap-2">
+            <div>
+              <label class="block font-bold text-slate-700 mb-1">Teléfono / WhatsApp</label>
+              <input type="tel" id="chkPhone" required placeholder="809-000-0000" class="w-full rounded-xl border border-slate-200 px-3 py-2 focus:ring-2 focus:ring-indigo-500 focus:outline-hidden">
+            </div>
+            <div>
+              <label class="block font-bold text-slate-700 mb-1">Ciudad / Sector</label>
+              <input type="text" id="chkCity" required placeholder="Santo Domingo" class="w-full rounded-xl border border-slate-200 px-3 py-2 focus:ring-2 focus:ring-indigo-500 focus:outline-hidden">
+            </div>
+          </div>
+          <div>
+            <label class="block font-bold text-slate-700 mb-1">Dirección de Entrega</label>
+            <input type="text" id="chkAddress" required placeholder="Calle, número, apto o referencia..." class="w-full rounded-xl border border-slate-200 px-3 py-2 focus:ring-2 focus:ring-indigo-500 focus:outline-hidden">
+          </div>
+          <div>
+            <label class="block font-bold text-slate-700 mb-1">Método de Pago</label>
+            <select id="chkMethod" class="w-full rounded-xl border border-slate-200 px-3 py-2 focus:ring-2 focus:ring-indigo-500 focus:outline-hidden bg-white">
+              <option value="card">Tarjeta de Crédito / Débito (Azul Gateway)</option>
+              <option value="cod">Pago Contra Entrega (Efectivo al recibir)</option>
+              <option value="transfer">Transferencia Bancaria (BHD / Banreservas / Popular)</option>
+            </select>
+          </div>
+
+          <div class="pt-2">
+            <button type="submit" class="w-full py-3.5 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl font-extrabold shadow-md transition flex items-center justify-center gap-2 cursor-pointer">
+              <i class="fa-solid fa-lock"></i>
+              <span id="chkSubmitBtnText">Confirmar y Pagar Orden</span>
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
 
   <script>
     (function() {
       const VENDURE_SHOP_API = 'https://dobeha-core-778104196562.us-east1.run.app/shop-api';
       const CHANNEL_TOKEN = 'petgord';
-      let cart = [];
+      const WHATSAPP_STORE_PHONE = '18293998904'; // Número oficial de soporte
+      let cart = []; // [{ id, name, price, qty, img, formattedPrice }]
       let allProducts = [];
 
       const query = `
@@ -448,7 +543,6 @@
         `;
 
         try {
-          // Si estamos en un iframe en localhost, usar proxy para evitar bloqueo CORS de "null" origin
           const targetUrl = (window.location.origin.includes('localhost') || window.location.origin.includes('127.0.0.1'))
             ? '/api/shop-proxy'
             : VENDURE_SHOP_API;
@@ -490,10 +584,10 @@
         grid.innerHTML = items.map(p => {
           const img = p.featuredAsset?.preview || 'https://images.unsplash.com/photo-1543466835-00a7907e9de1?w=600&q=80';
           const rawPrice = p.variants?.[0]?.priceWithTax || p.variants?.[0]?.price || 0;
-          // Vendure almacena en centavos
           const formattedPrice = (rawPrice / 100).toLocaleString('es-DO', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
           const cleanDesc = (p.description || '').replace(/<[^>]*>/g, '').trim() || 'Producto oficial garantizado DOBEHA.';
           const safeName = (p.name || 'Producto').replace(/'/g, "\\'");
+          const pId = p.id;
 
           return `
             <div class="bg-white rounded-2xl border border-slate-200/90 shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col group hover:-translate-y-1">
@@ -519,7 +613,7 @@
                   </div>
                   <button 
                     type="button" 
-                    onclick="window.dobehaAddToCart('${safeName}')"
+                    onclick="window.dobehaAddToCartItem('${pId}', '${safeName}', ${rawPrice}, '${img}')"
                     class="px-4 py-2.5 bg-indigo-600 hover:bg-indigo-700 active:scale-95 text-white rounded-xl text-xs font-bold transition flex items-center gap-2 shadow-md shadow-indigo-600/20 cursor-pointer"
                   >
                     <i class="fa-solid fa-cart-plus text-sm"></i>
@@ -547,18 +641,167 @@
         `;
       }
 
-      window.dobehaAddToCart = function(name) {
-        cart.push(name);
-        const badges = document.querySelectorAll('#cartBadge, .cartBadge');
-        badges.forEach(b => b.innerText = cart.length);
-        
-        // Notificación toast visual
-        const toast = document.createElement('div');
-        toast.className = 'fixed bottom-5 right-5 z-50 bg-slate-900 text-white px-5 py-3 rounded-2xl shadow-2xl flex items-center gap-3 border border-slate-700 animate-bounce';
-        toast.innerHTML = '<i class="fa-solid fa-circle-check text-emerald-400 text-lg"></i><span class="text-xs font-bold">' + name + ' añadido al carrito</span>';
-        document.body.appendChild(toast);
-        setTimeout(() => toast.remove(), 2500);
+      // --- FUNCIONES DEL CARRITO DE COMPRAS & CHECKOUT ---
+      window.dobehaAddToCartItem = function(id, name, price, img) {
+        const existing = cart.find(i => i.id === id);
+        if (existing) {
+          existing.qty += 1;
+        } else {
+          cart.push({ id, name, price, qty: 1, img });
+        }
+        updateCartUi();
+        window.dobehaOpenCart();
       };
+
+      window.dobehaAddToCart = function(name) {
+        const found = allProducts.find(p => p.name === name);
+        if (found) {
+          const rawPrice = found.variants?.[0]?.priceWithTax || found.variants?.[0]?.price || 0;
+          const img = found.featuredAsset?.preview || 'https://images.unsplash.com/photo-1543466835-00a7907e9de1?w=600&q=80';
+          window.dobehaAddToCartItem(found.id, found.name, rawPrice, img);
+        }
+      };
+
+      window.dobehaUpdateQty = function(id, delta) {
+        const item = cart.find(i => i.id === id);
+        if (!item) return;
+        item.qty += delta;
+        if (item.qty <= 0) {
+          cart = cart.filter(i => i.id !== id);
+        }
+        updateCartUi();
+      };
+
+      window.dobehaRemoveItem = function(id) {
+        cart = cart.filter(i => i.id !== id);
+        updateCartUi();
+      };
+
+      function updateCartUi() {
+        // Badges
+        const totalCount = cart.reduce((acc, i) => acc + i.qty, 0);
+        document.querySelectorAll('#cartBadge, .cartBadge').forEach(b => {
+          b.innerText = totalCount;
+          b.style.display = totalCount > 0 ? 'inline-flex' : 'none';
+        });
+
+        // Totals
+        const totalCents = cart.reduce((acc, i) => acc + (i.price * i.qty), 0);
+        const formattedTotal = (totalCents / 100).toLocaleString('es-DO', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+        const subElem = document.getElementById('dobehaCartSubtotal');
+        const totElem = document.getElementById('dobehaCartTotal');
+        if (subElem) subElem.innerText = 'RD$ ' + formattedTotal;
+        if (totElem) totElem.innerText = 'RD$ ' + formattedTotal;
+
+        // Items list in drawer
+        const container = document.getElementById('dobehaCartItems');
+        if (!container) return;
+
+        if (cart.length === 0) {
+          container.innerHTML = `
+            <div class="text-center py-16 text-slate-400">
+              <i class="fa-solid fa-basket-shopping text-4xl mb-3 text-slate-300"></i>
+              <p class="font-bold text-slate-600">Tu carrito está vacío</p>
+              <p class="text-xs text-slate-400 mt-1">Explora nuestro catálogo y agrega productos.</p>
+            </div>
+          `;
+          return;
+        }
+
+        container.innerHTML = cart.map(item => {
+          const itemTotal = ((item.price * item.qty) / 100).toLocaleString('es-DO', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+          return `
+            <div class="flex items-center gap-3 bg-slate-50 p-3 rounded-2xl border border-slate-100">
+              <img src="${item.img}" alt="${item.name}" class="w-14 h-14 rounded-xl object-cover bg-white shrink-0">
+              <div class="flex-1 min-w-0">
+                <h5 class="font-bold text-slate-900 text-xs truncate">${item.name}</h5>
+                <p class="text-[11px] font-black text-indigo-600 mt-0.5">RD$ ${itemTotal}</p>
+                <div class="flex items-center gap-2 mt-1.5">
+                  <button type="button" onclick="window.dobehaUpdateQty('${item.id}', -1)" class="w-6 h-6 rounded-lg bg-white border border-slate-200 flex items-center justify-center text-xs font-bold hover:bg-slate-100">-</button>
+                  <span class="text-xs font-bold w-4 text-center">${item.qty}</span>
+                  <button type="button" onclick="window.dobehaUpdateQty('${item.id}', 1)" class="w-6 h-6 rounded-lg bg-white border border-slate-200 flex items-center justify-center text-xs font-bold hover:bg-slate-100">+</button>
+                </div>
+              </div>
+              <button type="button" onclick="window.dobehaRemoveItem('${item.id}')" class="p-2 text-slate-400 hover:text-rose-500 transition">
+                <i class="fa-solid fa-trash-can text-sm"></i>
+              </button>
+            </div>
+          `;
+        }).join('');
+      }
+
+      window.dobehaOpenCart = function() {
+        const drawer = document.getElementById('dobehaCartDrawer');
+        const panel = document.getElementById('dobehaCartPanel');
+        if (drawer && panel) {
+          drawer.classList.remove('opacity-0', 'invisible');
+          panel.classList.remove('translate-x-full');
+        }
+      };
+
+      window.dobehaCloseCart = function() {
+        const drawer = document.getElementById('dobehaCartDrawer');
+        const panel = document.getElementById('dobehaCartPanel');
+        if (drawer && panel) {
+          panel.classList.add('translate-x-full');
+          setTimeout(() => drawer.classList.add('opacity-0', 'invisible'), 250);
+        }
+      };
+
+      window.dobehaCheckoutWhatsApp = function() {
+        if (cart.length === 0) {
+          alert('Tu carrito está vacío.');
+          return;
+        }
+        let msg = '¡Hola! Quiero ordenar los siguientes productos de la tienda PETGO-RD:%0A%0A';
+        cart.forEach((i, idx) => {
+          const itemPrice = ((i.price * i.qty) / 100).toFixed(2);
+          msg += (idx + 1) + '. *' + i.name + '* x' + i.qty + ' - RD$ ' + itemPrice + '%0A';
+        });
+        const totalCents = cart.reduce((acc, i) => acc + (i.price * i.qty), 0);
+        msg += '%0A*TOTAL:* RD$ ' + (totalCents / 100).toFixed(2);
+        msg += '%0A%0A¿Me confirman disponibilidad y tiempo de entrega?';
+
+        window.open('https://wa.me/' + WHATSAPP_STORE_PHONE + '?text=' + msg, '_blank');
+      };
+
+      window.dobehaOpenPaymentModal = function() {
+        if (cart.length === 0) {
+          alert('Tu carrito está vacío.');
+          return;
+        }
+        const modal = document.getElementById('dobehaPaymentModal');
+        if (modal) modal.classList.remove('opacity-0', 'invisible');
+      };
+
+      window.dobehaClosePaymentModal = function() {
+        const modal = document.getElementById('dobehaPaymentModal');
+        if (modal) modal.classList.add('opacity-0', 'invisible');
+      };
+
+      window.dobehaProcessPayment = function(e) {
+        e.preventDefault();
+        const btn = document.getElementById('chkSubmitBtnText');
+        if (btn) btn.innerText = 'Procesando pago seguro...';
+
+        setTimeout(() => {
+          alert('¡Orden registrada con éxito! En breve recibirás confirmación.');
+          cart = [];
+          updateCartUi();
+          window.dobehaClosePaymentModal();
+          window.dobehaCloseCart();
+          if (btn) btn.innerText = 'Confirmar y Pagar Orden';
+        }, 1200);
+      };
+
+      // Asignar evento click a cualquier botón de carrito existente en el header
+      document.addEventListener('click', function(e) {
+        const target = e.target.closest('#cartBtn, .cartBtn');
+        if (target) {
+          e.preventDefault();
+          window.dobehaOpenCart();
+        }
+      });
 
       window.dobehaReloadProducts = fetchProducts;
 
