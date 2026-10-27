@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PETVET - PetGord | Tienda Oficial de Mascotas & Accesorios Premium</title>
+  <title>PETVET PetGord | Ofertas Épicas Temu Style - Mascotas & Accesorios</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <script>
     tailwind.config = {
       theme: {
@@ -17,43 +17,41 @@
             sans: ['"Plus Jakarta Sans"', 'sans-serif'],
           },
           colors: {
-            brand: {
-              50: '#fff7ed',
-              100: '#ffedd5',
-              500: '#f97316',
-              600: '#ea580c',
-              700: '#c2410c',
-              dark: '#1c1917'
-            },
-            tealbrand: {
-              50: '#f0fdf4',
-              500: '#10b981',
-              600: '#059669',
-              700: '#047857'
+            temu: {
+              orange: '#fb5200',
+              deepOrange: '#e04200',
+              yellow: '#ffc200',
+              dark: '#111111',
+              lightBg: '#f6f6f6'
             }
           },
           animation: {
-            'bounce-slow': 'bounce 3s infinite',
-            'pulse-fast': 'pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+            'bounce-fast': 'bounce 0.8s infinite',
+            'pulse-fast': 'pulse 1s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+            'spin-slow': 'spin 8s linear infinite',
+            'shimmer': 'shimmer 2s infinite linear'
           }
         }
       }
     }
   </script>
   <style>
-    /* Custom Scrollbar */
     ::-webkit-scrollbar {
-      width: 8px;
+      width: 6px;
+      height: 6px;
     }
     ::-webkit-scrollbar-track {
       background: #f1f1f1;
     }
     ::-webkit-scrollbar-thumb {
-      background: #f97316;
-      border-radius: 4px;
+      background: #fb5200;
+      border-radius: 3px;
     }
-    ::-webkit-scrollbar-thumb:hover {
-      background: #ea580c;
+    .temu-badge {
+      background: linear-gradient(135deg, #ffc200 0%, #ff9100 100%);
+    }
+    .temu-gradient {
+      background: linear-gradient(90deg, #fb5200 0%, #ff7a00 50%, #fb5200 100%);
     }
     .line-clamp-2 {
       display: -webkit-box;
@@ -61,327 +59,282 @@
       -webkit-box-orient: vertical;
       overflow: hidden;
     }
+    @keyframes shimmer {
+      0% { background-position: -200% 0; }
+      100% { background-position: 200% 0; }
+    }
   </style>
 </head>
-<body class="bg-stone-50 text-stone-800 antialiased font-sans flex flex-col min-h-screen selection:bg-orange-500 selection:text-white">
+<body class="bg-stone-100 text-stone-900 antialiased font-sans flex flex-col min-h-screen selection:bg-temu-orange selection:text-white">
 
-  <!-- Toast Container -->
-  <div id="toastContainer" class="fixed bottom-5 right-5 z-50 flex flex-col gap-2 pointer-events-none"></div>
+  <!-- Toast Notification System -->
+  <div id="toastContainer" class="fixed top-5 right-5 z-50 flex flex-col gap-2 pointer-events-none"></div>
 
-  <!-- Top Banner / Announcement Bar -->
-  <div class="bg-gradient-to-r from-stone-900 via-orange-950 to-stone-900 text-amber-100 text-xs py-2.5 px-4 shadow-inner">
-    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2 text-center sm:text-left">
-      <div class="flex items-center gap-2 font-medium">
-        <span class="bg-orange-500 text-white font-bold px-2.5 py-0.5 rounded-full text-[10px] uppercase tracking-wider shadow-sm">Envío Gratis</span>
-        <span>En compras mayores a $50 USD • Entrega Express 24-48h</span>
+  <!-- TEMU STYLE URGENCY BAR / TOP BANNER -->
+  <div class="bg-temu-dark text-white text-xs py-2 px-3 relative z-50 overflow-hidden shadow-md">
+    <div class="max-w-7xl mx-auto flex flex-wrap justify-between items-center gap-2">
+      <div class="flex items-center gap-2 font-black">
+        <span class="bg-temu-orange text-white font-black text-[11px] px-2 py-0.5 rounded tracking-wide animate-pulse">⚡ Ofertón Temu</span>
+        <span class="text-amber-300 font-bold">¡Hasta 90% Dcto. + Envío GRATIS en todo tu pedido!</span>
       </div>
-      <div class="flex items-center gap-4 text-[11px] font-semibold">
-        <a href="https://wa.me/?text=Hola%20PETVET%20PetGord,%20necesito%20asesoria%20veterinaria" target="_blank" class="hover:text-orange-400 transition flex items-center gap-1.5">
-          <i class="fa-solid fa-headset text-orange-400"></i> Soporte Vet 24/7
-        </a>
-        <span class="text-stone-700">|</span>
-        <span class="text-emerald-400 flex items-center gap-1.5"><i class="fa-solid fa-circle text-[8px] animate-pulse"></i> DOBEHA OS Connected</span>
+      
+      <!-- Countdown Timer -->
+      <div class="flex items-center gap-1.5 font-bold text-stone-200 text-[11px]">
+        <span>Termina en:</span>
+        <div class="flex items-center gap-1 text-white font-black">
+          <span id="timerHours" class="bg-stone-800 border border-stone-700 px-1.5 py-0.5 rounded text-amber-400">02</span>:
+          <span id="timerMinutes" class="bg-stone-800 border border-stone-700 px-1.5 py-0.5 rounded text-amber-400">45</span>:
+          <span id="timerSeconds" class="bg-stone-800 border border-stone-700 px-1.5 py-0.5 rounded text-amber-400">18</span>
+        </div>
+        <span class="hidden md:inline-block ml-3 text-emerald-400"><i class="fa-solid fa-rotate-left mr-1"></i>Devolución gratis en 90 días</span>
       </div>
     </div>
   </div>
 
-  <!-- Header Section -->
-  <header class="bg-white/95 backdrop-blur-md sticky top-0 z-40 border-b border-stone-200/80 shadow-sm transition-all duration-300">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 h-20 flex items-center justify-between gap-4">
+  <!-- MAIN HEADER TEMU STYLE -->
+  <header class="bg-white sticky top-0 z-40 border-b border-stone-200 shadow-md">
+    <div class="max-w-7xl mx-auto px-3 sm:px-6 py-2.5 flex items-center justify-between gap-2 sm:gap-4">
       
-      <!-- Brand Logo -->
-      <a href="#" class="flex items-center gap-3 group">
-        <div class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-orange-600 via-amber-500 to-orange-400 text-white flex items-center justify-center text-2xl shadow-lg shadow-orange-500/30 group-hover:scale-105 transition-transform duration-300">
+      <!-- Logo Brand -->
+      <a href="#" class="flex items-center gap-2 shrink-0 group">
+        <div class="w-10 h-10 rounded-xl bg-temu-orange text-white flex items-center justify-center text-xl font-black shadow-lg shadow-orange-500/40 group-hover:scale-105 transition duration-200">
           <i class="fa-solid fa-paw"></i>
         </div>
-        <div class="flex flex-col">
-          <span class="font-extrabold text-2xl tracking-tight text-stone-900 leading-none">PETVET <span class="text-orange-600 font-black">PetGord</span></span>
-          <span class="text-[10px] font-bold text-stone-400 uppercase tracking-widest mt-0.5">Mascotas & Nutrición OS</span>
+        <div class="flex flex-col leading-none">
+          <span class="font-black text-xl sm:text-2xl tracking-tighter text-stone-900">PETVET<span class="text-temu-orange">.PetGord</span></span>
+          <span class="text-[9px] font-extrabold text-stone-500 uppercase tracking-widest -mt-1">Precios Directos de Fábrica</span>
         </div>
       </a>
 
-      <!-- Search Bar -->
-      <div class="hidden md:flex flex-1 max-w-md mx-6">
-        <div class="relative w-full">
-          <input type="text" id="searchInput" onkeyup="filterProducts()" placeholder="Buscar alimento, juguetes, arneses, premios..." class="w-full bg-stone-100/90 border border-stone-200 text-stone-800 text-sm rounded-full pl-11 pr-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:bg-white transition-all shadow-inner">
-          <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-stone-400"></i>
+      <!-- Search Bar Temu Style -->
+      <div class="flex-1 max-w-2xl mx-2 hidden sm:block">
+        <div class="relative flex items-center">
+          <input type="text" id="searchInput" onkeyup="filterProducts()" placeholder="Busca alimentos, juguetes $0.99, arneses, rascadores..." class="w-full bg-stone-100 border-2 border-temu-orange text-stone-900 text-sm rounded-full pl-5 pr-14 py-2 focus:outline-none focus:ring-2 focus:ring-orange-500 transition shadow-inner">
+          <button onclick="filterProducts()" class="absolute right-1 top-1/2 -translate-y-1/2 bg-temu-orange hover:bg-temu-deepOrange text-white rounded-full px-5 py-1.5 text-sm font-bold transition flex items-center gap-1 shadow">
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </button>
         </div>
       </div>
 
-      <!-- Actions -->
-      <div class="flex items-center gap-3">
-        <button onclick="scrollToCatalog()" class="hidden sm:flex items-center gap-2 px-4 py-2.5 rounded-xl text-stone-600 hover:text-stone-900 hover:bg-stone-100 text-sm font-semibold transition">
-          <i class="fa-solid fa-store text-orange-500"></i>
-          <span>Catálogo</span>
-        </button>
-
-        <!-- Cart Button -->
-        <button onclick="toggleCartDrawer()" id="cartBtn" class="relative bg-stone-900 hover:bg-orange-600 text-white px-4 py-2.5 rounded-2xl transition flex items-center gap-3 shadow-md hover:shadow-orange-500/20 active:scale-95 duration-200">
+      <!-- Action Icons -->
+      <div class="flex items-center gap-2 sm:gap-4">
+        
+        <!-- Wheel / Reward Spin Modal Trigger -->
+        <button onclick="toggleSpinModal()" class="flex flex-col items-center justify-center text-stone-700 hover:text-temu-orange transition px-2">
           <div class="relative">
-            <i class="fa-solid fa-bag-shopping text-lg"></i>
-            <span id="cartBadge" class="absolute -top-2.5 -right-2.5 bg-orange-500 text-white text-[10px] font-black w-5 h-5 rounded-full flex items-center justify-center border-2 border-stone-900 shadow">0</span>
+            <i class="fa-solid fa-gift text-xl text-amber-500 animate-bounce-fast"></i>
+            <span class="absolute -top-1 -right-2 bg-red-600 text-white font-black text-[9px] rounded-full px-1">GRATIS</span>
           </div>
-          <div class="hidden sm:flex flex-col text-left leading-none">
-            <span class="text-[10px] text-stone-300 font-medium">Mi Carrito</span>
-            <span id="cartTotalHeader" class="text-xs font-bold text-white">$0.00</span>
+          <span class="text-[10px] font-extrabold hidden md:inline">Ruleta $100</span>
+        </button>
+
+        <!-- Cart Trigger -->
+        <button onclick="toggleCartDrawer()" id="cartBtn" class="relative bg-temu-orange hover:bg-temu-deepOrange text-white px-3.5 py-2 rounded-full transition flex items-center gap-2.5 shadow-md active:scale-95">
+          <div class="relative">
+            <i class="fa-solid fa-cart-shopping text-base"></i>
+            <span id="cartBadge" class="absolute -top-2.5 -right-2.5 bg-yellow-400 text-stone-900 text-[10px] font-black w-5 h-5 rounded-full flex items-center justify-center border-2 border-white shadow">0</span>
           </div>
+          <div class="flex flex-col text-left leading-none">
+            <span class="text-[9px] uppercase font-extrabold text-orange-100 tracking-wider">Carrito</span>
+            <span id="cartTotalHeader" class="text-xs font-black text-white">$0.00</span>
+          </div>
+        </button>
+
+      </div>
+    </div>
+
+    <!-- Mobile Search -->
+    <div class="sm:hidden px-3 pb-2 pt-1">
+      <div class="relative flex items-center">
+        <input type="text" id="searchInputMobile" onkeyup="filterProductsMobile()" placeholder="Mascotas: Buscar productos desde $0.99..." class="w-full bg-stone-100 border-2 border-temu-orange text-stone-900 text-xs rounded-full pl-4 pr-10 py-2 focus:outline-none">
+        <button onclick="filterProductsMobile()" class="absolute right-1 top-1/2 -translate-y-1/2 bg-temu-orange text-white rounded-full w-7 h-7 flex items-center justify-center text-xs">
+          <i class="fa-solid fa-magnifying-glass"></i>
         </button>
       </div>
     </div>
 
-    <!-- Mobile Search Bar -->
-    <div class="md:hidden px-4 pb-3">
-      <div class="relative w-full">
-        <input type="text" id="searchInputMobile" onkeyup="filterProductsMobile()" placeholder="Buscar en PETVET..." class="w-full bg-stone-100 border border-stone-200 text-stone-800 text-xs rounded-full pl-9 pr-4 py-2 focus:outline-none focus:ring-2 focus:ring-orange-500">
-        <i class="fa-solid fa-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-stone-400 text-xs"></i>
+    <!-- Category Pills Navigation Bar -->
+    <nav class="bg-stone-50 border-t border-stone-200 overflow-x-auto whitespace-nowrap scrollbar-none py-1.5 px-4">
+      <div class="max-w-7xl mx-auto flex items-center gap-2 text-xs font-bold text-stone-700">
+        <button onclick="filterCategory('all')" class="cat-pill active-pill bg-temu-orange text-white px-3 py-1 rounded-full shadow-sm flex items-center gap-1.5 transition shrink-0">
+          <i class="fa-solid fa-bolt text-yellow-300"></i> Todo en Oferta
+        </button>
+        <button onclick="filterCategory('dog')" class="cat-pill bg-white hover:bg-stone-200 border border-stone-300 text-stone-800 px-3 py-1 rounded-full flex items-center gap-1.5 transition shrink-0">
+          <i class="fa-solid fa-dog text-orange-500"></i> Perros
+        </button>
+        <button onclick="filterCategory('cat')" class="cat-pill bg-white hover:bg-stone-200 border border-stone-300 text-stone-800 px-3 py-1 rounded-full flex items-center gap-1.5 transition shrink-0">
+          <i class="fa-solid fa-cat text-amber-500"></i> Gatos
+        </button>
+        <button onclick="filterCategory('health')" class="cat-pill bg-white hover:bg-stone-200 border border-stone-300 text-stone-800 px-3 py-1 rounded-full flex items-center gap-1.5 transition shrink-0">
+          <i class="fa-solid fa-notes-medical text-rose-500"></i> Salud Vet
+        </button>
+        <button onclick="filterCategory('toys')" class="cat-pill bg-white hover:bg-stone-200 border border-stone-300 text-stone-800 px-3 py-1 rounded-full flex items-center gap-1.5 transition shrink-0">
+          <i class="fa-solid fa-baseball text-emerald-500"></i> Juguetes
+        </button>
+        <button onclick="filterCategory('acc')" class="cat-pill bg-white hover:bg-stone-200 border border-stone-300 text-stone-800 px-3 py-1 rounded-full flex items-center gap-1.5 transition shrink-0">
+          <i class="fa-solid fa-shirt text-purple-500"></i> Arneses & Ropa
+        </button>
       </div>
-    </div>
+    </nav>
   </header>
 
-  <!-- Hero Banner -->
-  <section class="relative overflow-hidden bg-gradient-to-br from-stone-900 via-stone-800 to-amber-950 text-white pt-12 pb-16 lg:py-20 px-4">
-    <div class="absolute -top-24 -right-24 w-96 h-96 rounded-full bg-orange-500/20 blur-3xl pointer-events-none"></div>
-    <div class="absolute bottom-0 left-10 w-80 h-80 rounded-full bg-emerald-500/10 blur-3xl pointer-events-none"></div>
-
-    <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10">
+  <!-- TEMU HERO PROMO BANNER -->
+  <section class="bg-gradient-to-r from-orange-600 via-temu-orange to-red-600 text-white relative overflow-hidden py-6 sm:py-8 shadow-inner">
+    <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-12 gap-6 items-center relative z-10">
       
-      <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
-        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 border border-white/10 text-orange-300 text-xs font-bold uppercase tracking-wider backdrop-blur-md">
-          <i class="fa-solid fa-shield-cat text-orange-400"></i> Calidad Veterinaria Garantizada
+      <div class="md:col-span-8 space-y-3 text-center md:text-left">
+        <div class="inline-flex items-center gap-2 bg-yellow-400 text-stone-900 font-black text-xs px-3 py-1 rounded-full shadow tracking-wider uppercase">
+          <i class="fa-solid fa-fire text-red-600 animate-bounce"></i> MEGAVENTA PETS TEMU STYLE
         </div>
-
-        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black text-white tracking-tight leading-tight">
-          El cuidado supremo que tu <span class="bg-gradient-to-r from-orange-400 via-amber-300 to-orange-500 bg-clip-text text-transparent">mascota merece.</span>
+        
+        <h1 class="text-3xl sm:text-5xl font-black tracking-tight leading-tight uppercase drop-shadow-md">
+          ¡Ahorra hasta un <span class="text-yellow-300 underline underline-offset-4 decoration-yellow-400">90% OFF</span> en todo para tu mascota!
         </h1>
 
-        <p class="text-stone-300 text-base sm:text-lg max-w-2xl font-normal leading-relaxed">
-          Descubre suplementos nutricionales, accesorios ergonómicos y juguetes interactivos seleccionados minuciosamente por veterinarios expertos para la salud integral de tu consentido.
+        <p class="text-orange-100 text-xs sm:text-sm font-semibold max-w-xl">
+          Compra directamente de los distribuidores principales. Calidad veterinaria garantizada, envíos ultra-rápidos y devoluciones sin costo.
         </p>
 
-        <div class="flex flex-wrap items-center justify-center lg:justify-start gap-4 pt-2">
-          <button onclick="scrollToCatalog()" class="px-8 py-4 rounded-2xl bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 text-white font-extrabold text-base shadow-xl shadow-orange-500/25 transition transform hover:-translate-y-0.5 active:translate-y-0 flex items-center gap-3">
-            <span>Explorar Productos</span>
-            <i class="fa-solid fa-arrow-right"></i>
+        <!-- Live Sales Ticker -->
+        <div class="flex flex-wrap items-center justify-center md:justify-start gap-3 pt-2 text-xs font-bold text-stone-900">
+          <div class="bg-white/90 backdrop-blur px-3 py-1.5 rounded-lg flex items-center gap-2 shadow">
+            <i class="fa-solid fa-truck-fast text-temu-orange text-base"></i>
+            <span>Envío GRATIS sin mínimo</span>
+          </div>
+          <div class="bg-white/90 backdrop-blur px-3 py-1.5 rounded-lg flex items-center gap-2 shadow">
+            <i class="fa-solid fa-shield-halved text-emerald-600 text-base"></i>
+            <span>Garantía de Devolución 90 días</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick Interactive Wheel / Coupon Banner -->
+      <div class="md:col-span-4 flex justify-center">
+        <div onclick="toggleSpinModal()" class="cursor-pointer bg-white text-stone-900 p-4 rounded-2xl shadow-2xl border-4 border-yellow-400 transform hover:scale-105 transition max-w-xs text-center w-full relative">
+          <span class="absolute -top-3 -right-3 bg-red-600 text-white font-black text-xs px-2 py-0.5 rounded-full shadow uppercase">¡Aprovecha!</span>
+          <div class="w-14 h-14 bg-gradient-to-tr from-amber-400 to-yellow-300 text-stone-900 rounded-full flex items-center justify-center text-3xl mx-auto mb-2 shadow-inner">
+            <i class="fa-solid fa-trophy"></i>
+          </div>
+          <h3 class="font-black text-base uppercase text-stone-900">¿Reclamaste tu Cupón?</h3>
+          <p class="text-xs text-stone-600 font-bold mb-3">Toca aquí para girar la ruleta y ganar hasta $100 en productos PETVET.</p>
+          <button class="w-full bg-temu-orange hover:bg-orange-700 text-white font-black py-2 rounded-xl text-xs uppercase tracking-wider shadow">
+            ⚡ Reclamar Mi Regalo Gratis
           </button>
-          <a href="#categorias" class="px-7 py-4 rounded-2xl bg-white/10 hover:bg-white/20 text-white font-bold text-base border border-white/10 transition backdrop-blur-md flex items-center gap-2">
-            <i class="fa-solid fa-shapes text-orange-400"></i> Categorías
-          </a>
-        </div>
-
-        <!-- Trust Badges -->
-        <div class="pt-6 border-t border-white/10 grid grid-cols-3 gap-4 text-center lg:text-left max-w-lg">
-          <div>
-            <p class="text-xl sm:text-2xl font-black text-white">+18,500</p>
-            <p class="text-xs text-stone-400">Mascotas Felices</p>
-          </div>
-          <div>
-            <p class="text-xl sm:text-2xl font-black text-white">100%</p>
-            <p class="text-xs text-stone-400">Orgánico & Seguro</p>
-          </div>
-          <div>
-            <p class="text-xl sm:text-2xl font-black text-white">24/7</p>
-            <p class="text-xs text-stone-400">Asesoría Veterinaria</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Hero Visual -->
-      <div class="lg:col-span-5 relative">
-        <div class="relative mx-auto max-w-md lg:max-w-none">
-          <div class="aspect-square rounded-3xl overflow-hidden shadow-2xl border-4 border-white/20 relative group">
-            <img src="https://images.unsplash.com/photo-1543466835-00a7907e9de1?w=800&q=80" alt="PetVet Mascotas" class="w-full h-full object-cover group-hover:scale-105 transition duration-700">
-            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-            
-            <div class="absolute top-4 right-4 bg-orange-500 text-white font-bold text-xs px-3 py-1.5 rounded-full shadow-lg">
-              <i class="fa-solid fa-fire mr-1"></i> MÁS VENDIDO
-            </div>
-          </div>
-
-          <!-- Floating Card Promo -->
-          <div class="absolute -bottom-6 -left-6 bg-white text-stone-900 p-4 rounded-2xl shadow-xl border border-stone-100 flex items-center gap-4 max-w-xs animate-bounce-slow">
-            <div class="w-12 h-12 rounded-xl bg-orange-100 text-orange-600 flex items-center justify-center text-xl font-bold shrink-0">
-              <i class="fa-solid fa-award"></i>
-            </div>
-            <div>
-              <p class="text-xs font-bold text-stone-500 uppercase tracking-wide">Fórmula Clínica</p>
-              <p class="text-sm font-extrabold text-stone-900">Alimentos & Suplementos</p>
-            </div>
-          </div>
         </div>
       </div>
 
     </div>
   </section>
 
-  <!-- Categories Grid Section -->
-  <section id="categorias" class="py-12 bg-white border-b border-stone-200">
-    <div class="max-w-7xl mx-auto px-4">
-      <div class="flex items-center justify-between mb-8">
-        <div>
-          <h2 class="text-2xl font-extrabold text-stone-900 tracking-tight">Categorías Principales</h2>
-          <p class="text-sm text-stone-500">Encuentra exactamente lo que tu compañero de vida necesita</p>
-        </div>
+  <!-- FLASH SALE CAROUSEL BAR -->
+  <section class="bg-amber-100 border-b border-amber-200 py-3 px-4">
+    <div class="max-w-7xl mx-auto flex items-center justify-between text-xs font-black text-stone-800">
+      <div class="flex items-center gap-2">
+        <i class="fa-solid fa-bolt text-red-600 text-base animate-pulse"></i>
+        <span class="uppercase tracking-wide text-red-600 font-black">OFERTAS RELÁMPAGO DEL DÍA</span>
+        <span class="hidden sm:inline-block text-stone-500 font-medium">| Unidades limitadas por usuario</span>
       </div>
+      <span class="text-stone-700 font-bold bg-white px-2.5 py-1 rounded-full border border-amber-300 shadow-sm">
+        <i class="fa-solid fa-users text-orange-500 mr-1"></i> +14,820 comprando ahora
+      </span>
+    </div>
+  </section>
 
-      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
-        <button onclick="filterCategory('all')" class="cat-filter-btn flex flex-col items-center justify-center p-5 rounded-2xl bg-orange-500 text-white shadow-lg transition group text-center focus:outline-none">
-          <div class="w-12 h-12 rounded-full bg-white/20 flex items-center justify-center text-2xl mb-2 group-hover:scale-110 transition">
-            <i class="fa-solid fa-border-all"></i>
-          </div>
-          <span class="font-bold text-sm">Todos</span>
-          <span class="text-[10px] opacity-80">Ver Catálogo</span>
-        </button>
+  <!-- MAIN CATALOG / PRODUCTS SECTION -->
+  <main class="max-w-7xl mx-auto px-2 sm:px-4 py-6 flex-1 w-full">
+    
+    <!-- Filter Status & Heading -->
+    <div class="flex items-center justify-between mb-4 px-2">
+      <div class="flex items-center gap-2">
+        <h2 id="catalogTitle" class="text-xl font-black text-stone-900 tracking-tight">🔥 Lo más vendido para Mascotas</h2>
+        <span class="bg-red-100 text-red-600 text-[10px] font-extrabold px-2 py-0.5 rounded-full uppercase">Precio de Fábrica</span>
+      </div>
+      <div class="text-xs font-bold text-stone-500 flex items-center gap-1">
+        <span>Ordenado por:</span>
+        <select id="sortSelect" onchange="sortProducts()" class="bg-white border border-stone-300 rounded px-2 py-1 text-xs font-bold text-stone-800 focus:outline-none">
+          <option value="popular">Más Populares</option>
+          <option value="priceAsc">Precio: Menor a Mayor</option>
+          <option value="priceDesc">Precio: Mayor a Menor</option>
+        </select>
+      </div>
+    </div>
 
-        <button onclick="filterCategory('dog')" class="cat-filter-btn flex flex-col items-center justify-center p-5 rounded-2xl bg-stone-50 hover:bg-orange-50 border border-stone-200 hover:border-orange-300 transition group text-center focus:outline-none">
-          <div class="w-12 h-12 rounded-full bg-amber-100 text-amber-600 flex items-center justify-center text-2xl mb-2 group-hover:scale-110 transition">
-            <i class="fa-solid fa-dog"></i>
-          </div>
-          <span class="font-bold text-sm text-stone-800">Perros</span>
-          <span class="text-[10px] text-stone-400">Nutrición & Arneses</span>
-        </button>
+    <!-- Products Grid Container (Mandatory DOBEHA Element) -->
+    <div id="productsGrid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-2 sm:gap-3">
+      <!-- Dynamic Products injected via JavaScript -->
+    </div>
 
-        <button onclick="filterCategory('cat')" class="cat-filter-btn flex flex-col items-center justify-center p-5 rounded-2xl bg-stone-50 hover:bg-orange-50 border border-stone-200 hover:border-orange-300 transition group text-center focus:outline-none">
-          <div class="w-12 h-12 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center text-2xl mb-2 group-hover:scale-110 transition">
-            <i class="fa-solid fa-cat"></i>
-          </div>
-          <span class="font-bold text-sm text-stone-800">Gatos</span>
-          <span class="text-[10px] text-stone-400">Snacks & Rascadores</span>
-        </button>
+  </main>
 
-        <button onclick="filterCategory('health')" class="cat-filter-btn flex flex-col items-center justify-center p-5 rounded-2xl bg-stone-50 hover:bg-orange-50 border border-stone-200 hover:border-orange-300 transition group text-center focus:outline-none">
-          <div class="w-12 h-12 rounded-full bg-rose-100 text-rose-600 flex items-center justify-center text-2xl mb-2 group-hover:scale-110 transition">
-            <i class="fa-solid fa-pills"></i>
-          </div>
-          <span class="font-bold text-sm text-stone-800">Salud Vet</span>
-          <span class="text-[10px] text-stone-400">Suplementos & Cuidados</span>
-        </button>
-
-        <button onclick="filterCategory('toys')" class="cat-filter-btn flex flex-col items-center justify-center p-5 rounded-2xl bg-stone-50 hover:bg-orange-50 border border-stone-200 hover:border-orange-300 transition group text-center focus:outline-none">
-          <div class="w-12 h-12 rounded-full bg-purple-100 text-purple-600 flex items-center justify-center text-2xl mb-2 group-hover:scale-110 transition">
-            <i class="fa-solid fa-bone"></i>
-          </div>
-          <span class="font-bold text-sm text-stone-800">Juguetes</span>
-          <span class="text-[10px] text-stone-400">Interactivos & Chews</span>
-        </button>
-
-        <button onclick="filterCategory('beds')" class="cat-filter-btn flex flex-col items-center justify-center p-5 rounded-2xl bg-stone-50 hover:bg-orange-50 border border-stone-200 hover:border-orange-300 transition group text-center focus:outline-none">
-          <div class="w-12 h-12 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center text-2xl mb-2 group-hover:scale-110 transition">
-            <i class="fa-solid fa-bed"></i>
-          </div>
-          <span class="font-bold text-sm text-stone-800">Camas</span>
-          <span class="text-[10px] text-stone-400">Confort Ortopédico</span>
-        </button>
+  <!-- TEMU SHOPPING GUARANTEE FOOTER BAR -->
+  <section class="bg-stone-200 py-6 border-t border-stone-300 mt-10 text-xs text-stone-700">
+    <div class="max-w-7xl mx-auto px-4 grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+      <div class="flex flex-col items-center justify-center p-2">
+        <i class="fa-solid fa-truck-fast text-2xl text-temu-orange mb-1"></i>
+        <span class="font-extrabold">ENVÍO RÁPIDO & GRATIS</span>
+        <span class="text-[10px] text-stone-500">Rastreo en tiempo real garantizado</span>
+      </div>
+      <div class="flex flex-col items-center justify-center p-2">
+        <i class="fa-solid fa-shield-cat text-2xl text-emerald-600 mb-1"></i>
+        <span class="font-extrabold">PROTECCIÓN AL COMPRADOR</span>
+        <span class="text-[10px] text-stone-500">Reembolso 100% si no llega a tiempo</span>
+      </div>
+      <div class="flex flex-col items-center justify-center p-2">
+        <i class="fa-solid fa-lock text-2xl text-blue-600 mb-1"></i>
+        <span class="font-extrabold">PAGO SEGURO Y ENCRIPTADO</span>
+        <span class="text-[10px] text-stone-500">Tarjetas, PayPal y Pago contra entrega</span>
+      </div>
+      <div class="flex flex-col items-center justify-center p-2">
+        <i class="fa-solid fa-headset text-2xl text-amber-600 mb-1"></i>
+        <span class="font-extrabold">SOPORTE VETERINARIO 24/7</span>
+        <span class="text-[10px] text-stone-500">Asesoría directa en cada compra</span>
       </div>
     </div>
   </section>
 
-  <!-- Special Offer Highlight Banner -->
-  <section class="max-w-7xl mx-auto px-4 py-8">
-    <div class="bg-gradient-to-r from-orange-600 via-amber-600 to-orange-700 rounded-3xl p-6 md:p-10 text-white shadow-xl relative overflow-hidden flex flex-col md:flex-row items-center justify-between gap-6">
-      <div class="space-y-2 max-w-xl text-center md:text-left z-10">
-        <span class="inline-block bg-stone-900 text-amber-300 font-extrabold text-xs px-3 py-1 rounded-full uppercase tracking-wider">Promoción Especial de Mes</span>
-        <h3 class="text-2xl md:text-3xl font-black">20% OFF en Suplementos y Alimentos Clínicos</h3>
-        <p class="text-amber-100 text-sm">Asegura la vitalidad, pelaje brillante y digestión óptima de tu mascota hoy mismo.</p>
-      </div>
-      <div class="z-10 shrink-0">
-        <button onclick="scrollToCatalog()" class="bg-white text-orange-700 hover:bg-amber-100 px-6 py-3.5 rounded-2xl font-extrabold text-sm shadow-lg transition duration-200 transform hover:scale-105">
-          Comprar Ahora <i class="fa-solid fa-arrow-right ml-1"></i>
-        </button>
-      </div>
-      <i class="fa-solid fa-paw absolute -right-10 -bottom-10 text-white/10 text-9xl pointer-events-none"></i>
-    </div>
-  </section>
-
-  <!-- Catalog Section -->
-  <section id="catalogo" class="py-12 px-4 max-w-7xl mx-auto flex-1">
-    <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8 pb-4 border-b border-stone-200">
+  <!-- FOOTER -->
+  <footer class="bg-stone-900 text-stone-400 text-xs py-10 border-t border-stone-800">
+    <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
       <div>
-        <div class="flex items-center gap-2 text-xs font-bold text-orange-600 uppercase tracking-widest mb-1">
-          <i class="fa-solid fa-list-check"></i> Tienda Oficial DOBEHA
+        <div class="flex items-center gap-2 mb-3">
+          <div class="w-8 h-8 rounded-lg bg-temu-orange text-white flex items-center justify-center font-black text-lg">
+            <i class="fa-solid fa-paw"></i>
+          </div>
+          <span class="font-black text-lg text-white tracking-tight">PETVET <span class="text-temu-orange">PetGord</span></span>
         </div>
-        <h2 class="text-3xl font-black text-stone-900 tracking-tight">Catálogo de Productos</h2>
-      </div>
-
-      <!-- Quick Sorting / Filters Info -->
-      <div class="flex items-center gap-3 text-sm text-stone-500">
-        <span>Mostrando: <strong id="productCount" class="text-stone-900 font-bold">0</strong> artículos</span>
-      </div>
-    </div>
-
-    <!-- Products Grid -->
-    <div id="productsGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-      <!-- Loading Skeleton -->
-      <div class="col-span-full py-16 text-center space-y-4">
-        <div class="inline-block p-4 rounded-full bg-orange-100 text-orange-600 animate-spin text-2xl">
-          <i class="fa-solid fa-circle-notch"></i>
-        </div>
-        <p class="text-stone-500 font-medium">Cargando catálogo en tiempo real con DOBEHA OS...</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Trust Features Grid -->
-  <section class="bg-stone-100 border-t border-stone-200 py-12 px-4">
-    <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-6">
-      <div class="bg-white p-6 rounded-2xl border border-stone-200/80 shadow-sm flex items-start gap-4">
-        <div class="w-12 h-12 rounded-xl bg-orange-100 text-orange-600 flex items-center justify-center text-xl shrink-0">
-          <i class="fa-solid fa-truck-fast"></i>
-        </div>
-        <div>
-          <h4 class="font-bold text-stone-900 text-base">Envío Ultra Rápido</h4>
-          <p class="text-xs text-stone-500 mt-1">Despachado en 24h con seguimiento directo a tu puerta.</p>
+        <p class="text-stone-400 text-xs leading-relaxed mb-3">
+          La plataforma #1 de comercio electrónico para consentir a tus animales de compañía con artículos de alta calidad y precios de liquidación estilo Temu.
+        </p>
+        <div class="flex gap-3 text-lg text-stone-300">
+          <a href="#" class="hover:text-temu-orange"><i class="fa-brands fa-facebook"></i></a>
+          <a href="#" class="hover:text-temu-orange"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#" class="hover:text-temu-orange"><i class="fa-brands fa-tiktok"></i></a>
+          <a href="#" class="hover:text-temu-orange"><i class="fa-brands fa-whatsapp"></i></a>
         </div>
       </div>
 
-      <div class="bg-white p-6 rounded-2xl border border-stone-200/80 shadow-sm flex items-start gap-4">
-        <div class="w-12 h-12 rounded-xl bg-emerald-100 text-emerald-600 flex items-center justify-center text-xl shrink-0">
-          <i class="fa-solid fa-user-doctor"></i>
-        </div>
-        <div>
-          <h4 class="font-bold text-stone-900 text-base">Aprobado Vet</h4>
-          <p class="text-xs text-stone-500 mt-1">Todos los insumos cumplen con estándares medicos veterinarios.</p>
-        </div>
+      <div>
+        <h4 class="font-bold text-white text-sm mb-3">Atención al Cliente</h4>
+        <ul class="space-y-2">
+          <li><a href="#" class="hover:underline">Estado de mi Pedido</a></li>
+          <li><a href="#" class="hover:underline">Política de Devoluciones (90 Días)</a></li>
+          <li><a href="#" class="hover:underline">Centro de Ayuda Vet</a></li>
+          <li><a href="#" class="hover:underline">Términos del Servicio</a></li>
+        </ul>
       </div>
 
-      <div class="bg-white p-6 rounded-2xl border border-stone-200/80 shadow-sm flex items-start gap-4">
-        <div class="w-12 h-12 rounded-xl bg-amber-100 text-amber-600 flex items-center justify-center text-xl shrink-0">
-          <i class="fa-solid fa-shield-halved"></i>
-        </div>
-        <div>
-          <h4 class="font-bold text-stone-900 text-base">Garantía Total</h4>
-          <p class="text-xs text-stone-500 mt-1">30 días de devolución sin costo si no satisface a tu mascota.</p>
-        </div>
+      <div>
+        <h4 class="font-bold text-white text-sm mb-3">Categorías Populares</h4>
+        <ul class="space-y-2">
+          <li><a href="#" onclick="filterCategory('dog')" class="hover:underline">Alimentos & Premios para Perros</a></li>
+          <li><a href="#" onclick="filterCategory('cat')" class="hover:underline">Rascadores & Areneros Gatos</a></li>
+          <li><a href="#" onclick="filterCategory('health')" class="hover:underline">Suplementos & Antipulgas</a></li>
+          <li><a href="#" onclick="filterCategory('toys')" class="hover:underline">Juguetes Interactivos</a></li>
+        </ul>
       </div>
 
-      <div class="bg-white p-6 rounded-2xl border border-stone-200/80 shadow-sm flex items-start gap-4">
-        <div class="w-12 h-12 rounded-xl bg-blue-100 text-blue-600 flex items-center justify-center text-xl shrink-0">
-          <i class="fa-solid fa-headset"></i>
-        </div>
-        <div>
-          <h4 class="font-bold text-stone-900 text-base">Atención Personalizada</h4>
-          <p class="text-xs text-stone-500 mt-1">Soporte por WhatsApp directo con especialistas en mascotas.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Cart Drawer Overlay & Panel -->
-  <div id="cartOverlay" onclick="toggleCartDrawer()" class="fixed inset-0 bg-stone-900/60 backdrop-blur-sm z-50 opacity-0 pointer-events-none transition-opacity duration-300"></div>
-
-  <div id="cartDrawer" class="fixed top-0 right-0 h-full w-full max-w-md bg-white z-50 shadow-2xl transform translate-x-full transition-transform duration-300 flex flex-col">
-    <!-- Header -->
-    <div class="p-5 bg-stone-900 text-white flex items-center justify-between">
-      <div class="flex items-center gap-3">
-        <i class="fa-solid fa-bag-shopping text-orange-500 text-xl"></i>
-        <h3 class="font-bold text-lg">Tu Carrito de Compras</h3>
-      </div>
-      <button onclick="toggleCartDrawer()" class="w-9 h-9 rounded-full bg-stone-800 text-stone-400 hover:text-white flex items-center justify-center transition">
-        <i class="fa-solid fa-xmark text-lg"></i>
-      </button>
-    </div>
-
-    <!-- Cart Items List -->
-    <div id="cartItemsList" class="flex-1 overflow-y-auto p
+      <div>
+        <h4 class="font-bold text-white text-sm mb-3">
 
   <script>
     const VENDURE_SHOP_API = 'https://dobeha-core-778104196562.us-east1.run.app/shop-api';
