@@ -12,28 +12,38 @@
       theme: {
         extend: {
           colors: {
-            sage: {
-              50: '#f4f7f4',
-              100: '#e3ebd9',
-              200: '#c6d6c6',
-              300: '#a3be9e',
-              600: '#587a58',
-              800: '#334c33',
-              900: '#213321',
-            },
             forest: {
-              700: '#233f2c',
-              800: '#1b3323',
-              900: '#13261a',
-              950: '#0b1910',
+              50: '#f2f7f2',
+              100: '#e1ede1',
+              200: '#c5dcc5',
+              300: '#9dc29d',
+              400: '#72a272',
+              500: '#528552',
+              600: '#3e6a3e',
+              700: '#335533',
+              800: '#2a442a',
+              900: '#233923',
+              950: '#111f11',
+            },
+            sage: {
+              50: '#f6f8f6',
+              100: '#e9eee8',
+              200: '#d5ded4',
+              300: '#b7c7b5',
+              400: '#93a990',
+              500: '#758d72',
+              600: '#5c7159',
+              700: '#4a5b48',
+              800: '#3d4b3c',
+              900: '#343f33',
             }
           },
           fontFamily: {
             sans: ['"Plus Jakarta Sans"', 'sans-serif'],
           },
           boxShadow: {
-            'nordic': '0 4px 20px -2px rgba(27, 51, 35, 0.08)',
-            'card-hover': '0 12px 30px -4px rgba(27, 51, 35, 0.12)',
+            'nordic': '0 10px 30px -10px rgba(35, 57, 35, 0.08)',
+            'card-hover': '0 20px 40px -15px rgba(35, 57, 35, 0.15)',
           }
         }
       }
@@ -77,9 +87,12 @@
       -ms-overflow-style: none;
       scrollbar-width: none;
     }
+    summary::-webkit-details-marker {
+      display: none;
+    }
   </style>
 </head>
-<body class="text-slate-800 antialiased font-sans min-h-screen flex flex-col selection:bg-sage-200 selection:text-sage-900">
+<body class="text-slate-800 antialiased font-sans min-h-screen flex flex-col selection:bg-sage-200 selection:text-forest-900">
 
   <!-- Toast Notification Container -->
   <div id="toastContainer" class="fixed bottom-6 right-6 z-50 flex flex-col gap-3 pointer-events-none"></div>
@@ -126,7 +139,7 @@
         <!-- Search Bar -->
         <div class="hidden md:flex flex-1 max-w-md mx-6">
           <div class="relative w-full">
-            <input type="text" id="searchInput" placeholder="Buscar alimento holístico, camas salvia, juguetes de madera..." class="w-full bg-sage-50/80 border border-sage-200 text-slate-700 text-xs rounded-full pl-11 pr-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-forest-600 focus:bg-white transition-all duration-200">
+            <input type="text" id="searchInput" placeholder="Buscar productos..." class="w-full bg-sage-50/80 border border-sage-200 text-slate-700 text-xs rounded-full pl-11 pr-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-forest-600 focus:bg-white transition-all duration-200">
             <div class="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 text-xs">
               <i class="fa-solid fa-magnifying-glass"></i>
             </div>
@@ -159,7 +172,7 @@
       <!-- Mobile Search Input -->
       <div class="pb-3 md:hidden">
         <div class="relative w-full">
-          <input type="text" id="searchInputMobile" placeholder="Buscar productos para mascotas..." class="w-full bg-sage-50 border border-sage-200 text-slate-700 text-xs rounded-full pl-10 pr-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-forest-600">
+          <input type="text" id="searchInputMobile" placeholder="Buscar productos..." class="w-full bg-sage-50 border border-sage-200 text-slate-700 text-xs rounded-full pl-10 pr-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-forest-600">
           <div class="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-xs">
             <i class="fa-solid fa-magnifying-glass"></i>
           </div>
@@ -276,102 +289,163 @@
     </div>
   </section>
 
-  <!-- MAIN CATALOG SECTION -->
-  <main id="catalogo" class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 w-full">
+  <!-- CATÁLOGO DE PRODUCTOS -->
+  <section id="catalogo" class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full flex-grow">
     
-    <!-- Section Title & Filters Header -->
-    <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4 border-b border-sage-200/60 pb-6">
+    <!-- Encabezado de Sección -->
+    <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4">
       <div>
-        <div class="inline-flex items-center gap-2 text-forest-800 text-xs font-bold uppercase tracking-widest mb-1">
-          <i class="fa-solid fa-paw text-sage-600"></i> Selección Exclusiva
+        <div class="inline-flex items-center gap-1.5 text-xs font-bold text-forest-700 bg-sage-100 border border-sage-200 px-3 py-1 rounded-full mb-3">
+          <i class="fa-solid fa-paw text-[10px]"></i> Catálogo Oficial
         </div>
         <h2 class="text-2xl sm:text-3xl font-extrabold text-forest-950 tracking-tight">
-          Catálogo Escandinavo para Mascotas
+          Productos Destacados
         </h2>
+        <p class="text-slate-500 text-xs sm:text-sm mt-1">
+          Nutrición, descanso y juego con los estándares escandinavos más exigentes.
+        </p>
       </div>
 
-      <!-- Quick Filter Tags -->
-      <div class="flex items-center gap-2 overflow-x-auto pb-2 md:pb-0 no-scrollbar">
-        <button class="bg-forest-800 text-white text-xs font-semibold px-4 py-2 rounded-xl whitespace-nowrap transition-colors shadow-sm">
-          Todos los Productos
-        </button>
-        <button class="bg-white hover:bg-sage-100 text-slate-700 border border-sage-200 text-xs font-semibold px-4 py-2 rounded-xl whitespace-nowrap transition-colors">
-          Camas & Confort
-        </button>
-        <button class="bg-white hover:bg-sage-100 text-slate-700 border border-sage-200 text-xs font-semibold px-4 py-2 rounded-xl whitespace-nowrap transition-colors">
-          Alimentos Holísticos
-        </button>
-        <button class="bg-white hover:bg-sage-100 text-slate-700 border border-sage-200 text-xs font-semibold px-4 py-2 rounded-xl whitespace-nowrap transition-colors">
-          Paseo & Arneses
-        </button>
-        <button class="bg-white hover:bg-sage-100 text-slate-700 border border-sage-200 text-xs font-semibold px-4 py-2 rounded-xl whitespace-nowrap transition-colors">
-          Juguetes Eco
-        </button>
+      <!-- Píldoras de Filtro por Categoría -->
+      <div id="categoryFilters" class="flex items-center gap-2 overflow-x-auto no-scrollbar pb-2 md:pb-0">
+        <!-- Las categorías serán inyectadas o renderizadas dinámicamente -->
       </div>
     </div>
 
-    <!-- REQUIRED PRODUCTS GRID CONTAINER -->
+    <!-- CONTENEDOR EXACTO DE PRODUCTOS (DOBEHA COMMERCE OS INJECTOR TARGET) -->
     <div id="productsGrid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"></div>
 
-  </main>
+  </section>
 
-  <!-- PHILOSOPHY / ESSENCE SECTION -->
-  <section class="bg-sage-100/50 py-16 border-t border-sage-200/80">
+  <!-- SECCIÓN DE TESTIMONIOS / RESEÑAS DE CLIENTES -->
+  <section class="bg-gradient-to-b from-white to-sage-50/60 py-16 border-t border-sage-200/80">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-2xl mx-auto mb-12">
+        <span class="bg-forest-100 text-forest-800 text-xs font-bold px-3.5 py-1 rounded-full border border-sage-200 inline-block mb-3">
+          💬 Experiencias Reales
+        </span>
+        <h2 class="text-2xl sm:text-4xl font-extrabold text-forest-950 tracking-tight">
+          Lo que dicen los pet lovers
+        </h2>
+        <p class="text-slate-600 text-xs sm:text-sm mt-2">
+          Más de 5,000 mascotas disfrutan de la máxima calidad, bienestar y estilo en República Dominicana.
+        </p>
+      </div>
+
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <div class="bg-white p-8 rounded-3xl border border-sage-200 shadow-sm space-y-4">
-          <div class="w-12 h-12 bg-sage-100 text-forest-800 rounded-2xl flex items-center justify-center text-xl font-bold">
-            <i class="fa-solid fa-tree"></i>
+        
+        <!-- Review Card 1 -->
+        <div class="bg-white p-7 rounded-3xl border border-sage-200 shadow-nordic hover:shadow-card-hover transition-all duration-300 flex flex-col justify-between relative group">
+          <div class="absolute -top-3 right-6 bg-emerald-500 text-white text-[10px] font-extrabold px-3 py-0.5 rounded-full uppercase tracking-wider">
+            Compra Verificada
           </div>
-          <h3 class="text-lg font-bold text-forest-950">Estética Hygge & Funcional</h3>
-          <p class="text-slate-600 text-xs sm:text-sm leading-relaxed">
-            Diseños neutros que se integran con elegancia a la decoración de tu hogar, sin sacrificar la resistencia ni el bienestar de tu mascota.
-          </p>
+          <div>
+            <div class="flex text-amber-400 gap-1 text-sm mb-4">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+            </div>
+            <p class="text-slate-700 text-xs sm:text-sm leading-relaxed italic mb-6">
+              "Compré la cama nórdica en tono salvia para mi Golden Retriever y superó mis expectativas. La tela es increíblemente suave, repelente al agua y combina perfecto con la decoración de la sala."
+            </p>
+          </div>
+          <div class="flex items-center gap-3.5 pt-4 border-t border-sage-100">
+            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80" alt="Camila Morales" class="w-11 h-11 rounded-2xl object-cover border border-sage-200">
+            <div>
+              <h4 class="text-xs font-bold text-forest-950">Camila Morales</h4>
+              <p class="text-[11px] text-slate-400 font-medium flex items-center gap-1">
+                <i class="fa-solid fa-dog text-forest-600"></i> Mamá de 'Bruno' (Golden)
+              </p>
+            </div>
+          </div>
         </div>
 
-        <div class="bg-white p-8 rounded-3xl border border-sage-200 shadow-sm space-y-4">
-          <div class="w-12 h-12 bg-sage-100 text-forest-800 rounded-2xl flex items-center justify-center text-xl font-bold">
-            <i class="fa-solid fa-bowl-food"></i>
+        <!-- Review Card 2 -->
+        <div class="bg-white p-7 rounded-3xl border border-sage-200 shadow-nordic hover:shadow-card-hover transition-all duration-300 flex flex-col justify-between relative group">
+          <div class="absolute -top-3 right-6 bg-emerald-500 text-white text-[10px] font-extrabold px-3 py-0.5 rounded-full uppercase tracking-wider">
+            Compra Verificada
           </div>
-          <h3 class="text-lg font-bold text-forest-950">Nutrición Libre de Tóxicos</h3>
-          <p class="text-slate-600 text-xs sm:text-sm leading-relaxed">
-            Seleccionamos únicamente fórmulas limpias, libres de colorantes artificiales, ricas en omegas y proteínas de alta digestibilidad.
-          </p>
+          <div>
+            <div class="flex text-amber-400 gap-1 text-sm mb-4">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+            </div>
+            <p class="text-slate-700 text-xs sm:text-sm leading-relaxed italic mb-6">
+              "El alimento holístico orgánico le cambió la digestión a mi gato. Ya no sufre de sensibilidad y el envío a Santo Domingo llegó al día siguiente. 10/10 en atención."
+            </p>
+          </div>
+          <div class="flex items-center gap-3.5 pt-4 border-t border-sage-100">
+            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80" alt="David Alcántara" class="w-11 h-11 rounded-2xl object-cover border border-sage-200">
+            <div>
+              <h4 class="text-xs font-bold text-forest-950">David Alcántara</h4>
+              <p class="text-[11px] text-slate-400 font-medium flex items-center gap-1">
+                <i class="fa-solid fa-cat text-forest-600"></i> Papá de 'Milo' (Persa)
+              </p>
+            </div>
+          </div>
         </div>
 
-        <div class="bg-white p-8 rounded-3xl border border-sage-200 shadow-sm space-y-4">
-          <div class="w-12 h-12 bg-sage-100 text-forest-800 rounded-2xl flex items-center justify-center text-xl font-bold">
-            <i class="fa-solid fa-heart-pulse"></i>
+        <!-- Review Card 3 -->
+        <div class="bg-white p-7 rounded-3xl border border-sage-200 shadow-nordic hover:shadow-card-hover transition-all duration-300 flex flex-col justify-between relative group">
+          <div class="absolute -top-3 right-6 bg-emerald-500 text-white text-[10px] font-extrabold px-3 py-0.5 rounded-full uppercase tracking-wider">
+            Compra Verificada
           </div>
-          <h3 class="text-lg font-bold text-forest-950">Calidad de Vida Garantizada</h3>
-          <p class="text-slate-600 text-xs sm:text-sm leading-relaxed">
-            Cada producto es rigurosamente evaluado por veterinarios y etólogos para promover un descanso ortopédico y un juego seguro.
-          </p>
+          <div>
+            <div class="flex text-amber-400 gap-1 text-sm mb-4">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+            </div>
+            <p class="text-slate-700 text-xs sm:text-sm leading-relaxed italic mb-6">
+              "Los juguetes de madera sustentable e hilos de algodón ecológico son súper duraderos. Mis dos perritos juegan a diario y se ven preciosos en casa."
+            </p>
+          </div>
+          <div class="flex items-center gap-3.5 pt-4 border-t border-sage-100">
+            <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=150&q=80" alt="Isabella Pimentel" class="w-11 h-11 rounded-2xl object-cover border border-sage-200">
+            <div>
+              <h4 class="text-xs font-bold text-forest-950">Isabella Pimentel</h4>
+              <p class="text-[11px] text-slate-400 font-medium flex items-center gap-1">
+                <i class="fa-solid fa-shield-dog text-forest-600"></i> Mamá de 'Luna' & 'Kobe'
+              </p>
+            </div>
+          </div>
         </div>
+
       </div>
     </div>
   </section>
 
-  <!-- NEWSLETTER / CLUB NÓRDICO BANNER -->
-  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 my-16">
-    <div class="bg-forest-900 rounded-3xl p-8 sm:p-12 text-white relative overflow-hidden shadow-card-hover">
-      <div class="relative z-10 max-w-2xl space-y-4">
-        <span class="bg-forest-800 text-emerald-300 px-3 py-1 rounded-full text-xs font-semibold tracking-wider uppercase border border-forest-700">
-          Comunidad Petgo
+  <!-- SECCIÓN DE PREGUNTAS FRECUENTES (FAQ) -->
+  <section class="py-16 bg-white border-t border-sage-200/80">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center mb-12">
+        <span class="bg-sage-100 text-forest-800 text-xs font-bold px-3.5 py-1 rounded-full border border-sage-200 inline-block mb-3">
+          ❓ Resuelve tus dudas
         </span>
-        <h2 class="text-2xl sm:text-4xl font-extrabold text-white tracking-tight">
-          Únete al Club Escandinavo de Mascotas
+        <h2 class="text-2xl sm:text-4xl font-extrabold text-forest-950 tracking-tight">
+          Preguntas Frecuentes
         </h2>
-        <p class="text-emerald-100 text-xs sm:text-sm leading-relaxed">
-          Recibe un 10% de descuento en tu primera compra, guías de salud veterinaria y acceso prioritario a nuestras nuevas colecciones exclusivas.
+        <p class="text-slate-500 text-xs sm:text-sm mt-2">
+          Todo lo que necesitas saber sobre envíos, garantías y productos ecológicos en PETGO-RD.
         </p>
-        <form onsubmit="return false;" class="flex flex-col sm:flex-row gap-3 pt-2">
-          <input type="email" placeholder="Ingresa tu correo electrónico..." class="bg-white/10 border border-emerald-800 text-white placeholder-emerald-300 text-xs rounded-2xl px-5 py-3.5 focus:outline-none focus:ring-2 focus:ring-emerald-400 flex-1">
-          <button type="submit" class="bg-emerald-400 hover:bg-emerald-300 text-forest-950 font-bold text-xs px-6 py-3.5 rounded-2xl transition-all shadow-md">
-            Suscribirme
-          </
+      </div>
 
-  <!-- ================= DOBEHA CART DRAWER & CHECKOUT ================= -->
+      <!-- FAQ Accordion List -->
+      <div class="space-y-4">
+        
+        <!-- FAQ Item 1 -->
+        <details class="group bg-sage-
+
+  <!-- ================= 1. DOBEHA CART DRAWER & CHECKOUT ================= -->
   <div id="dobehaCartDrawer" class="fixed inset-0 z-50 pointer-events-none transition-all duration-300 opacity-0 invisible" aria-hidden="true">
     <div id="dobehaCartOverlay" class="absolute inset-0 bg-black/60 backdrop-blur-xs transition-opacity duration-300 pointer-events-auto" onclick="window.dobehaCloseCart()"></div>
     
@@ -443,7 +517,84 @@
     </div>
   </div>
 
-  <!-- Modal Checkout Pago Online -->
+  <!-- ================= 2. MODAL QUICK VIEW DE PRODUCTO ================= -->
+  <div id="dobehaQuickViewModal" class="fixed inset-0 z-50 pointer-events-none transition-all duration-300 opacity-0 invisible" aria-hidden="true">
+    <div class="absolute inset-0 bg-black/60 backdrop-blur-xs pointer-events-auto" onclick="window.dobehaCloseQuickView()"></div>
+    <div class="relative min-h-screen flex items-center justify-center p-4">
+      <div class="relative w-full max-w-2xl bg-white rounded-3xl shadow-2xl p-6 pointer-events-auto overflow-hidden">
+        <button onclick="window.dobehaCloseQuickView()" class="absolute top-4 right-4 p-2 text-slate-400 hover:text-slate-700 rounded-full hover:bg-slate-100 transition">
+          <i class="fa-solid fa-xmark text-lg"></i>
+        </button>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
+          <div class="aspect-square bg-slate-100 rounded-2xl overflow-hidden">
+            <img id="qvImg" src="" alt="Producto" class="w-full h-full object-cover">
+          </div>
+          <div class="space-y-4">
+            <span class="inline-block px-3 py-1 bg-indigo-50 text-indigo-700 text-[10px] font-extrabold uppercase rounded-full">
+              Producto Certificado
+            </span>
+            <h3 id="qvTitle" class="text-xl font-black text-slate-900"></h3>
+            <div class="flex items-center gap-2">
+              <span id="qvPrice" class="text-2xl font-black text-indigo-600"></span>
+              <span class="text-xs text-emerald-600 font-bold bg-emerald-50 px-2 py-0.5 rounded-md">En Stock</span>
+            </div>
+            <p id="qvDesc" class="text-xs text-slate-500 leading-relaxed max-h-40 overflow-y-auto"></p>
+            
+            <div class="pt-2 flex items-center gap-3">
+              <button 
+                id="qvAddBtn"
+                type="button" 
+                class="flex-1 py-3 px-5 bg-indigo-600 hover:bg-indigo-700 text-white font-extrabold rounded-xl shadow-md transition flex items-center justify-center gap-2 text-xs"
+              >
+                <i class="fa-solid fa-cart-plus"></i>
+                <span>Añadir al Carrito</span>
+              </button>
+              <button 
+                id="qvWaBtn"
+                type="button" 
+                class="p-3 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl shadow-md transition"
+                title="Consultar por WhatsApp"
+              >
+                <i class="fa-brands fa-whatsapp text-base"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= 3. SOCIAL PROOF FLOTANTE (Compra Reciente) ================= -->
+  <div id="dobehaSocialProof" class="fixed bottom-6 left-6 z-40 bg-white/95 backdrop-blur-md rounded-2xl shadow-xl border border-slate-200/80 p-3.5 flex items-center gap-3.5 max-w-sm transform translate-y-24 opacity-0 transition-all duration-500 pointer-events-none">
+    <div class="w-12 h-12 rounded-xl bg-slate-100 overflow-hidden shrink-0 border border-slate-200">
+      <img id="spImg" src="https://images.unsplash.com/photo-1543466835-00a7907e9de1?w=200&q=80" alt="Compra reciente" class="w-full h-full object-cover">
+    </div>
+    <div class="min-w-0 pr-2">
+      <div class="flex items-center gap-1.5 text-[10px] text-emerald-600 font-extrabold uppercase">
+        <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+        <span>Compra Reciente</span>
+      </div>
+      <p id="spText" class="text-xs font-bold text-slate-900 truncate mt-0.5">Carlos de Santiago</p>
+      <p id="spProduct" class="text-[11px] text-slate-500 truncate">Compró Bolsos transportadores PetVet</p>
+    </div>
+  </div>
+
+  <!-- ================= 4. BOTÓN FLOTANTE PERMANENTE DE WHATSAPP ================= -->
+  <a 
+    href="https://wa.me/18293998904?text=Hola,%20tengo%20una%20consulta%20sobre%20los%20productos%20de%20la%20tienda%20PETGO-RD" 
+    target="_blank" 
+    rel="noopener noreferrer"
+    class="fixed bottom-6 right-6 z-40 w-14 h-14 bg-emerald-500 hover:bg-emerald-600 text-white rounded-full shadow-2xl flex items-center justify-center text-2xl hover:scale-110 active:scale-95 transition-all duration-300 group cursor-pointer"
+    title="Chatear por WhatsApp"
+  >
+    <i class="fa-brands fa-whatsapp"></i>
+    <span class="absolute right-16 bg-slate-900 text-white text-xs font-bold py-1.5 px-3 rounded-xl whitespace-nowrap shadow-lg opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
+      ¿Dudas? Chatea con un asesor
+    </span>
+  </a>
+
+  <!-- ================= 5. MODAL CHECKOUT PAGO ONLINE ================= -->
   <div id="dobehaPaymentModal" class="fixed inset-0 z-50 pointer-events-none transition-all duration-300 opacity-0 invisible" aria-hidden="true">
     <div class="absolute inset-0 bg-black/60 backdrop-blur-xs pointer-events-auto" onclick="window.dobehaClosePaymentModal()"></div>
     <div class="relative min-h-screen flex items-center justify-center p-4">
@@ -502,9 +653,10 @@
     (function() {
       const VENDURE_SHOP_API = 'https://dobeha-core-778104196562.us-east1.run.app/shop-api';
       const CHANNEL_TOKEN = 'petgord';
-      const WHATSAPP_STORE_PHONE = '18293998904'; // Número oficial de soporte
-      let cart = []; // [{ id, name, price, qty, img, formattedPrice }]
+      const WHATSAPP_STORE_PHONE = '18293998904';
+      let cart = [];
       let allProducts = [];
+      let currentCategory = 'all';
 
       const query = `
         query {
@@ -570,18 +722,42 @@
             return;
           }
 
-          renderProducts(allProducts);
+          renderFilteredProducts();
+          startSocialProofTicker();
         } catch (err) {
           console.error('Error al cargar productos de Vendure:', err);
           renderFallback();
         }
       }
 
-      function renderProducts(items) {
+      function renderFilteredProducts() {
         const grid = document.getElementById('productsGrid');
         if (!grid) return;
 
-        grid.innerHTML = items.map(p => {
+        const searchVal = (document.getElementById('searchInput')?.value || '').toLowerCase().trim();
+
+        let filtered = allProducts.filter(p => {
+          const nameMatch = (p.name || '').toLowerCase().includes(searchVal) || (p.description || '').toLowerCase().includes(searchVal);
+          if (currentCategory === 'all') return nameMatch;
+          if (currentCategory === 'velon') return nameMatch && (p.name || '').toLowerCase().includes('vel');
+          if (currentCategory === 'bolso') return nameMatch && (p.name || '').toLowerCase().includes('bolso');
+          if (currentCategory === 'arenero') return nameMatch && (p.name || '').toLowerCase().includes('arenero');
+          if (currentCategory === 'semillas') return nameMatch && ((p.name || '').toLowerCase().includes('semilla') || (p.name || '').toLowerCase().includes('piko'));
+          return nameMatch;
+        });
+
+        if (filtered.length === 0) {
+          grid.innerHTML = `
+            <div class="col-span-full text-center py-12 text-slate-400">
+              <i class="fa-solid fa-magnifying-glass text-3xl mb-2"></i>
+              <p class="font-bold text-slate-700">No encontramos productos que coincidan con tu búsqueda</p>
+              <button onclick="window.dobehaResetFilters()" class="mt-3 text-xs font-bold text-indigo-600 underline">Ver todos los productos</button>
+            </div>
+          `;
+          return;
+        }
+
+        grid.innerHTML = filtered.map(p => {
           const img = p.featuredAsset?.preview || 'https://images.unsplash.com/photo-1543466835-00a7907e9de1?w=600&q=80';
           const rawPrice = p.variants?.[0]?.priceWithTax || p.variants?.[0]?.price || 0;
           const formattedPrice = (rawPrice / 100).toLocaleString('es-DO', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
@@ -591,15 +767,18 @@
 
           return `
             <div class="bg-white rounded-2xl border border-slate-200/90 shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col group hover:-translate-y-1">
-              <div class="relative aspect-square bg-slate-100 overflow-hidden">
+              <div class="relative aspect-square bg-slate-100 overflow-hidden cursor-pointer" onclick="window.dobehaOpenQuickView('${pId}')">
                 <img src="${img}" alt="${p.name}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
                 <span class="absolute top-3 left-3 bg-indigo-600/90 backdrop-blur-md text-white text-[10px] font-extrabold uppercase px-2.5 py-1 rounded-full shadow-sm">
                   Garantía DOBEHA
                 </span>
+                <span class="absolute bottom-3 right-3 bg-white/90 backdrop-blur-md text-slate-800 text-[10px] font-bold px-2.5 py-1 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity shadow-sm flex items-center gap-1">
+                  <i class="fa-regular fa-eye"></i> Vista Rápida
+                </span>
               </div>
               <div class="p-5 flex-1 flex flex-col justify-between">
                 <div>
-                  <h4 class="font-bold text-slate-900 group-hover:text-indigo-600 transition-colors line-clamp-1 text-base mb-1.5" title="${p.name}">
+                  <h4 class="font-bold text-slate-900 group-hover:text-indigo-600 transition-colors line-clamp-1 text-base mb-1.5 cursor-pointer" onclick="window.dobehaOpenQuickView('${pId}')" title="${p.name}">
                     ${p.name}
                   </h4>
                   <p class="text-xs text-slate-500 line-clamp-2 leading-relaxed mb-4">
@@ -641,6 +820,94 @@
         `;
       }
 
+      // --- FILTROS Y BÚSQUEDA ---
+      window.dobehaFilterProducts = function() {
+        renderFilteredProducts();
+      };
+
+      window.dobehaSetCategory = function(cat) {
+        currentCategory = cat;
+        document.querySelectorAll('.cat-pill').forEach(btn => {
+          if (btn.getAttribute('data-category') === cat) {
+            btn.className = 'cat-pill px-4 py-1.5 rounded-full text-xs font-bold transition bg-indigo-600 text-white shadow-sm';
+          } else {
+            btn.className = 'cat-pill px-4 py-1.5 rounded-full text-xs font-bold transition bg-white text-slate-700 hover:bg-slate-100 border border-slate-200';
+          }
+        });
+        renderFilteredProducts();
+      };
+
+      window.dobehaResetFilters = function() {
+        const searchInput = document.getElementById('searchInput');
+        if (searchInput) searchInput.value = '';
+        window.dobehaSetCategory('all');
+      };
+
+      // --- QUICK VIEW MODAL ---
+      window.dobehaOpenQuickView = function(id) {
+        const p = allProducts.find(item => item.id === id);
+        if (!p) return;
+        const rawPrice = p.variants?.[0]?.priceWithTax || p.variants?.[0]?.price || 0;
+        const formattedPrice = (rawPrice / 100).toLocaleString('es-DO', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+        const img = p.featuredAsset?.preview || 'https://images.unsplash.com/photo-1543466835-00a7907e9de1?w=600&q=80';
+        const cleanDesc = (p.description || '').replace(/<[^>]*>/g, '').trim() || 'Producto oficial garantizado DOBEHA.';
+
+        document.getElementById('qvImg').src = img;
+        document.getElementById('qvTitle').innerText = p.name;
+        document.getElementById('qvPrice').innerText = 'RD$ ' + formattedPrice;
+        document.getElementById('qvDesc').innerText = cleanDesc;
+
+        document.getElementById('qvAddBtn').onclick = function() {
+          window.dobehaAddToCartItem(p.id, p.name, rawPrice, img);
+          window.dobehaCloseQuickView();
+        };
+
+        document.getElementById('qvWaBtn').onclick = function() {
+          const msg = '¡Hola! Me interesa este producto: *' + p.name + '* (RD$ ' + formattedPrice + '). ¿Tienen disponibilidad?';
+          window.open('https://wa.me/' + WHATSAPP_STORE_PHONE + '?text=' + encodeURIComponent(msg), '_blank');
+        };
+
+        const modal = document.getElementById('dobehaQuickViewModal');
+        if (modal) modal.classList.remove('opacity-0', 'invisible');
+      };
+
+      window.dobehaCloseQuickView = function() {
+        const modal = document.getElementById('dobehaQuickViewModal');
+        if (modal) modal.classList.add('opacity-0', 'invisible');
+      };
+
+      // --- SOCIAL PROOF FLOTANTE (Compra reciente automática) ---
+      function startSocialProofTicker() {
+        const buyers = [
+          { name: 'Carolina M. de Piantini', city: 'Santo Domingo' },
+          { name: 'José R. de Bella Vista', city: 'Santo Domingo' },
+          { name: 'Laura G. de Los Jardines', city: 'Santiago' },
+          { name: 'Miguel A. de Naco', city: 'Santo Domingo' },
+          { name: 'Ana P. de Gurabo', city: 'Santiago' }
+        ];
+
+        function trigger() {
+          if (allProducts.length === 0) return;
+          const randomBuyer = buyers[Math.floor(Math.random() * buyers.length)];
+          const randomProduct = allProducts[Math.floor(Math.random() * allProducts.length)];
+          const elem = document.getElementById('dobehaSocialProof');
+          if (!elem) return;
+
+          document.getElementById('spText').innerText = randomBuyer.name;
+          document.getElementById('spProduct').innerText = 'Compró ' + randomProduct.name;
+          const pImg = randomProduct.featuredAsset?.preview || 'https://images.unsplash.com/photo-1543466835-00a7907e9de1?w=200&q=80';
+          document.getElementById('spImg').src = pImg;
+
+          elem.classList.remove('translate-y-24', 'opacity-0');
+          setTimeout(() => {
+            elem.classList.add('translate-y-24', 'opacity-0');
+          }, 5000);
+        }
+
+        setTimeout(trigger, 4000);
+        setInterval(trigger, 25000);
+      }
+
       // --- FUNCIONES DEL CARRITO DE COMPRAS & CHECKOUT ---
       window.dobehaAddToCartItem = function(id, name, price, img) {
         const existing = cart.find(i => i.id === id);
@@ -678,14 +945,12 @@
       };
 
       function updateCartUi() {
-        // Badges
         const totalCount = cart.reduce((acc, i) => acc + i.qty, 0);
         document.querySelectorAll('#cartBadge, .cartBadge').forEach(b => {
           b.innerText = totalCount;
           b.style.display = totalCount > 0 ? 'inline-flex' : 'none';
         });
 
-        // Totals
         const totalCents = cart.reduce((acc, i) => acc + (i.price * i.qty), 0);
         const formattedTotal = (totalCents / 100).toLocaleString('es-DO', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
         const subElem = document.getElementById('dobehaCartSubtotal');
@@ -693,7 +958,6 @@
         if (subElem) subElem.innerText = 'RD$ ' + formattedTotal;
         if (totElem) totElem.innerText = 'RD$ ' + formattedTotal;
 
-        // Items list in drawer
         const container = document.getElementById('dobehaCartItems');
         if (!container) return;
 
@@ -717,12 +981,12 @@
                 <h5 class="font-bold text-slate-900 text-xs truncate">${item.name}</h5>
                 <p class="text-[11px] font-black text-indigo-600 mt-0.5">RD$ ${itemTotal}</p>
                 <div class="flex items-center gap-2 mt-1.5">
-                  <button type="button" onclick="window.dobehaUpdateQty('${item.id}', -1)" class="w-6 h-6 rounded-lg bg-white border border-slate-200 flex items-center justify-center text-xs font-bold hover:bg-slate-100">-</button>
+                  <button type="button" onclick="window.dobehaUpdateQty('${item.id}', -1)" class="w-6 h-6 rounded-lg bg-white border border-slate-200 flex items-center justify-center text-xs font-bold hover:bg-slate-100 cursor-pointer">-</button>
                   <span class="text-xs font-bold w-4 text-center">${item.qty}</span>
-                  <button type="button" onclick="window.dobehaUpdateQty('${item.id}', 1)" class="w-6 h-6 rounded-lg bg-white border border-slate-200 flex items-center justify-center text-xs font-bold hover:bg-slate-100">+</button>
+                  <button type="button" onclick="window.dobehaUpdateQty('${item.id}', 1)" class="w-6 h-6 rounded-lg bg-white border border-slate-200 flex items-center justify-center text-xs font-bold hover:bg-slate-100 cursor-pointer">+</button>
                 </div>
               </div>
-              <button type="button" onclick="window.dobehaRemoveItem('${item.id}')" class="p-2 text-slate-400 hover:text-rose-500 transition">
+              <button type="button" onclick="window.dobehaRemoveItem('${item.id}')" class="p-2 text-slate-400 hover:text-rose-500 transition cursor-pointer">
                 <i class="fa-solid fa-trash-can text-sm"></i>
               </button>
             </div>
@@ -794,7 +1058,7 @@
         }, 1200);
       };
 
-      // Asignar evento click a cualquier botón de carrito existente en el header
+      // Evento click en botones con id="cartBtn" o clase "cartBtn"
       document.addEventListener('click', function(e) {
         const target = e.target.closest('#cartBtn, .cartBtn');
         if (target) {
